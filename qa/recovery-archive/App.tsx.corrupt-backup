@@ -1,0 +1,1181 @@
+﻿import { useCallback, useEffect, useMemo, useState } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
+import { pipeline, sensors, slides, tasks, zoneNames } from './content'
+
+type Theme = 'lab' | 'atlas'
+type IconName = 'evidence' | 'theme' | 'fullscreen' | 'help' | 'arrow' | 'close'
+
+function Icon({ name }: { name: IconName }) {
+  const paths: Record<IconName, ReactNode> = {
+    evidence: <><path d="M6 3.5h9l3 3V20.5H6z"/><path d="M15 3.5v4h3M9 11h6M9 15h6"/></>,
+    theme: <><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></>,
+    fullscreen: <><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5"/></>,
+    help: <><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 0 1 4.8 1c0 2-2.4 2.1-2.4 4M12 18h.01"/></>,
+    arrow: <path d="m9 18 6-6-6-6"/>,
+    close: <path d="m6 6 12 12M18 6 6 18"/>,
+  }
+  return <svg className="icon" viewBox="0 0 24 24" aria-hidden="true">{paths[name]}</svg>
+}
+
+function EvidenceBadge({ kind, label }: { kind: string; label: string }) {
+  return <span className={`evidence-badge evidence-${kind}`}><i />{label}</span>
+}
+
+function SlideFrame({ metaIndex, children }: { metaIndex: number; children: ReactNode }) {
+  const meta = slides[metaIndex]
+  return (
+    <section className={`slide slide-${meta.id}`} aria-labelledby={`${meta.id}-title`}>
+      <div className="slide-heading">
+        <div className="heading-kicker"><span>{meta.kicker}</span><EvidenceBadge kind={meta.evidenceKind} label={meta.evidenceLabel} /></div>
+        <h1 id={`${meta.id}-title`}>{meta.title}</h1>
+        <p>{meta.subtitle}</p>
+      </div>
+      {children}
+    </section>
+  )
+}
+
+function ContactVisual({ tactile, load, speed }: { tactile: boolean; load: number; speed: number }) {
+  return (
+      <div className={`contact-visual ${tactile ? 'has-touch' : 'vision-only'}`}>
+        <img className="contact-hero-image" src="./assets/pixverse_image_425925499782304_1790093887417.png" alt="鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />
+        <div className="contact-wash" />
+      <div className="visual-readout top-left"><span>鎺у埗閾捐矾</span><strong>{tactile ? '闂幆' : '寮€鐜?'}</strong></div>
+      <div className="visual-readout top-right"><span>NORMAL LOAD</span><strong>{load.toString().padStart(2, '0')}<small>%</small></strong></div>
+      <div className="observation-panel vision-panel" aria-label="瑙嗚瑙傛祴绐">
+        <div className="observation-head"><span>01 / VISUAL OBSERVATION</span><b>CAMERA</b></div>
+        <div className="camera-view">
+          <div className="camera-frame"><span className="camera-crosshair">锛</span><span className="occlusion-mask" /><span className="occlusion-mark">?</span><small>CONTACT SURFACE<br/>NOT OBSERVABLE</small></div>
+          <div className="camera-lens-line"><i />瑙嗙嚎琚寚鑵规埅鏂</div>
+        </div>
+      </div>
+      <div className="observation-panel tactile-panel" aria-label="瑙﹁瑙傛祴绐">
+        <div className="observation-head"><span>02 / TACTILE OBSERVATION</span><b>{tactile ? 'LIVE' : 'STANDBY'}</b></div>
+        <div className="tactile-hand-view">
+          <div className="tactile-glove-photo-wrap">
+            <img className="tactile-glove-photo" src="./assets/pixverse_image_426073244318957.png" alt="姝ｈ鐨勪簲鎸囪Е瑙夋墜濂楋紝椋熸寚鎸囧皷鏄剧ず鍘嬪姏鏍囪" />
+          </div>
+          <svg viewBox="0 0 230 210" role="img" aria-label="瀹屾暣瑙﹁鎵嬪鍙婂叾椋熸寚鎸囧皷鍘嬪姏鍒嗗竷">
+            <defs><linearGradient id="handSkinInset" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#eef0f3"/><stop offset=".55" stopColor="#d0d4db"/><stop offset="1" stopColor="#aeb4bf"/></linearGradient><radialGradient id="touchHeatInset"><stop stopColor="#ff5f52" stopOpacity=".94"/><stop offset=".4" stopColor="#ff8274" stopOpacity=".55"/><stop offset="1" stopColor="#ff9a8f" stopOpacity="0"/></radialGradient></defs>
+            <path className="glove-silhouette" d="M83 204 75 158c-2-12-7-23-14-33L32 87c-6-8-5-18 2-24 7-6 17-5 24 2l22 24-8-65C71 13 78 5 88 4c10-1 18 7 19 17l5 56 2-65c0-10 8-18 18-18s18 8 18 18l-1 65 8-55c2-10 10-16 20-15 10 2 16 11 14 21l-8 57 12-39c3-10 13-15 22-12 9 3 14 13 11 22l-20 72c-5 19-17 35-34 46l-2 30z" fill="url(#handSkinInset)" />
+            <path className="glove-seams" d="M82 91c15-8 31-12 49-12 20 0 38 5 53 15M78 151c29 12 61 12 91-1M105 82l-1 65M147 81l2 67M80 105l-19 20" />
+            <path className="glove-cuff" d="M83 173h88l1 31H83z" />
+            <rect className="glove-index-pad" x="77" y="9" width="32" height="45" rx="16" />
+            <ellipse className="touch-heat" cx="93" cy="25" rx="28" ry="24" fill="url(#touchHeatInset)" />
+            <g className="touch-contours"><ellipse cx="93" cy="25" rx="9" ry="7"/><ellipse cx="93" cy="25" rx="17" ry="14"/><ellipse cx="93" cy="25" rx="25" ry="21"/></g>
+            <g className="touch-taxels">{Array.from({ length: 25 }).map((_, index) => <circle key={index} cx={83 + (index % 5) * 5} cy={15 + Math.floor(index / 5) * 5} r="1.45" />)}</g>
+            <path className="index-leader" d="M111 25h38" /><circle className="index-leader-dot" cx="111" cy="25" r="2.5" />
+          </svg>
+          <div className="touch-readout"><span>INDEX FINGERTIP</span><strong>{tactile ? `${load}%` : '鈥?'}</strong><small>椋熸寚鎸囧皷<br/>灞€閮ㄥ帇鍔涘満</small></div>
+        </div>
+      </div>
+      {!tactile && <div className="blind-spot"><span>VISUAL OCCLUSION</span><strong>鍔ㄤ綔鍚庢灉涓嶅彲瑙</strong></div>}
+    </div>
+  )
+}
+
+function ValueSlide() {
+  const [tactile, setTactile] = useState(true)
+  const [active, setActive] = useState(0)
+  const [load, setLoad] = useState(62)
+  const [speed, setSpeed] = useState(44)
+  const theses = [
+    { n: '01', tag: 'INTERFACE', title: '鎺ヨЕ鏄鍔ㄧ殑鎺ュ彛', body: '鍔ㄤ綔銆佹搷浣滀笌鍗忎綔鐨勭粨鏋滐紝鏈€缁堢敱鎺ヨЕ浜х敓鐨勫姏瀛﹀悗鏋滃喅瀹氥€? },
+    { n: '02', tag: 'ACTIVE SENSING', title: '瑙﹁鐢卞姩浣滀骇鐢?, body: '鎸夊帇銆佹粦鍔ㄤ笌閲嶆柊鎺ヨЕ鏃㈡槸琛屽姩锛屼篃鏄富鍔ㄨ幏鍙栬瘉鎹殑鏂瑰紡銆? },
+    { n: '03', tag: 'BODY MODEL', title: '瑙﹁瀹氫箟韬綋杈圭晫', body: '浣撹〃瑙﹁涓庢湰浣撴劅瑙夊叡鍚屽尯鍒嗗璞°€佽嚜韬笌鎺ヨЕ鑰﹀悎銆? },
+  ]
+  return (
+    <SlideFrame metaIndex={0}>
+      <div className={`value-layout value-anchor-layout principle-${active}`}>
+        <div className="value-copy value-anchor-copy">
+          <div className="anchor-claim">鍏疯韩鏅鸿兘涓嶈兘鍙湅瑙佷笘鐣岋紝<em>杩樺繀椤绘劅鍙楀埌琛屽姩鐨勫悗鏋溿€?/em></div>
+          <p className="anchor-lede">瑙嗚鎿呴暱鎺ヨЕ鍓嶇殑瀹氫綅涓庤鍒掞紱瑙﹁鐩存帴瑙傛祴鎺ヨЕ鐣岄潰姝ｅ湪鍙戠敓鐨勭墿鐞嗕氦鎹€</p>
+          <div className="principle-heading"><span>FIRST PRINCIPLES / 01鈥?3</span><small>鐐瑰嚮鍛介锛屾煡鐪嬪畠濡備綍鏀瑰彉鎰熺煡鈥旇鍔ㄩ棴鐜</small></div>
+          <div className="thesis-list">
+            {theses.map((item, index) => (
+              <button key={item.n} className={active === index ? 'active' : ''} onClick={() => setActive(index)}>
+                <span className="thesis-number">{item.n}</span>
+                <span><small className="thesis-tag">{item.tag}</small><strong>{item.title}</strong><small className="thesis-body">{item.body}</small></span>
+                <i><Icon name="arrow" /></i>
+              </button>
+            ))}
+          </div>
+          <div className="anchor-proof"><span className="proof-dot" />涓嶅彲鏇夸唬鎬т笉鍦ㄤ簬鈥滀俊鎭洿澶氣€濓紝鑰屽湪浜庝俊鎭洿鐩存帴銆佹洿鐙壒銆佹洿閲嶈銆</div>
+        </div>
+        <div className="value-anchor-stage">
+          <div className="stage-topline"><span>CONTACT INTERFACE</span><b>{tactile ? 'CLOSED-LOOP OBSERVATION' : 'VISUAL BLIND SPOT'}</b></div>
+          <div className="stage-mode">
+            <div className="mode-switch" role="group" aria-label="鎰熺煡瑙嗚">
+              <button className={!tactile ? 'active' : ''} onClick={() => setTactile(false)}><span>瑙嗚</span><small>杩滆窛瑙傛祴</small></button>
+              <button className={tactile ? 'active' : ''} onClick={() => setTactile(true)}><span>瑙﹁</span><small>鎺ヨЕ瑙傛祴</small></button>
+            </div>
+          </div>
+          <ContactVisual tactile={tactile} load={load} speed={speed} />
+          <div className="principle-insight" aria-live="polite">
+            <span>{theses[active].n} / {theses[active].tag}</span>
+            <strong>{active === 0 ? '鐗╃悊浜ゆ崲 鈫?鎴愬姛鍒ゆ嵁' : active === 1 ? '鎺㈢储鍔ㄤ綔 鈫?鏉′欢瑙傛祴' : '澶栫晫浣滅敤 脳 韬綋鐘舵€?'}</strong>
+            <small>{active === 0 ? '鍔ㄤ綔鏄惁鎴愬姛锛岀敱鎺ヨЕ浜х敓鐨勫姏銆佹粦绉讳笌褰㈠彉鍐冲畾銆? : active === 1 ? '鐩稿悓瀵硅薄浼氬洜閫熷害銆佽浇鑽蜂笌鎺ヨЕ鍘嗗彶浜х敓涓嶅悓瑙﹁鍝嶅簲銆? : '鍙湁鍚屾椂鐭ラ亾鎺ヨЕ鍙戠敓鍦ㄥ摢閲屻€佽韩浣撳浣曡繍鍔紝鎵嶈兘瑙ｉ噴瑙﹁銆?'}</small>
+          </div>
+          <div className="stage-bottomline"><span>鎺ヨЕ鐣岄潰</span><i /> <span>娉曞悜鍔?路 鍒囧悜鍔?路 寰粦绉?路 褰㈠彉</span><label><span>杞借嵎</span><input aria-label="鎺ヨЕ杞借嵎" type="range" min="15" max="95" value={load} onChange={(e) => setLoad(Number(e.target.value))}/><output>{load}%</output></label><label><span>閫熷害</span><input aria-label="鐩稿閫熷害" type="range" min="10" max="90" value={speed} onChange={(e) => setSpeed(Number(e.target.value))}/><output>{speed}%</output></label></div>
+        </div>
+      </div>
+    </SlideFrame>
+  )
+}
+
+type TouchFactor = 'object' | 'action' | 'body' | 'history' | 'sensor'
+
+function UniquenessSlide() {
+  const [factor, setFactor] = useState<TouchFactor>('action')
+  const factorData: Record<TouchFactor, { n: string; label: string; title: string; body: string; consequence: string }> = {
+    object: { n: '01', label: 'OBJECT', title: '瀵硅薄鍙粰鍑轰竴鍗婃潯浠?, body: '鏉愭枡銆佸嚑浣曘€佹俯搴︿笌椤哄簲鎬у弬涓庡搷搴旓紝浣嗕笉鑳借劚绂绘帴瑙︽柟寮忚鐙珛璇诲嚭銆?, consequence: '鐩镐技褰㈠彉锛屽彲鑳芥潵鑷笉鍚岀殑鍔涒€斿垰搴︾粍鍚? },
+    action: { n: '02', label: 'ACTION', title: '鍔ㄤ綔鍐冲畾瑙傛祴', body: '鎸夊帇銆佹粦鍔ㄣ€佹粴鍔ㄤ笌閲嶆柊鎺ヨЕ锛屼細涓诲姩鏀瑰彉杞借嵎銆侀€熷害鍜屾縺鍔遍甯︺€?, consequence: '鍚屼竴鏉愭枡锛屼笉鍚屽姩浣?鈫?涓嶅悓瑙﹁鍝嶅簲' },
+    body: { n: '03', label: 'BODY', title: '瑙傛祴渚濋檮韬綋', body: '鎺ヨЕ浣嶇疆蹇呴』涓庡叧鑺備綅濮裤€佽繍鍔ㄩ摼鍜屾湰浣撹浇鑽峰叡鍚岃В閲娿€?, consequence: '鑴辩韬綋鍧愭爣 鈫?淇″彿澶卞幓浣滅敤浣嶇疆' },
+    history: { n: '04', label: 'HISTORY', title: '鐘舵€佷緷璧栧巻鍙?, body: '鍒濊Е銆佹寔缁彈鍔涖€佸井婊戠Щ涓庡啿鍑诲垎甯冨湪涓嶅悓鏃堕棿灏哄害銆?, consequence: '鍗曞抚鎴栦綆棰?token 鈫?涓㈠け鎺ヨЕ婕斿寲' },
+    sensor: { n: '05', label: 'EMBODIMENT', title: '鏁版嵁渚濊禆杞戒綋', body: '鏉愭枡銆佺粨鏋勩€侀儴缃蹭綅缃笌浼犳劅鏈虹悊鍏卞悓濉戦€犺Е瑙夋暟鎹€?, consequence: '璺ㄨ澶囩洿鎺ヨ縼绉?鈫?鐗╃悊鍚箟鍙兘鏀瑰彉' },
+  }
+  const current = factorData[factor]
+  return (
+    <SlideFrame metaIndex={1}>
+      <div className={`unique-layout factor-${factor}`}>
+        <section className="unique-thesis">
+          <p className="unique-lede">瑙嗚鏇存帴杩戝澶栭儴鍦烘櫙鐨勮繙璺濋噰鏍凤紱瑙﹁鏁版嵁鍒欏湪<strong>鈥滆韩浣撶湡姝ｇ涓婁笘鐣屸€</strong>鏃舵墠琚敓鎴愩€</p>
+          <div className="observation-equation" aria-label="瑙﹁瑙傛祴鐢熸垚鍏崇郴">
+            <span className="equation-output">瑙﹁瑙傛祴</span><b>=</b>
+            {(['object','action','body','history','sensor'] as TouchFactor[]).map((item, index) => <button key={item} className={factor === item ? 'active' : ''} onClick={() => setFactor(item)}><small>{factorData[item].label}</small><strong>{item === 'object' ? '瀵硅薄' : item === 'action' ? '鍔ㄤ綔' : item === 'body' ? '韬綋' : item === 'history' ? '鍘嗗彶' : '浼犳劅鍣?'}</strong>{index < 4 && <i>脳</i>}</button>)}
+          </div>
+          <div className="unique-detail" aria-live="polite">
+            <div className="unique-detail-head"><span>{current.n}</span><div><small>{current.label}</small><h2>{current.title}</h2></div></div>
+            <p>{current.body}</p>
+            <blockquote>{current.consequence}</blockquote>
+          </div>
+          <p className="unique-footnote"><i />瑙﹁鏄敱鍔ㄤ綔浜х敓鐨勬潯浠惰娴嬶紝鑰屼笉鏄笌鍔ㄤ綔鏃犲叧鐨勫璞″揩鐓с€</p>
+        </section>
+        <section className="unique-comparison" aria-label="瑙嗚涓庤Е瑙夌殑淇℃伅缁撴瀯姣旇緝">
+          <div className="unique-hero-image" role="img" aria-label="涓婁笅鍒嗗尯灞曠ず鎽勫儚澶翠笌瑙﹁鎵嬪鍦烘櫙"><img src="./assets/pixverse_image_426064219485064.png" alt="" /></div>
+          <div className="comparison-head"><span>OBSERVATION STRUCTURE</span><strong>鍚屾牱鏄€滄劅鐭モ€濓紝鏁版嵁鏄浣曚骇鐢熺殑锛</strong></div>
+          <div className="modality-row visual-row">
+            <div className="modality-label"><span>VISION</span><h3>瑙嗚</h3><p>杩滆窛銆佽繛缁€佸満鏅腑蹇</p></div>
+            <div className="vision-world">
+              <i className="vision-camera" /><span className="vision-rays" />
+              <div className="vision-object"><i/><i/><i/></div>
+              <small>鍏夎緪灏?/ 鍙嶅皠</small>
+            </div>
+            <div className="data-card"><span>甯歌琛ㄧず</span><strong>瑙勫垯鍍忕礌闃靛垪</strong><small>瀵硅薄鍦ㄧ浉鏈哄潗鏍囦腑鐨勫瑙傚揩鐓</small></div>
+          </div>
+          <div className="comparison-divider"><span>脳涓嶈兘鐩存帴杩佺Щ</span><i /></div>
+          <div className="modality-row tactile-row">
+            <div className="modality-label"><span>TOUCH</span><h3>瑙﹁</h3><p>灞€閮ㄣ€侀棿姝囥€佽韩浣撲腑蹇</p></div>
+            <div className="touch-world">
+              <span className="touch-body"><i /></span><span className="touch-object"/><span className="touch-contact" />
+              <small>鎺ヨЕ / 褰㈠彉 / 鐑川浼犻€</small>
+            </div>
+            <div className="data-card"><span>瑙傛祴缁撴瀯</span><strong>寮傛瀯鏃剁┖淇″彿</strong><small>鎺ヨЕ鐘舵€?脳 韬綋浣嶇疆 脳 鎺㈢储鍔ㄤ綔</small></div>
+          </div>
+          <div className="transfer-warning">
+            <span>DIRECT TRANSFER?</span>
+            <div><b>缁熶竴鍥惧儚杈撳叆</b><i>浼氭姽骞宠韩浣撴嫇鎵</i></div>
+            <div><b>浣庨闄勫姞 token</b><i>浼氶敊杩囨粦绉讳笌鍐插嚮</i></div>
+            <div><b>璺ㄨ澶囩洿鎺ヨ縼绉</b><i>浼氭贩娣嗕笉鍚屼紶鎰熺粨鏋</i></div>
+          </div>
+        </section>
+      </div>
+    </SlideFrame>
+  )
+}
+
+function OutlineSlide() {
+  const [active, setActive] = useState(0)
+  const routes = [
+    { n: '01', label: '鎰熺煡鎶€鏈増鍥?, en: 'SENSING LANDSCAPE', title: '鍏堝洖绛旓細瑙﹁濡備綍琚祴閲忥紵', body: '鎸変换鍔￠渶姹傛⒊鐞嗕笉鍚屾劅鐭ヨ寖寮忥紝鐪嬪埌鏉愭枡銆佺粨鏋勪笌缂栫爜鏂瑰紡涔嬮棿鐨勮竟鐣屻€?, accent: 'cyan', next: '浼犳劅鍣ㄣ€佷紶鎰熻寖寮忎笌鎬ц兘鎸囨爣' },
+    { n: '02', label: '鎰熺煡 鈫?琛屽姩', en: 'FROM CONTACT TO ACTION', title: '鍐嶅洖绛旓細淇″彿濡備綍鍙樻垚琛屽姩锛?, body: '娌跨潃鎺ヨЕ銆佽鍑恒€佺粍缁囥€佺悊瑙ｄ笌鎺у埗锛岃瀵熻Е瑙夊浣曞拰涓嬫父鎶€鏈舰鎴愮郴缁熼棴鐜€?, accent: 'coral', next: '绯荤粺閾捐矾涓庣患鍚堝簲鐢ㄥ満鏅? },
+    { n: '03', label: '鏈潵灞曟湜', en: 'EMBODIED FUTURE', title: '鏈€鍚庡洖绛旓細涓嬩竴浠ｇ郴缁熼暱浠€涔堟牱锛?, body: '鎶婃劅鐭ャ€佸鐞嗐€佺悊瑙ｃ€佽鍒掋€佹帶鍒剁粺涓€涓哄彲璁＄畻銆佸彲浜や簰銆佸彲婕斿寲鐨勫叿韬Е瑙夌缁忕郴缁熴€?, accent: 'violet', next: '鍒嗗竷寮忛棴鐜笌鎶€鏈矾绾? },
+  ]
+  const current = routes[active]
+  return (
+    <SlideFrame metaIndex={3}>
+      <div className="outline-layout">
+        <div className="outline-intro">
+          <span className="outline-label">THE TALK IN THREE MOVES</span>
+          <h2>浠庘€滅悊瑙ｈЕ瑙夆€?br/><em>鍒扳€滅敤瑙﹁琛屽姩鈥?/em></h2>
+          <p>浠庢劅鐭ャ€佺悊瑙ｅ埌闂幆浜や簰锛涗粠鍣ㄤ欢銆佺郴缁熷埌鍏疯韩鏅鸿兘</p>
+          <div className="outline-progress"><i style={{ width: `${(active + 1) * 33.333}%` }} /></div>
+          <small>褰撳墠璺嚎 {current.n} / 03 路 鐐瑰嚮鍙充晶鑺傜偣鍒囨崲</small>
+        </div>
+        <div className="outline-route" aria-label="姹囨姤鏍稿績鍐呭妗嗘灦">
+          <div className="outline-line" />
+          {routes.map((route, index) => <button key={route.n} className={`outline-node tone-${route.accent} ${active === index ? 'active' : ''}`} onClick={() => setActive(index)} aria-pressed={active === index}>
+            <span className="outline-dot">{route.n}</span>
+            <span className="outline-card"><small>{route.en}</small><strong>{route.label}</strong><b>{route.title}</b><em>{route.body}</em><i>{route.next}<span>鈫</span></i></span>
+          </button>)}
+        </div>
+      </div>
+    </SlideFrame>
+  )
+}
+
+function TactileContentSlide() {
+  type ContentKey = 'mechanics' | 'compliance' | 'vibration' | 'thermal' | 'interface' | 'chemical' | 'protection' | 'proprioception'
+  const [active, setActive] = useState<ContentKey>('mechanics')
+  const items: Record<ContentKey, { n: string; label: string; en: string; summary: string; signals: string; task: string }> = {
+    mechanics: { n: '01', label: '鏈烘瑙﹁', en: 'MECHANICS', summary: '瀵瑰姏鍜屾帴瑙︾殑鐩存帴鎰熺煡锛氭帴瑙︿簨浠躲€侀潰绉€佸舰鎬佷笌鐘舵€?, signals: '娉曞悜 / 鍒囧悜 / 鍔涚煩 / 鍘嬪己 / 闈㈢Н', task: '鎶撳彇绋冲畾銆佹帴瑙﹀畾浣嶃€佸姏鎺у埗' },
+    compliance: { n: '02', label: '椤哄簲鎬?, en: 'COMPLIANCE', summary: '閫氳繃鍔涒€斾綅绉烩€旀椂闂村叧绯伙紝鎺ㄦ柇瀵硅薄鐨勮蒋纭笌鍙樺舰銆?, signals: '鍒氬害 / 寮规€?/ 濉戞€?/ 榛忓脊鎬?/ 闃诲凹', task: '杞墿浣撴搷浣溿€侀鍝佸鐞嗐€佹煍椤烘帴瑙? },
+    vibration: { n: '03', label: '寰尟鍔ㄤ笌绾圭悊', en: 'VIBRATION & TEXTURE', summary: '婊戝姩浜х敓鐨勯珮棰戝搷搴旀彮绀虹矖绯欏害銆佹潗璐ㄤ笌鍒濆婊戠Щ銆?, signals: '棰戣氨 / 绮楃硻搴?/ 绾圭悊 / 鎽╂摝 / 寰粦绉?, task: '鏉愯川杈ㄨ瘑銆佹粦绉婚璀︺€佷富鍔ㄦ帰绱? },
+    thermal: { n: '04', label: '鐑', en: 'THERMAL', summary: '鎺ヨЕ涓殑娓╁害涓庣儹浼犻€掔壒鎬э紝鏄墿浣撲笌鐜鐨勭儹瀛︽寚绾广€?, signals: '娓╁害 / 娓╁害鍒嗗竷 / 鐑祦 / 鐑 / 鐑墿鏁?, task: '鐑睘鎬ц鲸璇嗐€佽嚜鐒朵氦浜掋€佹搷浣滃畨鍏? },
+    interface: { n: '05', label: '鐣岄潰鐘舵€?, en: 'INTERFACE STATE', summary: '娑茶啘銆佹箍娑︺€侀粡闄勫拰姹℃煋鏀瑰彉鎺ヨЕ鐣岄潰鐨勭湡瀹炴潯浠躲€?, signals: '婀挎鼎 / 娑蹭綋 / 榛忛檮 / 姣涚粏 / 姹℃煋', task: '闃叉粦鎶撳彇銆佹恫浣撴搷浣溿€佺晫闈㈠垽鏂? },
+    chemical: { n: '06', label: '鎺ヨЕ鍖栧', en: 'CONTACT CHEMISTRY', summary: '鎺ヨЕ寮忔垨杩戝満鍖栧淇℃伅锛屾墿灞曡Е瑙夊鐗╄川鐘舵€佺殑鍒ゆ柇銆?, signals: 'pH / 鐩愬害 / 绯栧害 / 鎸ュ彂鐗?/ 鑵愯殌鎬?, task: '椋熷搧銆佸疄楠屽銆佸尰鐤椾笌鐜宸℃' },
+    protection: { n: '07', label: '鐤肩棝涓庢崯浼ら闄?, en: 'PROTECTION', summary: '鎶婅繃杞姐€佸啿鍑汇€佽秴娓╁拰澶逛激椋庨櫓鏁村悎鎴愪笉鍙秺杩囩殑杈圭晫銆?, signals: '鍐插嚮 / 杩囪浇 / 瓒呮俯 / 纾ㄦ崯 / 澶逛激椋庨櫓', task: '鍙嶅皠淇濇姢銆佷汉鏈哄畨鍏ㄣ€佽澶囪嚜淇? },
+    proprioception: { n: '08', label: '鏈綋瑙﹁', en: 'PROPRIOCEPTION', summary: '韬綋鍐呴儴鐨勪綅濮裤€佽繍鍔ㄤ笌鍐呭姏锛屼负鎺ヨЕ淇″彿璧嬩簣杩愬姩鏉′欢鍜屾湰浣撳潗鏍囥€?, signals: '鍏宠妭瑙?/ 閫熷害 / 鎵煩 / 鑵卞紶鍔?/ 鏈浣嶅Э', task: '韬綋寤烘ā銆佺浉瀵硅繍鍔ㄥ垽鏂€佺簿瀵嗘搷浣? },
+  }
+  const current = items[active]
+  return (
+    <SlideFrame metaIndex={4}>
+      <div className="content-layout">
+        <section className="content-definition">
+          <span className="content-kicker">A SYSTEMIC DEFINITION</span>
+          <h2>瑙﹁ = <em>韬綋鈥旂幆澧?/em><br/>浜や簰鐨勫彲瑙傛祴璇佹嵁</h2>
+          <p>瑙﹁鏄櫤鑳戒綋鍦ㄨ韩浣撹〃闈㈡垨韬綋鍐呴儴锛岄€氳繃鎺ヨЕ銆佸舰鍙樸€佺儹璐ㄤ紶閫掑強鏈烘鑰﹀悎绛夊緱鍒扮殑銆佸叧浜庤嚜韬?鐜浜や簰鐘舵€佺殑澶氭ā鎬佹劅鐭ャ€傚叾鐩殑涓嶆槸鍗曠函璇嗗埆鈥滄懜鍒颁簡浠€涔堚€濓紝鑰屾槸浼拌锛氭帴瑙︽槸鍚﹀彂鐢熴€佸彂鐢熺殑浣嶇疆鍜屽嚑浣曞叧绯汇€佹帴瑙﹂潰鍙戠敓鐨勭墿鐞嗕氦鎹互鍙婁氦浜掑璞＄殑鐘舵€佺瓑銆</p>
+          <div className="content-questions"><span><b>01</b><strong>鍙戠敓浜嗕粈涔堬紵</strong><small>鎺ヨЕ 路 鍙楀姏 路 鍙樺舰 路 婊戠Щ</small></span><span><b>02</b><strong>瀵硅薄鏄粈涔堬紵</strong><small>杞‖ 路 鏉愯川 路 娓╁害 路 鐣岄潰</small></span><span><b>03</b><strong>韬綋鑳藉惁鎵垮彈锛</strong><small>鏈綋 路 鐤肩棝 路 椋庨櫓杈圭晫</small></span></div>
+          <div className="content-takeaway"><i />鍏被鎰熺煡鍏卞悓鍥炵瓟涓€涓棶棰橈細浜や簰姝ｅ湪濡備綍鏀瑰彉銆</div>
+        </section>
+        <section className="content-map" aria-label="瑙﹁鎰熺煡鍐呭鍒嗙被">
+          <div className="content-map-head"><span>WHAT CAN TOUCH TELL US?</span><small>鐐瑰嚮鑺傜偣灞曞紑</small></div>
+          <div className="content-taxonomy"><div className="content-core"><span>TOUCH</span><strong>浜や簰鐘舵€</strong><small>韬綋涓庣幆澧冪殑鍏卞悓缁撴灉</small></div>
+            {Object.entries(items).map(([key, item]) => <button key={key} className={`content-node ${active === key ? 'active' : ''}`} onClick={() => setActive(key as ContentKey)} aria-pressed={active === key}><span>{item.n}</span><strong>{item.label}</strong><small>{item.en}</small></button>)}
+          </div>
+          <div className="content-detail" aria-live="polite"><div><span>{current.n} / {current.en}</span><h3>{current.label}</h3></div><p>{current.summary}</p><dl><div><dt>鍙娴嬮噺</dt><dd>{current.signals}</dd></div><div><dt>鍏疯韩鐢ㄩ€</dt><dd>{current.task}</dd></div></dl></div>
+        </section>
+      </div>
+    </SlideFrame>
+  )
+}
+
+function SensorMapSlide() {
+  const [task, setTask] = useState('static')
+  const [selected, setSelected] = useState('visual')
+  const [expanded, setExpanded] = useState<string | null>(null)
+  const selectedSensor = sensors.find((sensor) => sensor.id === selected) ?? sensors[0]
+  const taskMeta = tasks.find((item) => item.id === task) ?? tasks[0]
+  return (
+    <SlideFrame metaIndex={5}>
+      <div className="map-toolbar">
+        <span>浠ユ劅鐭ラ渶姹傜瓫閫夛細</span>
+        {tasks.map((item) => <button key={item.id} className={task === item.id ? 'active' : ''} onClick={() => setTask(item.id)}>{item.label}</button>)}
+        <p><strong>{taskMeta.label}</strong> 鍏虫敞 {taskMeta.hint}</p>
+      </div>
+      <div className="sensor-layout">
+        <div className="sensor-matrix">
+          <div className="axis axis-x"><strong>缂栫爜鏂瑰紡</strong><div className="axis-range"><span>鐘舵€佺紪鐮</span><i /><span>鍙樺寲 / 浜嬩欢缂栫爜</span></div></div>
+          <div className="axis axis-y"><strong>鎹㈣兘鏂瑰紡</strong><div className="axis-range-y"><span>褰㈠彉涓粙</span><i /><span>鐩存帴鑳介噺杞崲</span></div></div>
+          <div className="quadrant q-state"><b>鎸佺画璇诲嚭</b><span>闈欐€?/ 鍑嗛潤鎬</span></div>
+          <div className="quadrant q-event"><b>鍙樺寲瑙﹀彂</b><span>鍔ㄦ€?/ 鐬€</span></div>
+          <div className="quadrant q-gap"><b>鍘熺悊鎬х┖缂</b><span>鐩存帴鎹㈣兘闅句互鎸佺画淇濇寔闈欐€佺姸鎬</span></div>
+          <div className="matrix-grid"><i/><i/><i/><i/><i/><i/><i/><i/></div>
+          {sensors.map((sensor) => {
+            const fits = sensor.tasks.includes(task)
+            return (
+              <button
+                key={sensor.id}
+                className={`sensor-node tone-${sensor.tone} ${fits ? 'fits' : 'muted'} ${selected === sensor.id ? 'selected' : ''}`}
+                style={{ left: `${sensor.x}%`, top: `${sensor.y}%` }}
+                onClick={() => setSelected(sensor.id)}
+                aria-pressed={selected === sensor.id}
+              >
+                <i />
+                <span>{sensor.name}</span>
+                <small>{sensor.en}</small>
+              </button>
+            )
+          })}
+          <div className="fit-legend"><i />褰撳墠浠诲姟鐨勪紭鍔垮尯鍩?<span>* 缂栫爜鑼冨紡锛岄潪鍗曚竴鎹㈣兘鏈虹悊</span></div>
+        </div>
+        <aside className={`sensor-detail tone-${selectedSensor.tone}`}>
+          <div className="detail-index">{String(sensors.findIndex(s => s.id === selectedSensor.id) + 1).padStart(2, '0')} / 07</div>
+          <p className="micro-label">SELECTED SENSING PARADIGM 路 CLICK NODE TO SWITCH</p>
+          <h2>{selectedSensor.name}</h2>
+          <p className="english-name">{selectedSensor.en}</p>
+          <button className="principle-toggle" type="button" onClick={() => setExpanded(expanded === selectedSensor.id ? null : selectedSensor.id)} aria-expanded={expanded === selectedSensor.id}><span>{expanded === selectedSensor.id ? '鏀惰捣宸ヤ綔鍘熺悊' : '灞曞紑宸ヤ綔鍘熺悊'}</span><b>{expanded === selectedSensor.id ? '鈭? : '+'}</b></button>
+          {expanded === selectedSensor.id && <div className="principle-card"><div className="principle-visual"><i className={`principle-icon principle-${selectedSensor.id}`} /><span>{selectedSensor.signal}</span></div><p>{selectedSensor.principle}</p></div>}
+          <div className="detail-block good"><span>鎿呴暱</span><p>{selectedSensor.strengths}</p></div>
+          <div className="detail-block trade"><span>浠ｄ环</span><p>{selectedSensor.tradeoff}</p></div>
+          <div className="detail-metrics"><span>鍏疯韩鎬ц兘杞</span><p>{selectedSensor.metrics}</p><small>{selectedSensor.capability}</small></div>
+          <div className="task-fit">
+            <span>浠诲姟鍖归厤</span>
+            {tasks.map(item => <i key={item.id} className={selectedSensor.tasks.includes(item.id) ? 'on' : ''} title={item.label}>{item.label.slice(0,2)}</i>)}
+          </div>
+          <blockquote>閫夋嫨浼犳劅鍣紝鏈川涓婃槸浠诲姟淇℃伅闇€姹備笌鍏疯韩閮ㄧ讲鏉′欢鍏卞悓绾︽潫鐨勭郴缁熻璁°€</blockquote>
+        </aside>
+      </div>
+    </SlideFrame>
+  )
+}
+
+type FrontierGap = 'coverage' | 'latency' | 'data' | 'transfer' | 'sim'
+
+function FrontierSlide() {
+  const [gap, setGap] = useState<FrontierGap>('coverage')
+  const gaps: Record<FrontierGap, { n: string; title: string; detail: string; chain: string; metric: string }> = {
+    coverage: { n: '01', title: '瑕嗙洊涓庡垎杈ㄧ巼闅句互鍚屾椂婊¤冻', detail: '楂樺垎杈ㄧ巼銆佸ぇ闈㈢Н瑕嗙洊銆佸杞存祴閲忋€佽€愪箙鎬т笌浣庢垚鏈浉浜掔壍鍒躲€?, chain: '鏉愭枡 / 缁撴瀯 / 灏佽', metric: 'SPACE 脳 RESOLUTION' },
+    latency: { n: '02', title: '绔埌绔欢杩熶粛鏃犳硶鏀拺蹇€熷弽灏?, detail: '鏉愭枡鍝嶅簲銆佽鍑恒€佷紶杈撱€佹帹鐞嗕笌鎵ц鍏卞悓鍐冲畾闂幆鏃跺欢銆?, chain: '璇诲嚭 / 浼犺緭 / 鎺у埗', metric: 'LATENCY 鈫?REFLEX' },
+    data: { n: '03', title: '鐪熷疄鎺ヨЕ鏁版嵁鏄傝吹涓旈毦鏍囨敞', detail: '鍔涖€佹粦绉汇€佹崯浼ゃ€佹潗鏂欏弬鏁扮瓑鐪熷€奸毦浠ュ湪鍚屼竴鏃跺埢鍚屾鑾峰緱銆?, chain: '閲囬泦 / 鏍囨敞 / 璇勪环', metric: 'GROUND TRUTH' },
+    transfer: { n: '04', title: '鏁版嵁缁撴瀯涓庤韩浣撳舰鎬侀珮搴﹁€﹀悎', detail: '璺ㄨ澶囥€佽法鏈哄櫒浜鸿縼绉绘椂锛屼紶鎰熷櫒缁撴瀯涓庢帰绱㈠姩浣滀細鏀瑰彉鏁版嵁璇箟銆?, chain: '鏈綋 / 浣嶇疆 / 鍔ㄤ綔', metric: 'TRANSFER 鈮?COPY' },
+    sim: { n: '05', title: '浠跨湡杩樼己灏戝彲淇＄殑鐗╃悊妗ユ', detail: '瑙嗚閲嶅缓涓庤Е瑙変豢鐪熶箣闂翠粛缂烘潗鏂欏弬鏁般€佹帴瑙︽眰瑙ｅ拰浼犳劅鍣ㄦ暟瀛楀鐢熴€?, chain: '閲嶅缓 / 鎺ヨЕ / 浼犳劅鍣?, metric: 'SIMULATION GAP' },
+  }
+  const current = gaps[gap]
+  const chain = ['mechanics','encoding','digital','state','control']
+  return (
+    <SlideFrame metaIndex={2}>
+      <div className="frontier-layout">
+        <section className="frontier-demand">
+          <div className="demand-label">THE WINDOW IS OPEN</div>
+          <h2>鍏疯韩鍩虹妯″瀷姝ｅ湪杩涘叆<br/><em>鎺ヨЕ涓板瘜鐨勯暱鏃剁▼鎿嶄綔銆?/em></h2>
+          <p>瑙嗚宸茬粡鍙互鍋氭帴瑙﹀墠鐨勮涔夎鍒掞紱鐪熸闄愬埗涓嬩竴姝ョ殑锛屾槸鍙潬銆佷綆寤惰繜銆佸彲杩佺Щ鐨勭墿鐞嗗弽棣堛€</p>
+          <div className="capability-ring" aria-label="鍏疯韩瑙﹁闇€瑕佹敮鎾戠殑浜旂被鑳藉姏">
+            <div className="capability-hero"><img src="./assets/pixverse_image_426064219485064.png" alt="瑙﹁鎵嬪椋熸寚瑙︾鏂瑰潡" /></div>
+            <div className="capability-node capability-safety"><span>瀹夊叏鎬</span><small>涓嶄激瀹?路 鍙繚鎶</small></div>
+            <div className="capability-node capability-stability"><span>绋冲畾鎬</span><small>澶嶇幇 路 鍙娴</small></div>
+            <div className="capability-node capability-robust"><span>椴佹鎬</span><small>鎵板姩 路 鍙樺寲閫傚簲</small></div>
+            <div className="capability-node capability-precision"><span>绮惧瘑鎬</span><small>寰皬璇樊 路 鍙帶</small></div>
+            <div className="capability-node capability-general"><span>娉涚敤鎬</span><small>璺ㄤ换鍔?路 璺ㄦ湰浣</small></div>
+          </div>
+          <div className="frontier-principle"><i />闂涓嶅湪鏌愰」鎸囨爣锛岃€屽湪鏁存潯鈥滄満姊颁氦浜?鈫?鐘舵€佺悊瑙?鈫?闂幆鎺у埗鈥濋摼璺皻鏈棴鍚堛€</div>
+        </section>
+        <section className="frontier-system">
+          <div className="system-head"><span>SYSTEM COORDINATES</span><strong></strong></div>
+          <div className="system-chain" aria-label="瑙﹁澶勭悊閾捐矾">
+            {chain.map((item, index) => <div className={`chain-node node-${item}`} key={item}><span>0{index + 1}</span><i /><strong>{item === 'mechanics' ? '鏈烘浜や簰' : item === 'encoding' ? '浼犳劅缂栫爜' : item === 'digital' ? '鏁板瓧鍖栦笌缁勭粐' : item === 'state' ? '鐘舵€佺悊瑙? : '鍙嶉鎺у埗'}</strong>{index < chain.length - 1 && <b>鈫</b>}</div>)}
+          </div>
+          <div className="gap-grid">
+            {(Object.keys(gaps) as FrontierGap[]).map(item => <button key={item} className={`gap-card ${gap === item ? 'active' : ''}`} onClick={() => setGap(item)}><span>{gaps[item].n}</span><div><small>{gaps[item].metric}</small><strong>{gaps[item].title}</strong><p>{gaps[item].detail}</p><em>{gaps[item].chain}</em></div></button>)}
+          </div>
+          <div className="gap-insight"><span>{current.n} / ACTIVE BOTTLENECK</span><strong>{current.chain}</strong><p>{current.detail}</p><i><b style={{ width: `${Number(current.n) * 18 + 10}%` }} /></i></div>
+        </section>
+      </div>
+    </SlideFrame>
+  )
+}
+
+type PipelineMode = 'flow' | 'deployment'
+type Fault = 'none' | 'saturation' | 'drift' | 'sync'
+
+function PipelineSlide() {
+  const [mode, setMode] = useState<PipelineMode>('flow')
+  const [active, setActive] = useState(0)
+  const [fault, setFault] = useState<Fault>('none')
+  const faultStage: Record<Fault, number> = { none: -1, saturation: 1, drift: 3, sync: 4 }
+  const affectedFrom = faultStage[fault]
+  const faultLabels: Record<Fault, string> = { none: '姝ｅ父閾捐矾', saturation: '骞呭€奸ケ鍜?, drift: '鍩虹嚎婕傜Щ', sync: '鏃剁┖閿欎綅' }
+  const faultMeaning: Record<Fault, string> = { none: '涓嶆敞鍏ュけ鏁堬細瑙傚療淇℃伅濡備綍閫愰樁娈佃缁勭粐骞惰繘鍏ョ瓥鐣ャ€?, saturation: '寮烘帴瑙﹁秴杩囧墠绔噺绋嬶紝杈撳嚭琚埅椤讹紱鍚庣画闃舵鏃犳硶鎭㈠琚涪澶辩殑宄板€间笌鍔ㄦ€佽寖鍥淬€?, drift: '闆剁偣銆佹俯婕傛垨鍔犺浇鍘嗗彶鏀瑰彉浜嗗熀绾匡紱鍚屼竴鎺ヨЕ鍙兘琚В閲婃垚涓嶅悓鐨勫姏鎴栨帴瑙︾姸鎬併€?, sync: '瑙﹁銆佽瑙夈€佹湰浣撴垨鍔ㄤ綔娌℃湁瀵归綈鍒板悓涓€鐗╃悊鏃跺埢锛涚姸鎬佷及璁′細鎶婂洜鏋滃叧绯婚敊閰嶃€? }
+  return (
+    <SlideFrame metaIndex={6}>
+      <div className="pipeline-toolbar">
+        <div className="segmented">
+          <button className={mode === 'flow' ? 'active' : ''} onClick={() => setMode('flow')}>鍔熻兘閾</button>
+          <button className={mode === 'deployment' ? 'active' : ''} onClick={() => setMode('deployment')}>閮ㄧ讲灞</button>
+        </div>
+        <div className="faults"><span>鍏稿瀷澶辨晥娉ㄥ叆</span>{(['none','saturation','drift','sync'] as Fault[]).map(item => <button key={item} className={fault === item ? 'active' : ''} onClick={() => setFault(item)} title={faultMeaning[item]}>{faultLabels[item]}</button>)}</div>
+      </div>
+      {mode === 'flow' ? (
+        <div className={`pipeline-flow fault-${fault}`}>
+          <div className="flow-line"><i className="flow-pulse p1"/><i className="flow-pulse p2"/><i className="flow-pulse p3"/></div>
+          {pipeline.map((stage, index) => (
+            <button
+              key={stage.n}
+              className={`pipeline-stage ${active === index ? 'active' : ''} ${affectedFrom >= 0 && index >= affectedFrom ? 'affected' : ''} ${index === affectedFrom ? 'fault-origin' : ''}`}
+              onClick={() => setActive(index)}
+            >
+              <span className="stage-number">{stage.n}</span>
+              <i className="stage-node" />
+              <strong>{stage.title}</strong>
+              <small>{stage.short}</small>
+              {index === affectedFrom && <em>{fault === 'saturation' ? 'SATURATED' : fault === 'drift' ? 'DRIFTING' : 'MISALIGNED'}</em>}
+            </button>
+          ))}
+          <aside className="stage-insight">
+            <div><span>STAGE {pipeline[active].n}</span><strong>{pipeline[active].title}</strong></div>
+            <p><b className="insight-label">闃舵鍔熻兘</b>{pipeline[active].function}</p>
+            <p className="stage-risk"><b className="insight-label">鍏抽敭椋庨櫓</b>{pipeline[active].risk}</p>
+            <small>{fault === 'none' ? '鐐瑰嚮浠绘剰闃舵鏌ョ湅鍔熻兘涓庨闄╋紱鐐瑰嚮鍙充笂瑙掑け鏁堟敞鍏ユ煡鐪嬮敊璇紶鎾建杩? : faultMeaning[fault]}</small>
+          </aside>
+        </div>
+      ) : (
+        <div className="deployment-view">
+          <div className="deployment-note"><span>姝ｄ氦缁村害</span><p>鍔熻兘闃舵涓嶇瓑浜庣‖浠朵綅缃€傚悓涓€澶勭悊鍙互璺ㄥ眰閮ㄧ讲锛屽彇鍐充簬鏃堕檺銆佷笂涓嬫枃銆佸姛鑰楀拰鍙淮鎶ゆ€с€</p></div>
+          <div className="zone-table">
+            {Object.entries(zoneNames).map(([key, zone]) => (
+              <div className={`zone-row zone-${key}`} key={key}>
+                <div className="zone-label"><strong>{zone.name}</strong><small>{zone.desc}</small></div>
+                <div className="zone-track">
+                  {pipeline.map((stage, index) => <button key={stage.n} className={stage.zone.includes(key) ? 'present' : ''} onClick={() => setActive(index)} title={stage.title}><span>{stage.n}</span><small>{stage.title}</small></button>)}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="deployment-principle"><span>閮ㄧ讲鍘熷垯</span><p><b>涓ユ牸鏃堕檺 / 涓嶅彲閫嗗鐞</b>闈犺繎浼犳劅鍣紱<b>璺ㄩ儴浣?/ 璺ㄦā鎬佹帹鐞</b>闈犺繎涓绘満锛涗繚鐣欏彈鎺у師濮嬫暟鎹€氳矾鐢ㄤ簬鏍囧畾銆佽瘖鏂拰妯″瀷鏇存柊銆</p></div>
+        </div>
+      )}
+    </SlideFrame>
+  )
+}
+
+type FusionRole = 'observe' | 'complement' | 'feedback' | 'explore'
+type FusionInterface = 'state' | 'policy' | 'dual'
+
+function FusionSlide() {
+  const [role, setRole] = useState<FusionRole>('observe')
+  const [iface, setIface] = useState<FusionInterface>('state')
+  const roles: Record<FusionRole, { n:string; label:string; en:string; title:string; question:string; tactile:string; downstream:string; example:string }> = {
+    observe: { n:'01', label:'鐩存帴瑙傛祴', en:'DIRECT OBSERVATION', title:'鎶婂姩浣滀骇鐢熺殑鐗╃悊鍚庢灉鍙樻垚鎺ヨЕ浜嬪疄', question:'鏈哄櫒浜虹湡姝ｆ帴瑙︿簡浠€涔堬紵', tactile:'鎺ヨЕ浣嶇疆銆佷綔鐢ㄥ姏銆佹粦绉汇€佸眬閮ㄥ嚑浣?, downstream:'鐘舵€佷及璁?路 鎺ヨЕ瀹氫綅 路 鍔?/ 浣嶅Э鎺у埗', example:'棣栨鎺ヨЕ銆佹姄鍙栧缓绔嬪拰灞€閮ㄥ嚑浣曠害鏉? },
+    complement: { n:'02', label:'琛ュ厖瑙嗚', en:'VISUAL COMPLEMENT', title:'鍦ㄩ伄鎸°€侀€忔槑鍜屾帴瑙﹀悗瑙嗚閫€鍖栨椂琛ヨ冻淇℃伅', question:'瑙嗚鐪嬩笉鍒扮殑鎺ヨЕ鐘舵€佸浣曡纭锛?, tactile:'琚伄鎸″尯鍩熺殑鍘嬪姏銆佸舰鍙樸€佹帴瑙﹁竟鐣屼笌杞借嵎', downstream:'瑙嗚鈥旇Е瑙夎仈鍚堜及璁?路 澶辫触閲嶆姄 路 灞€閮ㄧ籂閿?, example:'鎵嬫寚閬尅鐩爣鍚庝粛鍒ゆ柇鏄惁鎶撶ǔ' },
+    feedback: { n:'03', label:'楂橀鍙嶉', en:'FAST FEEDBACK', title:'娌垮眬閮ㄧ煭閫氳矾淇婊戠Щ銆佺鎾炰笌鍙楀姏璇樊', question:'鍔ㄤ綔杩樻潵寰楀強淇鍚楋紵', tactile:'楂橀鍙樺寲銆佸啿鍑汇€佸井婊戠Щ銆佽繃杞?, downstream:'鎶撳姏璋冭妭 路 纰版挒鍙嶅皠 路 瑙﹁浼烘湇', example:'鐗╀綋瀹屽叏婊戣惤鍓嶅澶уす鎸佸姏' },
+    explore: { n:'04', label:'涓诲姩鎺㈢储', en:'ACTIVE TOUCH', title:'鐢ㄤ笅涓€娆℃帴瑙﹁幏鍙栧瑙傛棤娉曟彁渚涚殑鐗╃悊璇佹嵁', question:'涓嬩竴娆″簲璇ュ湪鍝噷銆佹€庢牱瑙︾锛?, tactile:'鍔ㄤ綔鏉′欢涓嬬殑鍔涒€斾綅绉汇€佹懇鎿︺€佺汗鐞嗕笌娓╁害鍝嶅簲', downstream:'淇℃伅澧炵泭瑙勫垝 路 灞炴€ц鐭?路 涓诲姩瑙﹁', example:'鎸夊帇銆佹粦鍔ㄦ垨婊氬姩鍖哄垎鐩镐技澶栬鏉愭枡' },
+  }
+  const interfaces: Record<FusionInterface, { n:string; label:string; en:string; title:string; input:string; output:string; note:string }> = {
+    state: { n:'A', label:'鏄惧紡鐘舵€佹帴鍙?, en:'TACTILE 鈫?STATE 鈫?CONTROLLER', title:'鍏堜及璁＄姸鎬侊紝鍐嶄氦缁欐帶鍒跺櫒', input:'鍔?/ 鎺ヨЕ浣嶇疆 / 婊戠Щ / 灞€閮ㄥ嚑浣?, output:'闃绘姉鎺у埗 路 鍔涙帶鍒?路 瑙﹁浼烘湇', note:'鍙В閲娿€佹槗璁剧疆瀹夊叏绾︽潫锛涘彲鑳戒涪澶遍毦浠ユ墜宸ュ畾涔夌殑寰急妯″紡銆? },
+    policy: { n:'B', label:'澶氭ā鎬佺瓥鐣ユ帴鍙?, en:'TACTILE + VISION + PROPRIOCEPTION', title:'鍒嗗埆缂栫爜锛屽啀鐢辩瓥鐣ヨ仈鍚堢敓鎴愬姩浣?, input:'瑙﹁搴忓垪 + 瑙嗚 / 璇█ / 鏈綋鐘舵€?, output:'绛栫暐缃戠粶 路 VLA 路 鍔ㄤ綔娈嬪樊', note:'淇濈暀瀛︿範绌洪棿锛涘繀椤诲鐞嗘椂闂村榻愪笌瑙嗚鐗瑰緛鏀厤銆? },
+    dual: { n:'C', label:'蹇參鍙岄€氳矾鎺ュ彛', en:'FAST REFLEX + SLOW POLICY', title:'灞€閮ㄥ弽灏勪笌楂樺眰鎺ㄧ悊骞惰宸ヤ綔', input:'杈圭紭绔帴瑙?/ 婊戠Щ / 杩囪浇 + 闀挎椂绋嬪巻鍙?, output:'绔晶瀹夊叏淇 + 楂樺眰浠诲姟瑙勫垝', note:'婊¤冻涓ユ牸鏃堕檺鍙堜繚鐣欏鏉傛帹鐞嗭紱闇€瑕佹槑纭帶鍒舵潈闄愬拰鍥為€€鏈哄埗銆? },
+  }
+  const current = roles[role]
+  const currentInterface = interfaces[iface]
+  return (
+    <SlideFrame metaIndex={7}>
+      <div className="fusion-layout fusion-rebuilt">
+        <section className="fusion-interfaces">
+          <div className="fusion-intro"><span>FROM TOUCH TO EMBODIED TASK</span><h2>瑙﹁鍦ㄧ郴缁熼噷<br/><em>鎵挎媴浠€涔堜綔鐢紵</em></h2><p>鍏堢湅瑙﹁鍦ㄦ劅鐭モ€斿喅绛栤€旇鍔ㄩ棴鐜腑鐨勫姛鑳戒綅缃紝鍐嶇湅瀹冧互浠€涔堟帴鍙ｈ繘鍏ユ帶鍒跺櫒鎴栫瓥鐣ャ€</p></div>
+          <div className="fusion-role-tabs" role="tablist" aria-label="瑙﹁鍔熻兘浣嶇疆">
+            {(Object.keys(roles) as FusionRole[]).map(key => <button key={key} className={role === key ? 'active' : ''} onClick={() => setRole(key)} aria-selected={role === key}><span>{roles[key].n}</span><strong>{roles[key].label}</strong><small>{roles[key].en}</small></button>)}
+          </div>
+          <div className="fusion-principle"><i/>瑙嗚璐熻矗鎺ヨЕ鍓嶅厛楠岋紝鏈綋鎰熻鎻愪緵韬綋鍧愭爣锛岃Е瑙夌‘璁ゆ帴瑙﹀悗鐨勭墿鐞嗗悗鏋溿€</div>
+        </section>
+        <section className="fusion-system fusion-rebuilt-system" aria-label="瑙﹁鍔熻兘涓庢帴鍙ｆ鏋">
+          <div className="fusion-role-card">
+            <div className="fusion-role-header"><span>{current.n} / {current.en}</span><strong>{current.question}</strong></div>
+            <div className="fusion-canvas fusion-role-canvas">
+              <div className="fusion-node fusion-vision"><span>PRE-CONTACT</span><strong>瑙嗚 / 璇█</strong><small>鐩爣鍙戠幇 路 鍏ㄥ眬瀹氫綅 路 鍔ㄤ綔鍒濆鍖</small></div>
+              <div className="fusion-node fusion-proprio"><span>BODY STATE</span><strong>鏈綋鎰熻</strong><small>鑷韩浣嶅Э 路 杩愬姩 路 韬綋鍧愭爣</small></div>
+              <div className="fusion-node fusion-touch"><span>CONTACT</span><strong>瑙﹁</strong><small>{current.tactile}</small></div>
+              <div className="fusion-node fusion-consumer"><span>DOWNSTREAM</span><strong>{current.downstream}</strong><small>{current.example}</small></div>
+              <svg className="fusion-arrows" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M16 24C27 24 33 39 42 48M16 76C27 76 33 61 42 52M58 50H84"/><path className="fusion-return" d="M92 66C76 96 24 96 8 76"/></svg>
+            </div>
+          </div>
+          <div className="fusion-interface-card">
+            <div className="fusion-interface-heading"><span>绗簩灞?/ INTERFACE</span><strong>瑙﹁濡備綍琚帶鍒跺櫒鎴栫瓥鐣ユ秷璐癸紵</strong></div>
+            <div className="fusion-interface-tabs" role="tablist" aria-label="瑙﹁绯荤粺鎺ュ彛">{(Object.keys(interfaces) as FusionInterface[]).map(key => <button key={key} className={iface === key ? 'active' : ''} onClick={() => setIface(key)} aria-selected={iface === key}><b>{interfaces[key].n}</b><span>{interfaces[key].label}</span><small>{interfaces[key].en}</small></button>)}</div>
+            <div className="fusion-interface-detail" aria-live="polite"><div><span>{currentInterface.en}</span><h3>{currentInterface.title}</h3></div><p><b>杈撳叆锛</b>{currentInterface.input}</p><p><b>杈撳嚭锛</b>{currentInterface.output}</p><p><b>鍏抽敭鏉冭　锛</b>{currentInterface.note}</p></div>
+          </div>
+        </section>
+      </div>
+    </SlideFrame>
+  )
+}
+
+type ChallengeKey = 'coverage' | 'latency' | 'reliability' | 'transfer' | 'evaluation'
+
+function ChallengeSlide() {
+  const [active, setActive] = useState<ChallengeKey>('coverage')
+  const items: Record<ChallengeKey, { n:string; label:string; en:string; title:string; symptom:string; cause:string; metrics:string; fix:string }> = {
+    coverage: { n:'01', label:'淇℃伅瑕嗙洊', en:'COVERAGE', title:'楂樺垎杈ㄧ巼涓庡ぇ闈㈢Н瑕嗙洊闅句互鍚屾椂婊¤冻', symptom:'鎸囧皷鐪嬪緱寰堢粏锛岃韩浣撳嵈鎰熺煡涓嶅埌锛涘鐐规帴瑙﹁惤鍦ㄤ紶鎰熷櫒绌虹櫧鍖恒€?, cause:'绌洪棿鍒嗚鲸鐜囥€佽鐩栫巼銆佸杞存祴閲忋€佹煍鎬у皝瑁呬笌鎴愭湰鐩镐簰鐗靛埗銆?, metrics:'瑕嗙洊鐜?路 鎺ヨЕ褰㈢姸璇樊 路 澶氳酱瑙ｈ€?路 鏇查潰鍏煎鎬?, fix:'浠庡崟鐐瑰櫒浠舵瘮杈冭浆鍚戣韩浣撹〃闈笌浠诲姟鎺ヨЕ鍒嗗竷鐨勫叡鍚岃璁°€? },
+    latency: { n:'02', label:'鏃堕棿闂幆', en:'LATENCY', title:'妫€娴嬪埌浜嗭紝浣嗘潵涓嶅強淇', symptom:'婊戠Щ銆佸啿鍑绘垨鍗￠樆宸茬粡鍙戠敓锛岀瓥鐣ユ墠鏀跺埌涓€涓€滆繃鍘荤殑鐘舵€佲€濄€?, cause:'閲囨牱銆佽鍑恒€佷紶杈撱€佹帹鐞嗕笌鎵ц鍏卞悓鍐冲畾绔埌绔熬閮ㄥ欢杩熴€?, metrics:'绔埌绔欢杩?路 婊戠Щ鎻愬墠閲?路 鍙嶅皠纭畾鎬?路 妯℃€佸榻愯宸?, fix:'浠ユ渶楂樻湁鏁堥鐜囧拰鏈€鍧忓搷搴旀椂闄愬弽鎺ㄩ噰鏍枫€佽绠椾笌鎺у埗閮ㄧ讲銆? },
+    reliability: { n:'03', label:'闀挎湡鍙潬', en:'RELIABILITY', title:'绂荤嚎鏍囧畾锛屾棤娉曡鐩栫湡瀹炴椂闂?, symptom:'鎹釜娓╁害銆侀噸瑁呬竴娆℃垨寰幆涔呬簡锛屽悓涓€鎺ヨЕ浜х敓涓嶅悓杈撳嚭銆?, cause:'婕傜Щ銆佽繜婊炪€佽爼鍙樸€佺（鎹熴€佹薄鏌撱€佹俯搴﹀拰棰勭揣鍔涙敼鍙樿娴嬫槧灏勩€?, metrics:'寰幆瀵垮懡 路 閲嶈鎭㈠ 路 娓╂箍搴﹂瞾妫掓€?路 鍋ュ悍璇婃柇', fix:'灏嗗湪绾挎牎鍑嗐€佷紶鎰熷櫒鍋ュ悍鐘舵€佷笌鍙淮鎶ゅ皝瑁呯撼鍏ョ郴缁熻璁°€? },
+    transfer: { n:'04', label:'韬綋娉涘寲', en:'TRANSFER', title:'鎹簡浼犳劅鍣紝鏁版嵁鐨勭墿鐞嗗惈涔変篃鍙樹簡', symptom:'鍚屼竴鏁扮粍涓嬫爣鍦ㄤ笉鍚屾墜銆佷笉鍚岄儴浣嶆垨涓嶅悓鍔ㄤ綔涓笉鍐嶄唬琛ㄥ悓涓€鎺ヨЕ銆?, cause:'鏈綋褰㈡€併€佸畨瑁呬綅缃€佹帰绱㈠姩浣滀笌鍔犺浇鍘嗗彶鍏卞悓濉戦€犺Е瑙夋暟鎹€?, metrics:'璺ㄤ紶鎰熷櫒 路 璺ㄦ湰浣?路 璺ㄥ姩浣?路 韬綋鍧愭爣涓€鑷存€?, fix:'淇濈暀鏁板€笺€佽韩浣撲綅缃€佸眬閮ㄦ柟鍚戝拰鍔ㄤ綔涓婁笅鏂囷紝鏋勯€犲舰鎬佹劅鐭ユ帴鍙ｃ€? },
+    evaluation: { n:'05', label:'璇勪环涓庝豢鐪?, en:'EVALUATION', title:'璇嗗埆鍑嗙‘锛屼笉绛変簬浠诲姟鍙潬', symptom:'绂荤嚎鍒嗙被寰堥珮锛屼絾鐪熷疄浠诲姟浠嶄細婊戣惤銆佸崱闃汇€佹崯浼ゆ垨鏃犳硶鎭㈠銆?, cause:'鐪熷€兼槀璐典笖闅惧悓姝ワ紱浠跨湡缂哄皯鏉愭枡銆佹帴瑙﹀拰浼犳劅鍣ㄦ暟瀛楀鐢燂紱璇勪环鍋忛噸骞冲潎绮惧害銆?, metrics:'浠诲姟鎴愬姛 路 澶辫触鎭㈠ 路 浣滅敤鍔涘嘲鍊?路 闀挎椂绋?路 浠跨湡鈥旂湡瀹炲樊璺?, fix:'鐢ㄧ湡瀹為棴鐜€佺綍瑙佸け璐ャ€佷笉纭畾鎬т笌瀹夊叏闄嶇骇寤虹珛鍏卞悓璇勪环銆? },
+  }
+  const current = items[active]
+  return (
+    <SlideFrame metaIndex={9}>
+      <div className="challenge-layout">
+        <section className="challenge-copy"><span>FIVE SYSTEM BREAKPOINTS</span><h2>瑙﹁涓轰粈涔?br/><em>浠嶇劧闅句互鍙潬琛屽姩锛?/em></h2><p>闂涓嶅湪鏌愪竴涓寚鏍囷紝鑰屽湪纭欢銆佹暟鎹€佹ā鍨嬪拰浠诲姟璇勪环灏氭湭褰㈡垚绋冲畾闂幆銆</p><div className="challenge-list">{(Object.keys(items) as ChallengeKey[]).map(key => <button key={key} className={active === key ? 'active' : ''} onClick={() => setActive(key)} aria-pressed={active === key}><span>{items[key].n}</span><strong>{items[key].label}</strong><small>{items[key].en}</small><i>鈫</i></button>)}</div><div className="challenge-note"><i/>鐐瑰嚮鏂偣锛屾煡鐪嬪け鏁堣〃鐜般€佹牴鍥犱笌搴旀姤鍛婃寚鏍囥€</div></section>
+        <section className="challenge-system" aria-label="鍏疯韩瑙﹁绯荤粺鏂偣鍥"><div className="challenge-chain"><div className="chain-end">鎺ヨЕ<br/><small>鐪熷疄涓栫晫</small></div><div className="chain-line">{['鎰熷彈鍣?,'浼犺緭','鏍囧畾','琛ㄥ緛','绛栫暐'].map((label,index) => <div key={label} className={`chain-link ${index <= Number(current.n)-1 ? 'lit' : ''}`}><i/><span>{label}</span></div>)}</div><div className="chain-end">琛屽姩<br/><small>鐗╃悊鍚庢灉</small></div></div><div className="challenge-panel"><div className="challenge-panel-head"><span>{current.n} / {current.en}</span><b>{current.label}</b></div><h3>{current.title}</h3><div className="challenge-facts"><div><span>澶辨晥琛ㄧ幇</span><p>{current.symptom}</p></div><div><span>鏍瑰洜</span><p>{current.cause}</p></div><div><span>搴旀姤鍛婃寚鏍</span><p>{current.metrics}</p></div><div><span>鐮旂┒鏂瑰悜</span><p>{current.fix}</p></div></div></div></section>
+      </div>
+    </SlideFrame>
+  )
+}
+
+type TaskValueKey = 'confirm' | 'correct' | 'explore'
+
+function TaskValueSlide() {
+  const [active, setActive] = useState<TaskValueKey>('confirm')
+  const legacyData: Record<TaskValueKey, { n:string; label:string; en:string; title:string; body:string; tasks:{label:string; need:string; tactile:string; action:string; metric:string}[]; metrics:string; example:string }> = {
+    confirm: { n:'01', label:'纭', en:'CONFIRM', title:'纭璁″垝涓殑鎺ヨЕ鏄惁鐪熷疄寤虹珛', body:'瑙﹁鎶婂垵瑙︺€佹姄鍙栧缓绔嬨€佽惤瓒冲拰纰版挒浠庘€滆瑙夐娴嬧€濆彉鎴愭帴瑙︿簨瀹炪€?, tasks:[{label:'瀹夊叏浜や簰',need:'妫€娴嬭交瑙︺€佺鎾炰綅缃笌杞借嵎锛屽強鏃跺仠姝㈡垨閫€璁┿€?,tactile:'鎺ヨЕ浣嶇疆 / 娉曞悜鍔?/ 杩囪浇浜嬩欢',action:'淇濇姢鎬у弽灏?路 瀹夊叏閬跨',metric:'纰版挒瀹氫綅璇樊 路 宄板€煎姏'},{label:'绋冲畾鎶撳彇',need:'纭澶规寔鏄惁寤虹珛锛岄伩鍏嶇墿浣撳皻鏈姄绋冲氨寮€濮嬫惉杩愩€?,tactile:'鎺ヨЕ闈㈢Н / 鍘嬪姏鍒嗗竷 / 鍒濆婊戠Щ',action:'寤虹珛鏈€灏忔姄鍔?路 澶辫触鍐嶆姄鍙?,metric:'鎶撳彇鎴愬姛鐜?路 鎺ヨЕ妫€鍑虹巼'},{label:'钀借冻纭',need:'鍒ゆ柇瓒崇鏄惁鐪熷疄鎵胯浇锛岃€屼笉鏄彧鐩镐俊瑙嗚鍦板舰棰勬祴銆?,tactile:'瓒冲簳杞借嵎 / 鎺ヨЕ鏃跺埢 / 鎽╂摝鐘舵€?,action:'姝ユ€佸垏鎹?路 骞宠　鎭㈠',metric:'钀借冻璇樊 路 鎭㈠鏃堕棿'},{label:'浜烘満鎺ヨЕ',need:'鍖哄垎鎰忓纰版挒涓庝氦鎺ャ€佸叡鍚屾壙杞界瓑涓诲姩鎺ヨЕ銆?,tactile:'浣嶇疆 / 鏂瑰悜 / 鎸佺画鏃堕棿 / 鍘嬪姏',action:'鍋滄 路 浜ゆ帴 路 鍗忎綔鎵胯浇',metric:'浜ゆ帴鎴愬姛鐜?路 鑸掗€傚害'}], metrics:'鎺ヨЕ妫€鍑虹巼 路 纰版挒瀹氫綅璇樊 路 鎶撳彇鎴愬姛鐜?, example:'瑙嗚琚伄鎸″悗锛岃Е瑙変粛鑳界‘璁ゆ墜鎸囨槸鍚︾湡姝ｆ帴瑙︺€佺墿浣撴槸鍚﹁鎶撲綇銆? },
+    correct: { n:'02', label:'鏍℃', en:'CORRECT', title:'鏍℃鎺ヨЕ鍚庣殑鍙楀姏銆佷綅濮夸笌婊戠Щ璇樊', body:'瑙﹁娌块珮鐩稿叧銆佷綆鏃跺欢鐨勫眬閮ㄩ€氳矾鍙嶉鐗╃悊鍚庢灉锛屼娇鍔ㄤ綔鍦ㄥけ璐ュ墠浠嶅彲淇銆?, tasks:[{label:'婊戠Щ鎶戝埗',need:'鍦ㄧ墿浣撳畬鍏ㄦ粦钀藉墠鍙戠幇灞€閮ㄥ井婊戠Щ骞惰皟鏁村す鎸佸姏銆?,tactile:'鍓垏鍙樺寲 / 鎺ヨЕ杈圭晫 / 楂橀鎸姩',action:'澧炲ぇ鎶撳姏 路 璋冩暣濮挎€?,metric:'婊戠Щ鎻愬墠閲?路 澶辫触鎭㈠鐜?'},{label:'鐏靛阀鎵嬪唴鎿嶄綔',need:'璺熻釜琚墜鎸囬伄鎸＄殑鐩稿杩愬姩鍜屾帴瑙︽ā寮忚浆鎹€?,tactile:'鎺ヨЕ鍑犱綍 / 鍘嬪姏涓績 / 鐩稿浣嶇Щ',action:'鎺ㄥ姩 路 鏋㈣浆 路 鎵嬪唴鏃嬭浆',metric:'浣嶅Э璇樊 路 闀挎椂绋嬫垚鍔熺巼'},{label:'绮惧瘑瑁呴厤',need:'璇嗗埆鎻掑叆鏂瑰悜銆佺害鏉熺姸鎬佷笌鍗￠樆锛屼慨姝ｅ井灏忎綅濮胯宸€?,tactile:'鎺ヨЕ鏂瑰悜 / 鍔涚煩 / 闃诲鍙樺寲',action:'瑙﹁浼烘湇 路 闃绘姉璋冭妭',metric:'鎻掑叆鎴愬姛鐜?路 鍗￠樆鎻愬墠閲?'},{label:'鏌旀€т笌鏄撶鐗╀綋',need:'鍦ㄥ舰鍙樻寔缁彉鍖栨椂鎺у埗灞€閮ㄥ帇鍔涳紝閬垮厤婊戣惤鎴栨崯浼ゃ€?,tactile:'褰㈠彉 / 鍘嬪姏宄板€?/ 婊戠Щ / 椤哄簲鎬?,action:'鏌旈『鎶撳彇 路 杞ㄨ抗淇',metric:'鎹熶激鐜?路 宄板€煎姏 路 瀹屾垚鏃堕棿'}], metrics:'澶辫触鎭㈠鐜?路 婊戠Щ鎻愬墠閲?路 浣滅敤鍔涘嘲鍊?路 瀹屾垚鏃堕棿', example:'鎻掑叆銆佹棆杞垨鎶撳彇涓紝瑙﹁鎶婂崱闃汇€佸井婊戠Щ鍜屾帴瑙﹀亸宸浆鍖栦负鍔ㄤ綔淇銆? },
+    explore: { n:'03', label:'鎺㈢储', en:'EXPLORE', title:'閫氳繃涓诲姩鍔ㄤ綔鑾峰緱澶栬鏃犳硶缁欏嚭鐨勭墿鐞嗚瘉鎹?, body:'鎸夊帇銆佹粦鍔ㄣ€佹粴鍔ㄥ拰閲嶆柊鎺ヨЕ鍚屾椂鎺ㄨ繘浠诲姟锛屽苟闄嶄綆鏉愭枡銆佺‖搴︺€佹懇鎿﹀拰灞€閮ㄥ舰鐘剁殑涓嶇‘瀹氭€с€?, tasks:[{label:'鏉愭枡杈ㄨ瘑',need:'鍖哄垎澶栬鐩镐技浣嗗姏瀛︺€佹懇鎿︽垨鐑灞炴€т笉鍚岀殑瀵硅薄銆?,tactile:'鍔涒€斾綅绉诲叧绯?/ 鎽╂摝 / 娓╁害',action:'鎸夊帇 路 澶氱偣鎺ヨЕ 路 姣旇緝',metric:'灞炴€ц瘑鍒巼 路 璺ㄥ璞℃硾鍖?'},{label:'绾圭悊涓庢懇鎿?,need:'浠庢粦鍔ㄤ骇鐢熺殑楂橀鍝嶅簲鎺ㄦ柇绮楃硻搴︺€佹柟鍚戝拰鏉愯川銆?,tactile:'鎸姩棰戣氨 / 绾圭悊 / 寰粦绉?,action:'鎵弿 路 婊氬姩 路 鏀瑰彉閫熷害',metric:'绾圭悊璇嗗埆 路 婊戠Щ棰勮'},{label:'杞‖鍒ゆ柇',need:'浼拌鍒氬害銆佸脊鎬с€侀粡寮规€т笌濉厖鐘舵€侊紝鍐冲畾鏂藉姏杈圭晫銆?,tactile:'鍔涒€斾綅绉烩€旀椂闂村巻鍙?,action:'娓愯繘鎸夊帇 路 淇濇寔 路 閲婃斁',metric:'纭害璇樊 路 鎹熶激椋庨櫓'},{label:'涓诲姩瑙︾',need:'閫夋嫨涓嬩竴娆℃帴瑙︾殑浣嶇疆銆佹柟鍚戝拰杞借嵎鏉ラ檷浣庝笉纭畾鎬с€?,tactile:'鍔ㄤ綔鏉′欢瑙﹁鍝嶅簲',action:'淇℃伅澧炵泭瑙勫垝 路 浠诲姟涓帰绱?,metric:'淇℃伅澧炵泭 路 鎺㈢储浠ｄ环'}], metrics:'淇℃伅澧炵泭 路 鎺㈢储浠ｄ环 路 灞炴€ц瘑鍒?路 鎹熶激椋庨櫓', example:'涓嬩竴娆¤Е纰扮殑浣嶇疆銆佹柟鍚戝拰杞借嵎锛屽喅瀹氭満鍣ㄤ汉鑳藉惁鍖哄垎鐩镐技澶栬涓嬬殑涓嶅悓鐗╃悊灞炴€с€? },
+  }
+  const data: Record<TaskValueKey, { n:string; label:string; en:string; title:string; body:string; tasks:{label:string; need:string; tactile:string; action:string; metric:string}[]; metrics:string; example:string }> = {
+    confirm: { n:'01', label:'纭', en:'CONFIRM', title:'纭鎺ヨЕ鏄惁鐪熷疄寤虹珛锛屽苟纭韬綋姝ｅ湪鎵胯浇', body:'瀵瑰簲鍘熸枃鐨勬帴瑙﹀缓绔嬨€佸畨鍏ㄤ氦浜掞紝浠ュ強绉诲姩涓庡叏韬换鍔′腑鐨勮惤瓒冲拰鎵胯浇纭銆?, tasks:[
+      {label:'鎺ヨЕ寤虹珛銆佺鎾炴娴嬩笌瀹夊叏浜や簰', need:'妫€娴嬪垵瑙︺€佹剰澶栫鎾炰笌浜烘満鎺ヨЕ锛屾妸鎺ヨЕ浣嶇疆鍜岃浇鑽峰彉鎴愬彲鎵ц鐨勫仠姝€侀€€璁╂垨淇濇姢鍔ㄤ綔銆?, tactile:'鎺ヨЕ浣嶇疆 / 娉曞悜鍔?/ 纰版挒鏃跺埢 / 杩囪浇', action:'鍋滄 路 閫€璁?路 淇濇姢鎬у弽灏?, metric:'纰版挒瀹氫綅璇樊 路 宄板€煎姏 路 瀹夊叏鍝嶅簲鏃堕棿'},
+      {label:'绉诲姩銆佽冻寮忎笌鍏ㄨ韩鎺ヨЕ浠诲姟', need:'纭瓒崇鐪熷疄鎵胯浇銆佸湴闈㈡懇鎿︿笌鍏ㄨ韩鎺ヨЕ鐘舵€侊紝閬垮厤鍙緷璧栬瑙夊湴褰㈤娴嬨€?, tactile:'瓒冲簳杞借嵎 / 鎺ヨЕ鏃跺埢 / 鎽╂摝鐘舵€?/ 韬綋琛ㄩ潰鎺ヨЕ', action:'姝ユ€佸垏鎹?路 骞宠　鎭㈠ 路 鍏ㄨ韩閬跨', metric:'钀借冻璇樊 路 鎭㈠鏃堕棿 路 鎺ヨЕ瑕嗙洊鐜?'},
+    ], metrics:'鎺ヨЕ妫€鍑虹巼 路 纰版挒瀹氫綅璇樊 路 钀借冻璇樊 路 瀹夊叏鍝嶅簲鏃堕棿', example:'瑙嗚鍙兘棰勬祴鈥滃皢瑕佹帴瑙︹€濓紝瑙﹁纭鈥滄帴瑙﹀凡缁忓彂鐢熲€濓紝璁╁畨鍏ㄥ拰鎵胯浇鎴愪负闂幆浜嬪疄銆? },
+    correct: { n:'02', label:'鏍℃', en:'CORRECT', title:'鎶婃帴瑙﹀悗鐨勫彈鍔涖€佷綅濮裤€佹粦绉讳笌褰㈠彉璇樊杞垚鍔ㄤ綔淇', body:'瀵瑰簲鍘熸枃涓緷璧栧眬閮ㄩ珮鐩稿叧鍙嶉鐨勬姄鍙栥€佺伒宸ф搷浣溿€佺簿瀵嗘搷浣滐紝浠ュ強鏌旀€у拰鏄撶鐗╀綋鎿嶄綔銆?, tasks:[
+      {label:'绋冲畾鎶撳彇銆佸姏璋冭妭涓庢粦绉绘姂鍒?, need:'纭澶规寔宸茬粡寤虹珛锛屽苟鍦ㄥ畬鍏ㄦ粦钀藉墠鍙戠幇寰粦绉汇€佽皟鏁村す鎸佸姏銆?, tactile:'鎺ヨЕ闈㈢Н / 鍘嬪姏鍒嗗竷 / 鍓垏鍙樺寲 / 楂橀鎸姩', action:'寤虹珛鏈€灏忔姄鍔?路 澧炲ぇ澶规寔鍔?路 閲嶆柊鎶撳彇', metric:'鎶撳彇鎴愬姛鐜?路 婊戠Щ鎻愬墠閲?路 澶辫触鎭㈠鐜?'},
+      {label:'鐏靛阀鎵嬫搷浣滀笌鎵嬪唴鐗╀綋鎺у埗', need:'璺熻釜琚墜鎸囬伄鎸＄殑鐩稿杩愬姩銆佹帴瑙︽ā寮忓垏鎹㈠拰鎸囬棿杞借嵎鍒嗛厤銆?, tactile:'鎺ヨЕ鍑犱綍 / 鍘嬪姏涓績 / 鐩稿浣嶇Щ / 鎸囬棿杞借嵎', action:'鎺ㄥ姩 路 鏋㈣浆 路 鎵嬪唴鏃嬭浆 路 濮挎€佷慨姝?, metric:'浣嶅Э璇樊 路 闀挎椂绋嬫垚鍔熺巼 路 杞ㄨ抗鍋忓樊'},
+      {label:'鎺ヨЕ涓板瘜鍨嬬簿瀵嗘搷浣?, need:'璇嗗埆鎻掑叆鏂瑰悜銆佺害鏉熺姸鎬佷笌鍗￠樆锛屽埄鐢ㄦ帴瑙﹀亸宸畬鎴愪簹姣背绾у鍑嗗拰瑁呴厤銆?, tactile:'鎺ヨЕ鏂瑰悜 / 鍔涚煩 / 闃诲鍙樺寲 / 灞€閮ㄥ嚑浣?, action:'瑙﹁浼烘湇 路 闃绘姉璋冭妭 路 寰皬鎺㈢储', metric:'鎻掑叆鎴愬姛鐜?路 鍗￠樆鎻愬墠閲?路 瀹屾垚鏃堕棿'},
+      {label:'鏌旀€с€佹槗纰庝笌涓嶈鍒欑墿浣撴搷浣?, need:'鍦ㄥ舰鍙樺拰鎺ヨЕ杈圭晫鎸佺画鍙樺寲鏃舵帶鍒跺眬閮ㄥ帇鍔涳紝閬垮厤婊戣惤銆佹姌鎹熸垨涓嶅彲閫嗘崯浼ゃ€?, tactile:'褰㈠彉 / 鍘嬪姏宄板€?/ 婊戠Щ / 椤哄簲鎬?, action:'鏌旈『鎶撳彇 路 杞ㄨ抗淇 路 浣滅敤鍔涢檺骞?, metric:'鎹熶激鐜?路 宄板€煎姏 路 瀹屾垚鏃堕棿'},
+    ], metrics:'澶辫触鎭㈠鐜?路 婊戠Щ鎻愬墠閲?路 浣嶅Э璇樊 路 浣滅敤鍔涘嘲鍊?路 鎹熶激鐜?, example:'瑙﹁涓嶆槸鍔ㄤ綔缁撴潫鍚庣殑璇勫垎锛岃€屾槸鎶婂崱闃汇€佸井婊戠Щ鍜屽彈鍔涘亸宸強鏃跺彉鎴愪笅涓€姝ヤ慨姝ｃ€? },
+    explore: { n:'03', label:'鎺㈢储', en:'EXPLORE', title:'閫氳繃涓诲姩瑙﹁鎺㈢储鑾峰緱澶栬鏃犳硶缁欏嚭鐨勭墿鐞嗗睘鎬ц瘉鎹?, body:'瀵瑰簲鍘熸枃鐨勪富鍔ㄨЕ瑙夋帰绱笌鐗╀綋灞炴€ц鐭ワ細鍔ㄤ綔鏉′欢鍐冲畾瑙傛祴璐ㄩ噺锛屾劅鐭ヤ笌琛屽姩鍏卞悓闄嶄綆涓嶇‘瀹氭€с€?, tasks:[
+      {label:'涓诲姩瑙﹁鎺㈢储涓庣墿浣撳睘鎬ц鐭?, need:'閫氳繃鎸夊帇銆佹粦鍔ㄣ€佹粴鍔ㄥ拰澶氭閲嶆柊鎺ヨЕ锛岃鲸璇嗘潗鏂欍€佺汗鐞嗐€佹懇鎿︺€佺‖搴︿笌灞€閮ㄥ舰鐘躲€?, tactile:'鍔涒€斾綅绉烩€旀椂闂村巻鍙?/ 鎸姩棰戣氨 / 鎽╂摝 / 娓╁害', action:'閫夋嫨鎺ヨЕ浣嶇疆銆佹柟鍚戙€侀€熷害鍜岃浇鑽?路 姣旇緝澶氭鍝嶅簲', metric:'灞炴€ц瘑鍒巼 路 淇℃伅澧炵泭 路 鎺㈢储浠ｄ环 路 鎹熶激椋庨櫓'},
+    ], metrics:'淇℃伅澧炵泭 路 灞炴€ц瘑鍒巼 路 鎺㈢储浠ｄ环 路 璺ㄥ璞℃硾鍖?路 鎹熶激椋庨櫓', example:'涓嬩竴娆¤Е纰板浣曞彂鐢燂紝浼氬喅瀹氭満鍣ㄤ汉鑳藉惁鍖哄垎鐩镐技澶栬涓嬬殑涓嶅悓鐗╃悊灞炴€с€? },
+  }
+  const current = data[active]
+  const [selectedTask, setSelectedTask] = useState(current.tasks[0].label)
+  const task = current.tasks.find(item => item.label === selectedTask) ?? current.tasks[0]
+  return (
+    <SlideFrame metaIndex={8}>
+      <div className="task-value-layout">
+        <section className="task-value-copy"><span>TACTILE VALUE IN TASKS</span><h2>瑙﹁涓嶅彧鏄?br/><em>璇嗗埆鏇村</em></h2><p>瀹冩妸鎺ヨЕ鍚庣殑鐗╃悊鍚庢灉鍙樻垚琛屽姩渚濇嵁锛屽舰鎴愨€滆娴嬧€斿姩浣溾€斿啀瑙傛祴鈥濈殑鍏疯韩闂幆銆</p><div className="value-function-tabs">{(Object.keys(data) as TaskValueKey[]).map(key => <button key={key} className={active === key ? 'active' : ''} onClick={() => { setActive(key); setSelectedTask(data[key].tasks[0].label) }} aria-pressed={active === key}><span>{data[key].n}</span><strong>{data[key].label}</strong><small>{data[key].en}</small></button>)}</div><div className="task-value-note"><i/>鐐瑰嚮鍔熻兘鏍囩锛屽啀鐐瑰嚮鍙充晶浠诲姟鏍囩灞曞紑浠诲姟缁嗚妭銆</div></section>
+        <section className={`task-value-system task-value-${active}`} aria-label="瑙﹁鍦ㄥ叿韬换鍔′腑鐨勪环鍊"><div className="value-loop"><div className="loop-node loop-plan"><span>PLAN</span><strong>瑙嗚 / 璇█</strong><small>鎺ヨЕ鍓嶅厛楠</small></div><div className="loop-node loop-touch"><span>TOUCH</span><strong>鎺ヨЕ瑙傛祴</strong><small>鍔?路 褰㈠彉 路 婊戠Щ 路 灞炴€</small></div><div className="loop-node loop-action"><span>ACTION</span><strong>涓嬩竴姝ヨ鍔</strong><small>鎺у埗 路 璋冩暣 路 鎺㈢储</small></div><div className="loop-center"><b>{current.n}</b><strong>{current.label}</strong><small>{current.en}</small></div><svg viewBox="0 0 760 300" aria-hidden="true"><path d="M153 111H292M468 111H607M607 144C607 236 481 270 380 270M380 270C277 270 153 236 153 144"/><path className="active-loop" d={active === 'confirm' ? 'M292 111H468' : active === 'correct' ? 'M607 144C607 236 481 270 380 270' : 'M380 270C277 270 153 236 153 144'}/></svg></div><div className="task-value-detail"><div className="task-value-summary"><span>{current.n} / {current.en}</span><h3>{current.title}</h3><p>{current.body}</p><div className="task-cluster"><span>浠诲姟绨?路 鐐瑰嚮灞曞紑</span>{current.tasks.map(item => <button key={item.label} className={task.label === item.label ? 'active' : ''} onClick={() => setSelectedTask(item.label)} aria-pressed={task.label === item.label}>{item.label}</button>)}</div></div><div className="task-card"><span>{task.label}</span><h4>{task.need}</h4><dl><div><dt>瑙﹁鎻愪緵</dt><dd>{task.tactile}</dd></div><div><dt>鍔ㄤ綔濡備綍鏀瑰彉</dt><dd>{task.action}</dd></div><div><dt>浠诲姟绾ф寚鏍</dt><dd>{task.metric}</dd></div></dl></div><div className="task-metric"><span>褰撳墠鍔熻兘鐨勬€讳綋璇勪环</span><p>{current.metrics}</p></div><blockquote>{current.example}</blockquote></div></section>
+      </div>
+    </SlideFrame>
+  )
+}
+
+type Scenario = 'slip' | 'explore' | 'human'
+
+function NervousSystemVisual({ scenario }: { scenario: Scenario }) {
+  return (
+    <div className={`nervous-system scenario-${scenario}`}>
+      <svg viewBox="0 0 1000 610" role="img" aria-label="鍏疯韩瑙﹁绁炵粡绯荤粺浜斿眰鏋舵瀯涓庡揩鎱㈤€氳矾姒傚康鍥">
+        <defs>
+          <filter id="nodeGlow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1"><stop stopColor="var(--panel-strong)"/><stop offset="1" stopColor="var(--surface-lo)"/></linearGradient>
+        </defs>
+        <g className="system-grid">{Array.from({length: 12}).map((_,i)=><path key={`v${i}`} d={`M${40+i*84} 30v540`}/>)}{Array.from({length: 7}).map((_,i)=><path key={`h${i}`} d={`M40 ${30+i*90}h924`}/>)}</g>
+        <g className="environment-object"><rect x="43" y="232" width="112" height="170" rx="16"/><path d="M68 258h62M68 282h43"/><text x="99" y="432">ENVIRONMENT</text></g>
+        <g className="body-model">
+          <circle cx="315" cy="126" r="46" fill="url(#bodyGrad)"/>
+          <path d="M253 231c0-39 27-70 62-70s62 31 62 70v109c0 30-17 56-43 67l-19 8-19-8c-26-11-43-37-43-67z" fill="url(#bodyGrad)"/>
+          <path d="m260 216-73 74 38 39 58-53M370 216l73 74-38 39-58-53M281 393l-31 122M349 393l31 122"/>
+          <g className="receptors">
+            {[[238,238],[210,301],[391,278],[421,305],[278,375],[351,371],[252,500],[379,500]].map(([x,y],i)=><circle key={i} cx={x} cy={y} r="7"/>)}
+          </g>
+          <text x="315" y="552">TACTILE BODY</text>
+        </g>
+        <g className="local-center node-card"><rect x="485" y="341" width="178" height="98" rx="15"/><circle cx="518" cy="375" r="12"/><text className="node-kicker" x="546" y="372">FAST LOCAL CENTER</text><text className="node-title" x="514" y="409">蹇€熷眬閮ㄤ腑鏋?/text></g>
+        <g className="cognitive-center node-card"><rect x="710" y="86" width="230" height="158" rx="18"/><circle cx="748" cy="126" r="15"/><text className="node-kicker" x="779" y="123">COGNITIVE CENTER</text><text className="node-title" x="742" y="163">楂樼骇瑙﹁璁ょ煡</text><text className="node-small" x="742" y="193">缁熶竴琛ㄥ緛 路 涓栫晫妯″瀷</text><text className="node-small" x="742" y="216">浠诲姟鐞嗚В 路 涓诲姩鎰熺煡</text></g>
+        <g className="encoding node-card"><rect x="475" y="105" width="178" height="98" rx="15"/><circle cx="508" cy="139" r="12"/><text className="node-kicker" x="536" y="136">AFFERENT PATH</text><text className="node-title" x="504" y="173">浼犲叆涓庣紪鐮?/text></g>
+        <g className="output node-card"><rect x="734" y="354" width="198" height="104" rx="15"/><circle cx="769" cy="389" r="12"/><text className="node-kicker" x="797" y="386">ACTION / OUTPUT</text><text className="node-title" x="764" y="423">鎵ц涓庤Е瑙夎緭鍑?/text></g>
+        <g className="slow-path system-path"><path d="M362 231C421 126 436 126 475 151"/><path d="M653 151C680 151 681 165 710 165"/><path d="M825 244v110"/></g>
+        <g className="fast-path system-path"><path d="M377 320c49 66 67 70 108 70"/><path d="M663 390h71"/><path d="M734 424c-153 131-368 109-445 5"/></g>
+        <g className="active-touch-path system-path"><path d="M742 214C638 286 516 296 387 284"/><path d="m402 267-17 17 22 8"/></g>
+        <g className="human-boundary"><path d="M888 475c44 0 70 23 70 59"/><circle cx="888" cy="491" r="17"/><path d="M888 508v54m-25-32h50"/><rect x="813" y="521" width="62" height="29" rx="14"/><text x="844" y="541">CONSENT</text></g>
+        <g className="pulses slow"><circle r="5"><animateMotion dur="3.6s" repeatCount="indefinite" path="M362 231C421 126 436 126 475 151C600 151 681 165 710 165"/></circle></g>
+        <g className="pulses fast"><circle r="6"><animateMotion dur="1.15s" repeatCount="indefinite" path="M377 320C426 386 444 390 485 390H734"/></circle></g>
+        <g className="pulses return"><circle r="5"><animateMotion dur="2.4s" repeatCount="indefinite" path="M825 244V354C670 530 420 540 289 429"/></circle></g>
+        <g className="contact-event"><circle cx="174" cy="306" r="34"/><circle cx="174" cy="306" r="18"/><path d="M140 306h-38"/><text x="51" y="295">CONTACT</text><text x="51" y="315">EVENT</text></g>
+      </svg>
+      <div className="latency-label fast-label"><b>蹇€熼€氳矾</b><span>纭畾鏃堕檺 路 灞€閮ㄥ畨鍏</span></div>
+      <div className="latency-label slow-label"><b>楂樼骇閫氳矾</b><span>闀挎椂鍘嗗彶 路 澶氭ā鎬佹帹鐞</span></div>
+    </div>
+  )
+}
+
+function FutureSlideLegacy() {
+  const [scenario, setScenario] = useState<Scenario>('slip')
+  const scenarioData: Record<Scenario, { en: string; title: string; lead: string; points: string[] }> = {
+    slip: { en: '01 / FAST REFLEX', title: '婊戠Щ锛氬厛鍙嶅皠锛屽啀瑙ｉ噴', lead: '楂橀鍙樺寲娌跨煭閫氳矾瑙﹀彂鎶撳姏淇锛涢珮灞傛ā鍨嬮殢鍚庢洿鏂板璞′笌浠诲姟鐘舵€併€?, points: ['绔晶妫€娴嬪垵瑙︺€佸啿鍑汇€佹粦绉讳笌杩囪浇', '鏈€鍧忓搷搴旀椂闂存瘮骞冲潎鎺ㄧ悊閫熷害鏇村叧閿?] },
+    explore: { en: '02 / ACTIVE TOUCH', title: '鏈煡鐗╀綋锛氫富鍔ㄨ幏寰楄瘉鎹?, lead: '涓栫晫妯″瀷姣旇緝鍊欓€夋帴瑙﹀悗鏋滐紝閫夋嫨淇℃伅鏀剁泭鏇撮珮涓旈闄╁彲鎺х殑涓嬩竴娆¤Е纰般€?, points: ['鍔ㄤ綔鏉′欢寤烘ā鍖哄垎鐗╀綋灞炴€т笌鎺㈢储鏂瑰紡', '鑱斿悎浼樺寲淇℃伅澧炵泭銆佷换鍔¤繘灞曚笌鎹熶激椋庨櫓'] },
+    human: { en: '03 / SOCIAL TOUCH', title: '浜烘満鎺ヨЕ锛氬弻鍚戣€屾湁杈圭晫', lead: '绯荤粺鏃㈢悊瑙ｄ汉鐨勬帴瑙︾姸鎬侊紝涔熶互鍔涖€佹尟鍔ㄦ垨褰㈠彉鍥炲簲锛涘悓鎰忎笌閫€鍑轰笉鏄檮鍔犻」銆?, points: ['鍏堜繚璇佺墿鐞嗗畨鍏ㄤ笌琛屼负鍙娴?, '鎸佺画鍚屾剰銆佷釜浣撻€傚簲鍜屽彲鎾ゅ洖鏈哄埗'] },
+  }
+  const current = scenarioData[scenario]
+  return (
+    <SlideFrame metaIndex={8}>
+      <div className="future-layout">
+        <div className="scenario-panel">
+          <div className="scenario-tabs">
+            <button className={scenario === 'slip' ? 'active' : ''} onClick={() => setScenario('slip')}><i/>婊戠Щ鍙嶅皠</button>
+            <button className={scenario === 'explore' ? 'active' : ''} onClick={() => setScenario('explore')}><i/>涓诲姩鎺㈢储</button>
+            <button className={scenario === 'human' ? 'active' : ''} onClick={() => setScenario('human')}><i/>浜烘満瑙﹁</button>
+          </div>
+          <div className="scenario-copy">
+            <span>{current.en}</span>
+            <h2>{current.title}</h2>
+            <p>{current.lead}</p>
+            <ul>{current.points.map(point => <li key={point}>{point}</li>)}</ul>
+          </div>
+          <div className="roadmap-mini">
+            <span>TECHNOLOGY ROUTE</span>
+            <div><i>01</i><p>鍏卞悓鎺ュ彛</p></div><b />
+            <div><i>02</i><p>鍒嗗眰闂幆</p></div><b />
+            <div><i>03</i><p>棰勬祴涓庝富鍔</p></div><b />
+            <div><i>04</i><p>鍙屽悜浜や簰</p></div>
+          </div>
+        </div>
+        <NervousSystemVisual scenario={scenario} />
+      </div>
+    </SlideFrame>
+  )
+}
+
+type FuturePart = 'overview' | 'brain' | 'spine' | 'hand' | 'contact'
+type FutureStructure = Exclude<FuturePart, 'overview'>
+
+interface FuturePartInfo {
+  number: string
+  eyebrow: string
+  title: string
+  question: string
+  route: string
+  short: string
+}
+
+const futurePartData: Record<FuturePart, FuturePartInfo> = {
+  overview: {
+    number: '00',
+    eyebrow: 'SYSTEM VIEW',
+    title: '鎰熺煡銆佺悊瑙ｃ€佹墽琛屻€佸啀鎰熺煡',
+    question: '缁撳悎杞‖浠讹紝鎶婃帴瑙︺€佸弽灏勩€佺悊瑙ｄ笌琛屽姩缁勭粐鎴愪竴鏉￠棴鐜€?,
+    route: '浠庤韩浣撴帴鍙ｅ嚭鍙戯紝灞€閮ㄥ弽灏勫仛绮剧粏鎺у埗锛岄珮闃舵ā鍨嬪舰鎴愰娴嬨€佽鐭ュ拰涓诲姩鎺ヨЕ瑙勫垝銆?,
+    short: '瀹屾暣闂幆',
+  },
+  brain: {
+    number: '01',
+    eyebrow: 'COGNITIVE LOOP',
+    title: '澶ц剳 路 楂樼骇瑙﹁涓灑',
+    question: '褰㈡垚瑙﹁琛ㄥ緛锛岄娴嬫帴瑙﹀悗鏋滐紝鐞嗚В浠诲姟锛屼富鍔ㄥ喅绛?,
+    route: '璺ㄦ椂闂淬€佽法閮ㄤ綅鍜岃法妯℃€佺粺涓€琛ㄥ緛銆佽Е瑙変笘鐣屾ā鍨嬩笌浠诲姟椹卞姩鐨勪富鍔ㄦ劅鐭ャ€?,
+    short: '鐞嗚В銆侀娴嬩笌绛栫暐',
+  },
+  spine: {
+    number: '02',
+    eyebrow: 'LOCAL REFLEX',
+    title: '鑴婇珦 路 蹇€熷眬閮ㄩ棴鐜?,
+    question: '绔晶妫€娴嬨€佺渚ц绠椼€佷綆绾у弽灏?,
+    route: '绔晶浜嬩欢妫€娴嬨€佸弽灏勬帶鍒躲€佸畨鍏ㄧ害鏉熶笌鍙獙璇佺殑鏃堕檺銆?,
+    short: '浣庢椂寤跺眬閮ㄩ棴鐜?,
+  },
+  hand: {
+    number: '03',
+    eyebrow: 'BODY INTERFACE',
+    title: '鎵?路 鎰熷彈涓庢墽琛屽叡浣?,
+    question: '鎿嶄綔鍜屾帰绱㈠姩浣滐紝鍒嗗竷寮忔劅鍙楀櫒銆佽Е瑙夎緭鍑恒€佸眬閮ㄨ绠椾笌鍙淮鎶や綋琛?,
+    route: '鎰熺煡涓庢墽琛屽叡浜悓涓€韬綋鐣岄潰锛屽苟鍦ㄥ舰鍙樸€佺（鎹熷拰澶ч潰绉儴缃蹭笅鎸佺画宸ヤ綔',
+    short: '鎰熷彈鍣ㄤ笌鏁堝簲鍣?,
+  },
+  contact: {
+    number: '04',
+    eyebrow: 'WORLD COUPLING',
+    title: '鎺ヨЕ 路 鎰熷彈鍣ㄤ笌瑙﹁韬綋',
+    question: '鑾峰彇鏈烘銆佺儹銆佸寲瀛︺€佽繎鍦哄拰鏈綋淇℃伅锛屽苟閫傚簲澶氱鏅鸿兘浣?,
+    route: '鎺ヨЕ浜嬩欢缂栫爜銆佸姩浣滄潯浠跺缓妯′笌闈㈠悜淇℃伅澧炵泭鐨勪富鍔ㄦ帰绱€?,
+    short: '鐜涓庡姩浣滃悗鏋?,
+  },
+}
+
+const futureStructures: FutureStructure[] = ['brain', 'spine', 'hand', 'contact']
+
+function FutureAnchorVisual({ focus, onFocus, playing, playRun, onPlay }: {
+  focus: FuturePart
+  onFocus: (part: FuturePart) => void
+  playing: boolean
+  playRun: number
+  onPlay: () => void
+}) {
+  const activate = (part: FutureStructure) => onFocus(focus === part ? 'overview' : part)
+  return (
+    <div className={`future-anchor-visual focus-${focus} ${playing ? 'is-playing' : ''}`}>
+      <div className="future-art-stage">
+      <img
+        className="future-neuro-image"
+        src="/assets/embodied-tactile-neural-hero-refined-v1.png"
+        alt="渚ч潰浜轰綋浠ユ墜鎸囪Е纰扮晫闈紝鑴戙€佽剨楂撲笌鎵嬩箣闂寸敱鍏疯韩瑙﹁閫氳矾杩炴帴"
+      />
+      <img
+        className="future-neuro-highlight"
+        src="/assets/embodied-tactile-neural-hero-refined-v1.png"
+        alt=""
+        aria-hidden="true"
+      />
+      <svg className="future-neuro-art" viewBox="0 0 1000 620" role="img" aria-labelledby="future-figure-title future-figure-desc" preserveAspectRatio="xMidYMid meet">
+        <title id="future-figure-title">鍏疯韩瑙﹁绁炵粡绯荤粺鍔熻兘绫绘瘮</title>
+        <desc id="future-figure-desc">浜岀淮渚ч潰浜虹墿閫氳繃鎵嬫寚瑙︾鏌旀€ц〃闈紝鑴戙€佽剨楂撱€佹墜鍜岀幆澧冪敱鎰熻涓婅銆佸揩閫熷弽灏勪笌鎺у埗涓嬭閫氳矾杩炴帴銆?/desc>
+        <defs>
+          <linearGradient id="futureBodyFill" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="var(--future-body-hi)" />
+            <stop offset="1" stopColor="var(--future-body-lo)" />
+          </linearGradient>
+          <linearGradient id="futureSurfaceFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="var(--future-surface-hi)" />
+            <stop offset="1" stopColor="var(--future-surface-lo)" />
+          </linearGradient>
+          <radialGradient id="futureAura" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stopColor="var(--future-aura)" stopOpacity=".34" />
+            <stop offset="1" stopColor="var(--future-aura)" stopOpacity="0" />
+          </radialGradient>
+          <filter id="futureSoftShadow" x="-25%" y="-25%" width="150%" height="170%">
+            <feDropShadow dx="0" dy="14" stdDeviation="18" floodColor="var(--future-shadow)" floodOpacity=".13" />
+          </filter>
+          <filter id="futurePulseGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <ellipse className="future-neuro-aura" cx="421" cy="191" rx="176" ry="176" fill="url(#futureAura)" />
+        <ellipse className="future-neuro-ground" cx="660" cy="590" rx="315" ry="17" />
+
+        <g className="future-neuro-body" filter="url(#futureSoftShadow)">
+          <path className="future-neuro-torso" d="M222 620 C222 558 225 505 241 457 C258 406 293 371 340 349 L354 305 C326 279 309 241 311 198 C313 143 347 99 398 83 C444 70 490 83 517 116 C530 132 537 150 537 168 C552 176 565 185 571 195 C576 203 571 210 560 214 L548 218 C552 231 550 240 541 246 C544 261 536 272 520 278 C501 284 481 277 465 270 L461 309 C498 317 526 335 545 362 C570 398 577 455 572 515 L566 620 Z" />
+          <path className="future-neuro-arm" d="M477 322 C519 318 557 334 593 359 C630 385 666 401 708 409 C746 416 773 410 800 405 C814 402 827 410 831 423 C834 436 827 448 814 454 C797 462 777 459 754 456 C728 453 705 455 681 452 C640 448 607 438 573 420 C539 402 510 382 491 370 Z" />
+          <g className="future-neuro-fingers">
+            <path d="M810 410 C795 406 781 397 768 386 C758 378 747 380 741 390 C736 400 741 411 751 417 L795 441 C807 448 819 444 824 435 C830 424 822 413 810 410 Z" />
+            <path d="M802 418 C813 423 816 434 810 445 L788 481 C782 491 772 494 764 488 C756 482 756 472 763 464 L788 431 C794 423 795 419 802 418 Z" />
+            <path d="M819 422 C831 425 837 436 833 449 L820 496 C817 508 808 515 799 512 C789 509 785 499 790 488 L807 444 C811 433 811 426 819 422 Z" />
+            <path d="M838 421 C850 421 859 431 859 444 L858 501 C858 514 850 523 840 523 C830 523 823 514 825 503 L832 444 C833 433 832 425 838 421 Z" />
+            <path className="future-neuro-index" d="M857 419 C870 417 883 426 887 440 C893 464 896 489 900 515 L905 541 C907 552 900 561 890 562 C880 563 872 555 871 545 L865 516 C860 490 856 466 851 444 C848 431 850 423 857 419 Z" />
+            <path className="future-neuro-palm" d="M788 399 C810 391 840 393 860 408 C878 421 886 443 881 465 C875 491 857 507 832 508 C807 509 787 495 780 472 C773 451 774 411 788 399 Z" />
+          </g>
+        </g>
+
+        <g className="future-neuro-spine">
+          <path className="future-spine-ribbon" d="M420 181 C414 221 409 264 402 306 C395 347 383 386 386 426 C389 465 394 495 385 533" />
+          <path className="future-spine-core" d="M420 181 C414 221 409 264 402 306 C395 347 383 386 386 426 C389 465 394 495 385 533" />
+        </g>
+        <path className="future-neuro-underlay" d="M420 181 C414 218 411 263 405 304 C402 322 399 337 400 350 C466 338 526 357 590 390 C649 424 708 438 776 433 C817 430 847 439 863 464 C879 489 884 524 890 554" />
+
+        <g className="future-neuro-brain">
+          <path className="future-brain-shape" d="M366 157 C354 145 357 126 372 119 C375 102 393 94 408 103 C420 89 443 92 450 108 C468 105 482 120 478 137 C491 148 487 167 472 174 C469 192 449 200 434 191 C420 204 399 198 394 182 C375 185 360 174 366 157 Z" />
+          <g className="future-brain-folds">
+            <path d="M378 143 C392 133 405 137 412 149 C420 162 416 175 404 181" />
+            <path d="M413 106 C405 121 410 132 423 137 C435 141 443 153 439 166" />
+            <path d="M452 113 C443 124 445 138 457 144 C468 150 471 160 465 171" />
+          </g>
+          <circle className="future-brain-wave wave-one" cx="422" cy="149" r="56" />
+          <circle className="future-brain-wave wave-two" cx="422" cy="149" r="56" />
+        </g>
+
+        <g className="future-neuro-hand-detail">
+          <path d="M856 438 C864 455 867 477 869 498" />
+          <path d="M838 440 C839 459 835 477 831 492" />
+          <path d="M819 440 C814 457 807 474 800 487" />
+          <path d="M803 434 C793 449 782 463 772 475" />
+          <path d="M845 455 C836 463 829 470 821 482 M845 455 C832 449 816 445 799 442 M845 455 C850 475 853 489 855 504" />
+        </g>
+        <g className="future-neuro-face-detail">
+          <path d="M512 167 Q521 173 531 167" />
+          <path d="M527 238 Q534 242 541 236" />
+          <ellipse cx="525" cy="217" rx="17" ry="11" />
+        </g>
+
+        <g className="future-flow-static" aria-hidden="true">
+          <path className="sensory" pathLength="1" d="M830 560 C805 535 781 513 755 492 C699 469 632 454 577 424 C507 386 451 341 342 292 C328 271 323 246 321 218 C319 173 290 126 250 86" />
+          <path className="motor" pathLength="1" d="M264 92 C300 143 326 187 333 229 C338 260 340 286 360 303 C423 357 499 403 576 439 C651 474 724 484 781 511 C800 521 817 539 830 560" />
+          <path className="reflex" pathLength="1" d="M830 560 C788 522 730 497 664 480 C590 460 519 427 454 386 C409 358 369 325 342 299 C375 316 408 344 445 377 C505 431 578 466 659 485 C724 500 780 523 818 564" />
+        </g>
+
+        <g key={playRun} className="future-flow-live" aria-hidden="true">
+          <path className="sensory" pathLength="1" d="M830 560 C805 535 781 513 755 492 C699 469 632 454 577 424 C507 386 451 341 342 292 C328 271 323 246 321 218 C319 173 290 126 250 86" />
+          <path className="motor" pathLength="1" d="M264 92 C300 143 326 187 333 229 C338 260 340 286 360 303 C423 357 499 403 576 439 C651 474 724 484 781 511 C800 521 817 539 830 560" />
+          <path className="reflex" pathLength="1" d="M830 560 C788 522 730 497 664 480 C590 460 519 427 454 386 C409 358 369 325 342 299 C375 316 408 344 445 377 C505 431 578 466 659 485 C724 500 780 523 818 564" />
+        </g>
+
+        <g className="future-neuro-contact-surface">
+          <path className="future-contact-fill" d="M710 556 C770 552 829 552 860 552 C872 552 878 562 890 562 C902 562 908 552 921 552 C945 552 968 553 988 556 L988 603 C896 597 803 598 710 603 Z" />
+          <path className="future-contact-edge" d="M710 556 C770 552 829 552 860 552 C872 552 878 562 890 562 C902 562 908 552 921 552 C945 552 968 553 988 556" />
+          <path className="future-contact-ripple ripple-one" d="M851 575 C870 584 909 584 929 575" />
+          <path className="future-contact-ripple ripple-two" d="M832 584 C863 600 916 600 947 583" />
+        </g>
+      </svg>
+
+      <button type="button" className="future-hotspot hotspot-brain" aria-label="鏌ョ湅澶ц剳锛氱悊瑙ｃ€侀娴嬩笌绛栫暐" aria-pressed={focus === 'brain'} aria-controls="future-detail" onClick={() => activate('brain')}><i/><span>澶ц剳</span></button>
+      <button type="button" className="future-hotspot hotspot-spine" aria-label="鏌ョ湅鑴婇珦锛氫綆鏃跺欢灞€閮ㄩ棴鐜? aria-pressed={focus === 'spine'} aria-controls="future-detail" onClick={() => activate('spine')}><i/><span>鑴婇珦</span></button>
+      <button type="button" className="future-hotspot hotspot-hand" aria-label="鏌ョ湅鎵嬶細鎰熷彈涓庢墽琛屽叡浣? aria-pressed={focus === 'hand'} aria-controls="future-detail" onClick={() => activate('hand')}><i/><span>鎵</span></button>
+      <button type="button" className="future-hotspot hotspot-contact" aria-label="鏌ョ湅鎺ヨЕ锛氱幆澧冭繘鍏ョ郴缁? aria-pressed={focus === 'contact'} aria-controls="future-detail" onClick={() => activate('contact')}><i/><span>鎺ヨЕ</span></button>
+      </div>
+
+      <div className="future-visual-controls">
+        <button type="button" className="future-overview-button" onClick={() => onFocus('overview')} aria-pressed={focus === 'overview'}>鍏ㄦ櫙</button>
+        <button type="button" className="future-play-button" onClick={onPlay} disabled={playing}><span className="play-icon">{playing ? '鈥⑩€⑩€? : '鈻?'}</span>{playing ? '闂幆婕旂ず涓? : playRun > 0 ? '閲嶆柊鎾斁闂幆' : '鎾斁闂幆'}</button>
+      </div>
+      <div className="future-flow-legend" aria-label="淇℃伅娴佸浘渚"><span className="sensory">鎰熻涓婅</span><span className="reflex">鑴婇珦鍙嶅皠</span><span className="motor">鎺у埗涓嬭</span></div>
+    </div>
+  )
+}
+
+function FutureSlide() {
+  const [focus, setFocus] = useState<FuturePart>('overview')
+  const [playing, setPlaying] = useState(false)
+  const [playRun, setPlayRun] = useState(0)
+  const current = futurePartData[focus]
+
+  const playLoop = () => {
+    if (playing) return
+    setFocus('overview')
+    setPlayRun(run => run + 1)
+    setPlaying(true)
+  }
+
+  useEffect(() => {
+    if (!playing) return
+    // Keep the state alive through the slower spinal relay and the final hand response.
+    const timer = window.setTimeout(() => setPlaying(false), 5600)
+    return () => window.clearTimeout(timer)
+  }, [playing, playRun])
+
+  return (
+    <SlideFrame metaIndex={10}>
+      <div className="future-anchor-layout">
+        <aside className="future-anchor-copy">
+          <p className="future-anchor-thesis">鏈潵鐨勮Е瑙夌郴缁燂紝涓嶅簲鍙槸鏇寸伒鏁忕殑浼犳劅鍣紝鑰屽簲鍍忕缁忕郴缁熶竴鏍风粍缁囨劅鐭ャ€佸弽灏勩€佺悊瑙ｄ笌琛屽姩銆</p>
+          <div id="future-detail" className={`future-detail detail-${focus}`}>
+            <div className="future-detail-heading"><span>{current.number}</span><div><small>{current.eyebrow}</small><h2>{current.title}</h2></div></div>
+            <div className="future-detail-block"><span>鏍稿績鍔熻兘</span><p>{current.question}</p></div>
+            <div className="future-detail-block"><span>鐮旂┒闂</span><p>{current.route}</p></div>
+          </div>
+          <div className="future-part-nav" aria-label="閫夋嫨绁炵粡绯荤粺缁撴瀯">
+            {futureStructures.map(part => (
+              <button key={part} type="button" className={focus === part ? 'active' : ''} onClick={() => setFocus(focus === part ? 'overview' : part)} aria-pressed={focus === part} aria-controls="future-detail">
+                <span>{futurePartData[part].number}</span><strong>{futurePartData[part].title.split(' 路 ')[0]}</strong><small>{futurePartData[part].short}</small>
+              </button>
+            ))}
+          </div>
+          <p className="future-anchor-note"><i/>鏈枃鍓嶇灮鏋勬兂 路 鍔熻兘绫绘瘮锛屼笉鏄敓鐗╃粨鏋勫鍒</p>
+          <span className="sr-only" aria-live="polite">褰撳墠鏄剧ず锛歿current.title}{playing ? '锛屾鍦ㄦ挱鏀炬劅鐭ヤ笌鎺у埗闂幆' : ''}</span>
+        </aside>
+        <FutureAnchorVisual focus={focus} onFocus={setFocus} playing={playing} playRun={playRun} onPlay={playLoop} />
+      </div>
+    </SlideFrame>
+  )
+}
+
+function FutureCapabilitySlide() {
+  const sensingModalities = [
+    { label:'鏈烘', detail:'娉曞悜 / 鍒囧悜鍔?路 鎺ヨЕ鍑犱綍 路 寰粦绉?, tone:'coral' },
+    { label:'鐑', detail:'娓╁害 路 鐑祦 路 鏉愭枡鐑睘鎬?, tone:'cyan' },
+    { label:'鍖栧', detail:'姘斿懗 路 pH 路 鎸ュ彂鎬х墿璐?, tone:'violet' },
+    { label:'杩戝満', detail:'鎺ヨ繎 路 澶氬厜璋?路 鐜寮傚父', tone:'green' },
+  ]
+  const bodyRequirements = [
+    ['鍏卞舰', '閫傞厤灏哄銆佹洸鐜囦笌灞€閮ㄥ垰搴?],
+    ['鍙彉褰?, '闅忔媺浼搞€佸集鏇插拰杩愬姩淇濇寔鏍囧畾'],
+    ['娉涘湪閮ㄧ讲', '浠庢寚灏栨墿灞曞埌鎵嬨€佽冻銆佽噦涓庤函骞?],
+    ['鍙淮鎶?, '灞€閮ㄦ洿鎹€佽嚜淇涓庡畨鍏ㄩ檷绾?],
+  ]
+  const evaluations = [
+    ['绮惧瘑瑁呴厤', '浣嶇疆 / 鍔涜宸?路 鍗￠樆鎻愬墠閲?],
+    ['楂橀€熸姄鍙?, '婊戠Щ鎻愬墠閲?路 绔埌绔搷搴?],
+    ['鍗遍櫓鐜', '鐑?/ 鍖栧寮傚父妫€鍑轰笌璇姤'],
+    ['闀挎湡杩愯', '婕傜Щ 路 纾ㄦ崯 路 閲嶆爣瀹?路 闄嶇骇'],
+  ]
+  return (
+    <SlideFrame metaIndex={11}>
+      <div className="future-capability-layout">
+        <div className="future-capability-thesis"><span>RECEPTOR 脳 TACTILE BODY</span><strong>涓嶆槸鎶婂崟涓€閫氶亾鏃犻檺鍔犲瘑锛岃€屾槸璁╀换鍔￠渶瑕佺殑鐗╃悊閲忓彲瑙傛祴锛屽苟璁╄繖浜涜娴嬮暱鏈熷睘浜庤韩浣撱€</strong></div>
+        <div className="future-route-grid">
+          <section className="future-route-card route-superhuman">
+            <header><div><span>4.2 / RECEPTOR</span><h2>瓒呬汉绫讳换鍔＄浉鍏虫劅鐭</h2></div><b>鎵╁ぇ鈥滆兘鎰熺煡浠€涔堚€</b></header>
+            <div className="modality-map">
+              <div className="modality-core"><span>TASK</span><strong>浠诲姟鎵€闇€<br/>鎺ヨЕ鐘舵€</strong><small>鍚屼竴韬綋鍧愭爣 脳 鍚屼竴鏃堕棿鍩哄噯</small></div>
+              {sensingModalities.map((item,index) => <div key={item.label} className={`modality-node modality-${index} tone-${item.tone}`}><i/><strong>{item.label}</strong><small>{item.detail}</small></div>)}
+            </div>
+            <div className="route-evidence"><span>浠ｈ〃璺緞</span><p><b>鏄熼蓟榧逛豢鐢熼樀鍒</b>锛氬舰璨屻€佸垰搴︿笌姘斿懗鍗忓悓锛?b>SuperTac</b>锛氱害 1 mm 鐨偆鍐呴泦鎴愬鍏夎氨銆佹懇鎿︾數涓庢儻鎬т俊鎭紱<b>澶氭ā鎬佺儹鏁忚Е瑙</b>锛氳仈鍚堝帇鍔涖€佹俯搴︺€佺汗鐞嗗拰婊戠Щ銆</p></div>
+            <div className="route-direction"><span>鎶€鏈矾绾</span><strong>澶氭満鍒跺崗鍚</strong><i>鈫</i><strong>鏃剁┖瀵归綈</strong><i>鈫</i><strong>绛栫暐鍙皟鐢ㄧ姸鎬</strong></div>
+          </section>
+          <section className="future-route-card route-body">
+            <header><div><span>4.3 / TACTILE BODY</span><h2>鍙彉褰㈣Е瑙夎韩浣撲笌娉涘湪閮ㄧ讲</h2></div><b>鎵╁ぇ鈥滆兘閮ㄧ讲鍦ㄥ摢閲屸€</b></header>
+            <div className="body-deployment-map">
+              <div className="body-silhouette" aria-hidden="true"><i className="body-head"/><i className="body-torso"/><i className="body-arm arm-left"/><i className="body-arm arm-right"/><i className="body-leg leg-left"/><i className="body-leg leg-right"/>{Array.from({length:12}).map((_,i)=><b key={i} style={{'--dot':i} as CSSProperties}/>)}</div>
+              <div className="body-requirements">{bodyRequirements.map(([title,detail],index)=><div key={title}><span>0{index+1}</span><strong>{title}</strong><small>{detail}</small></div>)}</div>
+            </div>
+            <div className="route-evidence"><span>浠ｈ〃璺緞</span><p><b>GelSight Svelte</b>锛氭部鏁存牴鎵嬫寚閮ㄧ讲锛?b>鍙媺浼告墜濂</b>锛?152 涓姏鎰熺煡閫氶亾骞朵富鍔ㄦ姂鍒跺簲鍙樺共鎵帮紱<b>杞綋瑙﹁鎵</b>锛氭帉鈥旀寚鍗忓悓瀹屾垚鎰熺煡涓庢姄鍙栥€</p></div>
+            <div className="route-direction"><span>鎶€鏈矾绾</span><strong>鍏卞舰闆嗘垚</strong><i>鈫</i><strong>鍑犱綍鑷爣瀹</strong><i>鈫</i><strong>鍏ㄧ敓鍛藉懆鏈熺淮鎶</strong></div>
+          </section>
+        </div>
+        <section className="future-evaluation-strip"><div><span>鍏卞悓缁堢偣 / TASK-LEVEL VALIDATION</span><strong>涓ゆ潯璺嚎蹇呴』鍦ㄧ湡瀹炰换鍔′腑姹囧悎</strong></div>{evaluations.map(([title,detail])=><div key={title}><strong>{title}</strong><small>{detail}</small></div>)}</section>
+      </div>
+    </SlideFrame>
+  )
+}
+
+function FutureEdgeSlide() {
+  const [activeRoute, setActiveRoute] = useState(0)
+  const latencyStages = [
+    ['鏉愭枡鍝嶅簲', '鎺ヨЕ鍏堝彉鎴愬彲娴嬩俊鍙?],
+    ['閲囨牱 / 璇诲嚭', '闃靛垪鎵弿涓庡墠绔浆鎹?],
+    ['浼犺緭 / 璋冨害', '鎬荤嚎銆佺紦瀛樹笌浠诲姟绛夊緟'],
+    ['鎺ㄧ悊', '鐘舵€佽瘑鍒笌椋庨櫓鍒ゆ柇'],
+    ['鎵ц鍣ㄥ搷搴?, '浜х敓鏈夋晥鍔涘彉鍖?],
+  ]
+  const route = [
+    { n:'01', title:'浼犳劅鈥旇绠椾竴浣撳寲', body:'鍦ㄤ紶鎰熷櫒闄勮繎瀹屾垚琛ュ伩銆佸彉鍖栨娴嬨€佹帴瑙﹀尯鍩熸彁鍙栧拰鍋ュ悍鐩戞祴銆?, tags:'妯℃嫙鍓嶇 路 浜嬩欢璇诲嚭 路 MCU / FPGA / NPU' },
+    { n:'02', title:'蹇參鍙岄€氳矾', body:'蹇€氳矾澶勭悊鍒濊Е銆佸啿鍑汇€佸井婊戠Щ鍜岃繃杞斤紱鎱㈤€氳矾鏁村悎瑙嗚銆佽瑷€銆佹湰浣撲笌闀挎椂鍘嗗彶銆?, tags:'灞€閮ㄥ弽灏?路 楂樺眰绛栫暐 路 鏉冮檺浠茶' },
+    { n:'03', title:'鍒嗗眰鏁版嵁閫氳矾', body:'甯告€佷笂浼犱綆缁寸姸鎬侊紝绐佸彉缂撳瓨楂橀鐗囨锛屽紓甯告椂寮€鏀惧彈鎺у師濮嬬獥鍙ｃ€?, tags:'浠诲姟淇濇寔鍘嬬缉 路 鍘熷鏃佽矾 路 鎸夐渶甯﹀' },
+    { n:'04', title:'瀹夊叏涓庡彲楠岃瘉鎬?, body:'鐢ㄧ‖瀹炴椂鐘舵€佹満銆佹帶鍒跺睆闅滄垨鍔涢檺骞呬繚璇佸簳绾匡紝骞朵繚鐣欒Е鍙戣瘉鎹互渚胯拷婧€?, tags:'鏈€鍧忓欢杩?路 鍐椾綑 路 瀹夊叏闄嶇骇' },
+  ]
+  return (
+    <SlideFrame metaIndex={12}>
+      <div className="future-edge-layout">
+        <section className="edge-necessity-card">
+          <div className="edge-card-head"><span>WHY EDGE?</span><h2>绔晶澶勭悊鐨勫繀瑕佹€</h2><p>婊戠Щ銆佺鎾炪€佸す浼ゅ拰杩囪浇涓嶄細绛夊緟楂樺眰妯″瀷瀹屾垚鎺ㄧ悊銆傜郴缁熷繀椤讳粠浠诲姟鍏佽鐨勬渶鏅氬搷搴旀椂闂村弽鎺ㄦ暣鏉￠摼璺€</p></div>
+          <div className="latency-race">
+            <div className="deadline-band"><span>鐗╃悊澶辨晥绐楀彛</span><strong>浜嬩欢鍙戠敓</strong><i/><b>鏈€鏅氬畨鍏ㄥ搷搴</b></div>
+            <div className="latency-chain">{latencyStages.map(([title,detail],index)=><div key={title}><span>0{index+1}</span><strong>{title}</strong><small>{detail}</small>{index < latencyStages.length-1 && <i>鈫</i>}</div>)}</div>
+            <div className="edge-split"><div><span>浠呬笂浼犱富鏈</span><strong>寤惰繜 + 鎶栧姩閫愭绱Н</strong><small>闃靛垪鎵弿銆侀€氫俊銆佽皟搴﹀拰閫氱敤妯″瀷鍏卞悓鍐冲畾灏鹃儴寤惰繜</small></div><div className="edge-fast"><span>绔晶鎰熺煡 + 绔晶鍙嶅皠</span><strong>鍦ㄥ眬閮ㄩ棴鍚堜弗鏍兼椂闄</strong><small>鍏堝舰鎴愭帴瑙?/ 婊戠Щ / 椋庨櫓鐘舵€侊紝鍐嶇洿鎺ュ鍔涖€佸嵏鍔涖€佸仠姝㈡垨閫€璁</small></div></div>
+          </div>
+          <div className="edge-definition"><div><span>AFFERENT</span><strong>绔晶瑙﹁鎰熺煡</strong><small>鎶婂師濮嬩俊鍙峰彉鎴愭帴瑙︺€佹粦绉诲拰椋庨櫓鐘舵€</small></div><i>鈮</i><div><span>REFLEX</span><strong>绔晶鍙嶅皠鎺у埗</strong><small>鍦ㄩ珮绾ц鐭ュ畬鎴愬墠鐩存帴浜х敓鍙楅檺灞€閮ㄥ姩浣</small></div></div>
+        </section>
+        <section className="edge-roadmap-card">
+          <header><span>TECHNICAL ROADMAP</span><h2>浠庢櫤鑳借妭鐐瑰埌鍙獙璇佺殑鍒嗗眰鍙嶅皠</h2></header>
+          <div className="edge-roadmap-flow">
+            <div className="edge-roadmap-steps" role="tablist" aria-label="鍥涙鎶€鏈矾绾">
+              {route.map((item, index) => <button key={item.n} role="tab" aria-selected={activeRoute === index} className={activeRoute === index ? 'active' : ''} onClick={() => setActiveRoute(index)}><b>{item.n}</b><span>{item.title}</span></button>)}
+            </div>
+            <div className="edge-roadmap-detail" role="tabpanel">
+              <div className="edge-roadmap-detail-index">{route[activeRoute].n}</div>
+              <div><strong>{route[activeRoute].title}</strong><p>{route[activeRoute].body}</p><small>{route[activeRoute].tags}</small></div>
+            </div>
+          </div>
+          <div className="edge-contract">
+            <span>蹇參閫氳矾鐨勬帴鍙ｅ绾</span>
+            <div><strong>楂樺眰涓嬪彂</strong><p>浠诲姟闃舵 路 棰勬湡鎺ヨЕ 路 鍏佽鍔涜寖鍥</p></div><i>鈬</i><div><strong>绔晶鎶ュ憡</strong><p>鐪熷疄鎺ヨЕ 路 棰勬祴鍋忓樊 路 涓嶇‘瀹氬害 / 椋庨櫓</p></div>
+          </div>
+          <div className="edge-compression"><span>浠诲姟淇濇寔鐜</span><p>鍘嬬缉鍚庝粛闇€淇濇寔<strong>婊戠Щ鎻愬墠閲忋€佹帶鍒剁ǔ瀹氳搴﹀拰寮傚父鍙瘖鏂€</strong>锛涗笉鑳藉彧鎶ュ憡鍘嬬缉姣旀垨閲嶅缓璇樊銆</p></div>
+        </section>
+        <section className="edge-metrics-strip"><div><span>SYSTEM VALIDATION</span><strong>璇勪环瀹屾暣鎰熺煡鈥旀墽琛岄摼</strong></div><div><strong>灏鹃儴鍝嶅簲</strong><small>鏈€澶х鍒扮寤惰繜 路 鎶栧姩</small></div><div><strong>瀹夊叏妫€娴</strong><small>婕忔鐜?路 璇Е鍙戞崯澶</small></div><div><strong>鏁呴殰鐘舵€</strong><small>閫氫俊闃诲 路 taxel 鏁呴殰 路 璁＄畻杩囪浇</small></div><div><strong>闂幆缁撴灉</strong><small>绋冲畾瑁曞害 路 浠诲姟淇濇寔 路 瀹夊叏闄嶇骇</small></div></section>
+      </div>
+    </SlideFrame>
+  )
+}
+
+type BrainLayer = 'representation' | 'world' | 'policy'
+
+function FutureBrainSlide() {
+  const [layer, setLayer] = useState<BrainLayer>('representation')
+  const layers: Record<BrainLayer, { n: string; label: string; en: string; title: string; lead: string; points: string[]; color: string }> = {
+    representation: {
+      n: '01', label: '缁熶竴琛ㄥ緛', en: 'REPRESENTATION', color: 'cyan',
+      title: '鍏堜繚鐣欒Е瑙夌殑韬綋璇箟锛屽啀璋堢粺涓€鎺ュ彛',
+      lead: '缁熶竴涓嶆槸鎶婃墍鏈夎緭鍏ュ帇鎴愬悓灏哄 token锛岃€屾槸璁╀笉鍚岃澶囥€佽韩浣撲笌浠诲姟鍏变韩鍙榻愮殑鍧愭爣锛屽悓鏃朵繚鐣欏彲閫嗙殑搴曞眰缁嗚妭銆?,
+      points: ['淇″彿灞傦細鍥惧儚銆侀樀鍒椼€佷簨浠舵祦銆佸姏 / 鍔涚煩涓庢湰浣撶姸鎬?, '鏃堕棿灞傦細绋虫€佹帴瑙︺€佺灛鎬佸彉鍖栦笌鍔ㄤ綔鍘嗗彶', '绌洪棿鈥旂墿鐞嗗眰锛氳韩浣撲綅缃€佹帴瑙﹀潗鏍囥€佸帇鍔涖€佸壀鍒囥€佹粦绉讳笌鏉愭枡灞炴€?],
+    },
+    world: {
+      n: '02', label: '瑙﹁涓栫晫妯″瀷', en: 'TACTILE WORLD MODEL', color: 'violet',
+      title: '浠庤瘑鍒€滅幇鍦ㄦ帴瑙︿簡浠€涔堚€濓紝鍒伴娴嬧€滃姩浣滀細閫犳垚浠€涔堚€?,
+      lead: '涓栫晫妯″瀷瑕侀娴嬫帴瑙﹀缓绔嬨€佷綅缃浆绉汇€佸姏涓庡舰鍙樻紨鍖栥€佹粦绉汇€佸崱闃讳笌鎹熶激椋庨櫓锛屽苟琛ㄨ揪鏈潵鍒嗗竷鑰岄潪鍗曚竴鐚滄祴銆?,
+      points: ['鍔ㄤ綔鏉′欢娼滃湪鍔ㄥ姏瀛︼細鍔ㄤ綔 鈫?鎺ヨЕ浜嬩欢 鈫?鍔涘鍚庢灉', '瑙嗚鈥旇Е瑙夎仈鍚堢敓鎴愪笌鎺ヨЕ鍥炬紨鍖栵紝瑕嗙洊閬尅涓嬬殑鐗╀綋鎸佺画鎬?, '璇勪环閲嶇偣杞悜鎺ヨЕ浜嬩欢銆佺墿鐞嗕竴鑷存€т笌涓嶇‘瀹氭€э紝鑰岄潪鍙湅鐢婚潰閫肩湡搴?],
+    },
+    policy: {
+      n: '03', label: '楂樼淮绛栫暐鍗忓悓', en: 'PREDICT 路 ACT 路 CORRECT', color: 'coral',
+      title: '楂樺眰瑙勫垝銆佷腑灞傞娴嬩笌浣庡眰鍙嶉褰㈡垚闂幆',
+      lead: '棰勬祴涓嶈兘鏇夸唬鐪熷疄瑙﹁銆傜瓥鐣ラ渶瑕佹瘮杈冮娴嬩笌瀹炴祴锛屽湪璇樊鍑虹幇鏃堕€夋嫨灞€閮ㄤ慨姝ｃ€侀噸瑙勫垝鎴栧畨鍏ㄥ仠鏈恒€?,
+      points: ['楂樺眰锛氳瑙夆€旇瑷€妯″瀷鐞嗚В鐩爣骞惰鍒掗暱绋嬩换鍔?, '涓眰锛氳Е瑙変笘鐣屾ā鍨嬫瘮杈冨€欓€夊姩浣滀笌鐭湡鎺ヨЕ鍚庢灉', '浣庡眰锛氱渚х瓥鐣ヤ緷鎹湡瀹炴粦绉汇€佸啿鍑讳笌杩囪浇蹇€熶慨姝?],
+    },
+  }
+  const current = layers[layer]
+  return (
+    <SlideFrame metaIndex={13}>
+      <div className="future-brain-layout">
+        <aside className="future-brain-sidebar">
+          <div className="future-brain-thesis"><span>4.5 / THE BRAIN</span><strong>瑙﹁鍙湁杩涘叆鈥滃彲棰勬祴銆佸彲姣旇緝銆佸彲鍥為€€鈥濈殑妯″瀷锛屾墠浼氭垚涓虹瓥鐣ョ殑鐗╃悊璇█銆</strong></div>
+          <nav className="future-brain-tabs" aria-label="4.5 鎶€鏈富棰">
+            {(Object.keys(layers) as BrainLayer[]).map(key => <button key={key} className={layer === key ? `active tone-${layers[key].color}` : ''} onClick={() => setLayer(key)} aria-selected={layer === key}><b>{layers[key].n}</b><span>{layers[key].label}</span><small>{layers[key].en}</small></button>)}
+          </nav>
+          <section className={`future-brain-detail tone-${current.color}`}>
+            <div className="future-brain-detail-head"><span>{current.n}</span><div><small>{current.en}</small><h2>{current.title}</h2></div></div>
+            <p>{current.lead}</p>
+            <ul>{current.points.map(point => <li key={point}>{point}</li>)}</ul>
+          </section>
+          <p className="future-brain-note"><i/>鍘熸枃璺嚎锛歋parsh / AnyTouch / UniTacHand / FTP-1 鈫?Visuo-Tactile World Models / ContactWorld 鈫?TacPAC / DreamTacVLA</p>
+        </aside>
+        <section className="future-brain-canvas" aria-label="棰勬祴鎵ц璇樊淇闂幆">
+          <div className="brain-canvas-header"><span>MODEL 鈫?REALITY</span><strong>棰勬祴鈥旀墽琛屸€旇宸€斾慨姝</strong></div>
+          <div className="brain-loop">
+            <div className="brain-loop-node node-state"><span>褰撳墠鐘舵€</span><strong>瑙﹁琛ㄥ緛</strong><small>浣嶇疆 路 鎺ヨЕ 路 鍔涘</small></div>
+            <div className="brain-loop-node node-predict"><span>鍔ㄤ綔鏉′欢</span><strong>鏈潵瑙﹁</strong><small>澶氬亣璁?+ 涓嶇‘瀹氭€</small></div>
+            <div className="brain-loop-node node-real"><span>鎵ц鏈</span><strong>鐪熷疄瑙﹁</strong><small>婊戠Щ 路 鍐插嚮 路 杩囪浇</small></div>
+            <div className="brain-loop-node node-error"><span>鍦ㄧ嚎姣旇緝</span><strong>棰勬祴璇樊</strong><small>鍋忓樊 / 椋庨櫓 / 缃俊搴</small></div>
+            <div className="brain-loop-node node-correct"><span>鍒嗗眰鍝嶅簲</span><strong>鍔ㄤ綔淇</strong><small>灞€閮ㄤ慨姝?路 閲嶈鍒?路 鍋滄満</small></div>
+            <svg viewBox="0 0 760 330" aria-hidden="true"><defs><marker id="brainArrowCyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" /></marker><marker id="brainArrowViolet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" /></marker><marker id="brainArrowCoral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" /></marker></defs><path className="brain-link link-cyan" d="M235 112H525"/><path className="brain-link link-violet" d="M650 154V218"/><path className="brain-link link-coral" d="M520 264H500"/><path className="brain-link link-coral" d="M260 264H235"/><path className="brain-link link-return" d="M118 218V154"/></svg>
+          </div>
+          <div className="brain-layer-strip"><div><span>HIGH LEVEL</span><strong>鐩爣鐞嗚В / 闀跨▼瑙勫垝</strong></div><div><span>MID LEVEL</span><strong>鎺ヨЕ鍚庢灉 / 鍊欓€夊姩浣</strong></div><div><span>LOW LEVEL</span><strong>鐪熷疄鍙嶉 / 瀹夊叏杈圭晫</strong></div></div>
+          <div className="brain-eval-strip"><span>璇勪环涓嶆鏄?embedding 鐩镐技搴</span><b>璺ㄦ湰浣撹縼绉</b><b>鎺ヨЕ鐗╃悊棰勬祴</b><b>鐪熷疄闂幆鏀剁泭</b></div>
+        </section>
+      </div>
+    </SlideFrame>
+  )
+}
+
+type DynamicMode = 'dynamic' | 'active' | 'integrated'
+
+function FutureDynamicSlide() {
+  const [mode, setMode] = useState<DynamicMode>('dynamic')
+  const modes: Record<DynamicMode, { n: string; label: string; en: string; title: string; lead: string; points: string[]; tone: string }> = {
+    dynamic: {
+      n: '01', label: '鍔ㄦ€佽Е瑙?, en: 'DYNAMIC TOUCH', tone: 'cyan',
+      title: '淇濈暀鈥滄€庝箞鍙戠敓鈥濓紝鑰屼笉鍙槸鈥滃彂鐢熶簡浠€涔堚€?,
+      lead: '鍒濊Е銆佸啿鍑汇€佹帴瑙﹂潰鎵╁紶銆佸壀鍒囩疮绉€佸井婊戠Щ鍜屾粴鍔ㄩ兘鍙戠敓鍦ㄦ椂闂村簭鍒椾腑锛涢潤鎬佸帇鍔涘浘鏃犳硶鍗曠嫭璇存槑鍚庣画浼氭€庢牱銆?,
+      points: ['浣庨閫氳矾淇濇寔鎸佺画鍘嬪姏涓庡舰鍙橈紝楂橀 / 浜嬩欢閫氳矾鎹曟崏鍐插嚮銆佺汗鐞嗗拰婊戠Щ鍏堝厗', '鐢ㄤ簨浠舵祦銆佸抚銆佹尟鍔ㄥ拰鐘舵€佷及璁″叡鍚屾瀯鎴愭椂绌烘帴瑙﹀浘', '璇勪环鍙樺寲妫€娴嬫彁鍓嶉噺銆佷簨浠舵紡妫€銆侀潤榛樻湡淇℃伅鎹熷け涓庢椂闂村榻愬欢杩?],
+    },
+    active: {
+      n: '02', label: '涓诲姩瑙﹁', en: 'ACTIVE TOUCH', tone: 'violet',
+      title: '璁╁姩浣滄湰韬垚涓烘劅鐭ュ櫒鐨勪竴閮ㄥ垎',
+      lead: '褰撴潗鏂欍€佸Э鎬佹垨鎺ヨЕ浣嶇疆涓嶇‘瀹氭椂锛岀郴缁熶笉搴旇鍔ㄧ瓑寰呬俊鎭紝鑰屽簲閫夋嫨鎸夊帇銆佹粦鍔ㄣ€佹粴鍔ㄦ垨寰皬鎽嗗姩鏉ュ尯鍒嗗€欓€夌姸鎬併€?,
+      points: ['鏍规嵁涓嶇‘瀹氭€ч€夋嫨鎺ヨЕ浣嶇疆銆佹柟鍚戙€佸姏銆侀€熷害鍜屽仠姝㈡椂鏈?, '浠ヤ俊鎭鐩娿€佷换鍔¤繘灞曘€佽兘鑰楀拰鎹熶激椋庨櫓鍏卞悓绾︽潫鎺㈢储鍔ㄤ綔', '涓栫晫妯″瀷鍏堥娴嬩笉鍚屽姩浣滃彲鑳戒骇鐢熺殑瑙﹁鍒嗗竷锛屽啀閫夋嫨椋庨櫓鍙帶鐨勫姩浣?],
+    },
+    integrated: {
+      n: '03', label: '鎰熺煡鈥旀搷浣滀竴浣撳寲', en: 'SENSE 路 ACT 路 UPDATE', tone: 'coral',
+      title: '姣忎竴娆℃搷浣滈兘鍚屾椂鏀瑰彉涓栫晫鍜屼笅涓€娆″彲瑙佺殑璇佹嵁',
+      lead: '鍔ㄦ€佽Е瑙夋彁渚涙墽琛屼腑鐨勫彉鍖栵紝涓诲姩瑙﹁鏀瑰彉鎺ヨЕ鏉′欢锛涗簩鑰呭叡鍚屾妸瑙﹁浠庤瘑鍒ā鍧楀彉鎴愭寔缁洿鏂扮殑鎺у埗闂幆銆?,
+      points: ['鎶撳姏璋冩暣銆佹彃鍏ヤ腑鐨勫井鎽嗗姩銆佹粴鍔ㄤ笌鎿︽嫮鍚屾椂瀹屾垚鎿嶄綔鍜屽睘鎬ц鲸璇?, '绛栫暐鐩爣鍚屾椂鍖呭惈浠诲姟杩涘睍銆佷俊鎭敹鐩娿€佹帴瑙﹀畨鍏ㄤ笌鎺㈢储浠ｄ环', '鍒嗗紑鎶ュ憡鎰熺煡銆佹帶鍒跺拰浠诲姟涓夊眰鏀剁泭锛岄伩鍏嶅彧鐢ㄥ垎绫诲噯纭巼璇勪环闂幆'],
+    },
+  }
+  const current = modes[mode]
+  return (
+    <SlideFrame metaIndex={14}>
+      <div className="future-dynamic-layout">
+        <aside className="future-dynamic-sidebar">
+          <div className="future-dynamic-thesis"><span>4.6 / DYNAMIC + ACTIVE</span><strong>瑙﹁涓嶆槸鍔ㄤ綔涔嬪悗鐨勮鏁帮紝鑰屾槸鍔ㄤ綔杩囩▼涓寔缁彉鍖栥€佸苟鑳藉弽杩囨潵鍐冲畾涓嬩竴姝ュ姩浣滅殑璇佹嵁銆</strong></div>
+          <nav className="future-dynamic-tabs" aria-label="4.6 鎶€鏈富棰">
+            {(Object.keys(modes) as DynamicMode[]).map(key => <button key={key} className={mode === key ? `active tone-${modes[key].tone}` : ''} onClick={() => setMode(key)} aria-selected={mode === key}><b>{modes[key].n}</b><span>{modes[key].label}</span><small>{modes[key].en}</small></button>)}
+          </nav>
+          <section className={`future-dynamic-detail tone-${current.tone}`}>
+            <div className="future-dynamic-detail-head"><span>{current.n}</span><div><small>{current.en}</small><h2>{current.title}</h2></div></div>
+            <p>{current.lead}</p>
+            <ul>{current.points.map(point => <li key={point}>{point}</li>)}</ul>
+          </section>
+          <p className="future-dynamic-note"><i/>浠ｈ〃璺嚎锛欸elSlim / Tac2Pose / Evetac / NeuTouch 鈫?涓诲姩璐濆彾鏂帰绱?/ 瑙﹁浼烘湇 鈫?Tactile Dexterity / UniTacVLA</p>
+        </aside>
+        <section className="future-dynamic-canvas" aria-label="鍔ㄦ€佽Е瑙変笌涓诲姩瑙﹁闂幆">
+          <div className="dynamic-canvas-header"><span>CONTACT AS A TIME SERIES</span><strong>鍔ㄤ綔鏀瑰彉鎺ヨЕ锛屾帴瑙︽洿鏂板姩浣</strong></div>
+          <div className="dynamic-loop">
+            <div className="dynamic-axis axis-time"><span>鏃堕棿</span><i/><b>鍒濊Е</b><b>鍔犺浇</b><b>婊戠Щ / 婊氬姩</b><b>閲婃斁</b></div>
+            <div className="dynamic-signal signal-low"><span>浣庨鐘舵€</span><div><i/><i/><i/><i/><i/><i/><i/></div><small>鎸佺画鍘嬪姏 路 褰㈠彉 路 濮挎€</small></div>
+            <div className="dynamic-signal signal-high"><span>楂橀 / 浜嬩欢</span><div><i/><i/><i/><i/><i/><i/><i/><i/><i/></div><small>鍐插嚮 路 绾圭悊 路 寰粦绉诲厛鍏</small></div>
+            <div className="dynamic-state"><span>鍏变韩鎺ヨЕ鐘舵€</span><strong>浣嶇疆 脳 閫熷害 脳 杞借嵎</strong><small>涓嶇‘瀹氭€?/ 缃俊搴</small></div>
+            <div className="dynamic-action"><span>涓诲姩鍔ㄤ綔</span><strong>鎸夊帇 路 婊戝姩 路 婊氬姩</strong><small>淇℃伅澧炵泭 + 瀹夊叏绾︽潫</small></div>
+            <svg viewBox="0 0 760 348" aria-hidden="true"><defs><marker id="dynamicArrowCyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z"/></marker><marker id="dynamicArrowViolet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" height="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z"/></marker></defs><path className="dynamic-link dynamic-cyan" d="M344 70H416"/><path className="dynamic-link dynamic-violet" d="M344 172H416"/><path className="dynamic-link dynamic-coral" d="M600 214V286H468"/><path className="dynamic-link dynamic-return" d="M292 286H178V226"/></svg>
+          </div>
+          <div className="dynamic-eval"><div><span>鎰熺煡灞</span><strong>鍙樺寲妫€鍑烘彁鍓嶉噺</strong><small>浜嬩欢婕忔 路 鏃堕棿瀵归綈</small></div><div><span>鎺у埗灞</span><strong>鎺ヨЕ鏈熶慨姝</strong><small>婊戠Щ鎶戝埗 路 绋冲畾瑁曞害</small></div><div><span>浠诲姟灞</span><strong>淇℃伅鏀剁泭 / 浠ｄ环</strong><small>鎴愬姛鐜?路 鏃堕棿 路 鎹熶激椋庨櫓</small></div></div>
+        </section>
+      </div>
+    </SlideFrame>
+  )
+}
+
+const renderers = [ValueSlide, UniquenessSlide, FrontierSlide, OutlineSlide, TactileContentSlide, SensorMapSlide, PipelineSlide, FusionSlide, TaskValueSlide, ChallengeSlide, FutureSlide, FutureCapabilitySlide, FutureEdgeSlide, FutureBrainSlide, FutureDynamicSlide]
+
+function EvidenceDrawer({ slideIndex, open, onClose }: { slideIndex: number; open: boolean; onClose: () => void }) {
+  const meta = slides[slideIndex]
+  return (
+    <aside className={`evidence-drawer ${open ? 'open' : ''}`} aria-hidden={!open} aria-label="璇佹嵁涓庢潵婧">
+      <div className="drawer-head">
+        <div><span>EVIDENCE / SOURCE</span><h2>璇佹嵁涓庢潵婧</h2></div>
+        <button className="icon-button" onClick={onClose} aria-label="鍏抽棴璇佹嵁闈㈡澘"><Icon name="close" /></button>
+      </div>
+      <div className="drawer-body">
+        <EvidenceBadge kind={meta.evidenceKind} label={meta.evidenceLabel} />
+        <h3>{meta.title}</h3>
+        <section><span>璁烘枃瀹氫綅</span>{meta.locations.map(item => <p key={item}>{item}</p>)}</section>
+        <section><span>BibTeX keys</span><div className="source-keys">{meta.sources.map(source => <code key={source}>{source}</code>)}</div></section>
+        <section className="scope-note"><span>灞曠ず杈圭晫</span><p>{meta.note}</p></section>
+        <p className="drawer-foot">姝ｅ紡鐗堟湰灏嗕粠宸插畾绋跨殑 <code>ref.bib</code> 鐢熸垚瀹屾暣涔︾洰淇℃伅锛涘綋鍓嶅師鍨嬩互閿悕渚夸簬鏍稿銆</p>
+      </div>
+    </aside>
+  )
+}
+
+function HelpOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
+  if (!open) return null
+  const shortcuts = [['鈫?/ 鈫?, '鍒囨崲灞忓箷'], ['Space', '涓嬩竴灞?], ['T', '鍒囨崲瑙嗚涓婚'], ['E', '璇佹嵁涓庢潵婧?], ['F', '鍏ㄥ睆'], ['H / Esc', '甯姪 / 鍏抽棴']]
+  return (
+    <div className="help-overlay" role="dialog" aria-modal="true" aria-label="蹇嵎閿">
+      <button className="help-backdrop" onClick={onClose} aria-label="鍏抽棴" />
+      <div className="help-card"><div className="drawer-head"><div><span>PRESENTATION CONTROL</span><h2>婕旂ず蹇嵎閿</h2></div><button className="icon-button" onClick={onClose}><Icon name="close" /></button></div><div className="shortcut-grid">{shortcuts.map(([key, value]) => <div key={key}><kbd>{key}</kbd><span>{value}</span></div>)}</div><p>鍘熷瀷鎸?16:9 妗岄潰鎶曞奖浼樺厛璁捐锛涙墍鏈夊唴瀹瑰潎鍙敤鎸夐挳鎿嶄綔銆</p></div>
+    </div>
+  )
+}
+
+export default function App() {
+  const initial = Math.max(0, slides.findIndex(item => `#${item.id}` === window.location.hash))
+  const [current, setCurrent] = useState(initial)
+  const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem('tactile-prototype-theme') as Theme) || 'lab')
+  const [evidence, setEvidence] = useState(false)
+  const [help, setHelp] = useState(false)
+
+  const go = useCallback((index: number) => {
+    const next = Math.max(0, Math.min(slides.length - 1, index))
+    setCurrent(next)
+    setEvidence(false)
+    window.history.replaceState(null, '', `#${slides[next].id}`)
+  }, [])
+
+  const toggleTheme = useCallback(() => setTheme(value => value === 'lab' ? 'atlas' : 'lab'), [])
+  const toggleFullscreen = useCallback(async () => {
+    if (!document.fullscreenElement) await document.documentElement.requestFullscreen()
+    else await document.exitFullscreen()
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('tactile-prototype-theme', theme)
+  }, [theme])
+
+
+  useEffect(() => {
+    const syncFromHash = () => {
+      const index = slides.findIndex(item => `#${item.id}` === window.location.hash)
+      if (index >= 0) {
+        setCurrent(index)
+        setEvidence(false)
+      }
+    }
+    window.addEventListener('hashchange', syncFromHash)
+    return () => window.removeEventListener('hashchange', syncFromHash)
+  }, [])
+
+  useEffect(() => {
+    const handler = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement
+      if (event.key === 'Escape') { setEvidence(false); setHelp(false); return }
+      if (help || event.defaultPrevented || event.repeat || event.ctrlKey || event.metaKey || event.altKey) return
+      if (target.closest('button, a, input, textarea, select, [role="button"], [contenteditable="true"]')) return
+      if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'PageDown') { event.preventDefault(); go(current + 1) }
+      if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); go(current - 1) }
+      if (event.key.toLowerCase() === 't') toggleTheme()
+      if (event.key.toLowerCase() === 'e') setEvidence(value => !value)
+      if (event.key.toLowerCase() === 'h') setHelp(value => !value)
+      if (event.key.toLowerCase() === 'f') void toggleFullscreen()
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [current, go, help, toggleFullscreen, toggleTheme])
+
+  const CurrentSlide = useMemo(() => renderers[current], [current])
+  return (
+    <div className={`app theme-${theme}`}>
+      <header className="app-header">
+        <div className="brand-mark" aria-label="闈㈠悜鍏疯韩浜や簰鐨勮Е瑙夋劅鐭">
+          <svg viewBox="0 0 38 38" aria-hidden="true"><path d="M7 19c0-6.7 5.3-12 12-12s12 5.3 12 12-5.3 12-12 12S7 25.7 7 19Z"/><path d="M12 19c0-3.9 3.1-7 7-7s7 3.1 7 7-3.1 7-7 7-7-3.1-7-7Z"/><circle cx="19" cy="19" r="2.2"/></svg>
+          <div><strong>鍏疯韩瑙﹁</strong><span>TACTILE PERCEPTION FOR EMBODIED INTERACTION</span></div>
+        </div>
+        <div className="header-center"><span>缁煎悎鑰冭瘯璁烘枃姹囨姤</span><i /> <span>鍔ㄦ€佹紨绀?路 {String(slides.length).padStart(2, '0')} SCENES</span></div>
+        <nav className="header-actions" aria-label="婕旂ず鎺у埗">
+          <button onClick={() => setEvidence(true)} title="璇佹嵁涓庢潵婧愶紙E锛"><Icon name="evidence"/><span>渚濇嵁</span></button>
+          <button onClick={toggleTheme} title="鍒囨崲涓婚锛圱锛"><Icon name="theme"/><span>{theme === 'lab' ? '鍥捐氨' : '鏆楀満'}</span></button>
+          <button onClick={() => void toggleFullscreen()} title="鍏ㄥ睆锛團锛"><Icon name="fullscreen"/></button>
+          <button onClick={() => setHelp(true)} title="蹇嵎閿紙H锛"><Icon name="help"/></button>
+        </nav>
+      </header>
+
+      <nav className="chapter-rail" aria-label="鍘熷瀷灞忓箷">
+        <div className="rail-line" />
+        {slides.map((slide, index) => (
+          <button key={slide.id} className={current === index ? 'active' : ''} onClick={() => go(index)} aria-current={current === index ? 'page' : undefined}>
+            <span>{String(index + 1).padStart(2, '0')}</span><i /><strong>{slide.short}</strong>
+          </button>
+        ))}
+      </nav>
+
+      <main className="slide-viewport" key={slides[current].id}><CurrentSlide /></main>
+
+      <footer className="app-footer">
+        <div className="slide-position"><span>{String(current + 1).padStart(2, '0')}</span><i>/</i><span>{String(slides.length).padStart(2, '0')}</span></div>
+        <div className="progress-track">{slides.map((slide,index)=><button key={slide.id} className={index <= current ? 'passed' : ''} onClick={() => go(index)} aria-label={`杞埌${slide.short}`}><i /></button>)}</div>
+        <div className="footer-hint"><span>鈫?鈫?鍒囨崲</span><span>T 涓婚</span><span>E 渚濇嵁</span></div>
+        <div className="footer-nav"><button onClick={() => go(current - 1)} disabled={current === 0} aria-label="涓婁竴灞">鈫</button><button onClick={() => go(current + 1)} disabled={current === slides.length - 1}>涓嬩竴灞?<span>鈫</span></button></div>
+      </footer>
+
+      <button className={`drawer-scrim ${evidence ? 'show' : ''}`} onClick={() => setEvidence(false)} aria-label="鍏抽棴璇佹嵁闈㈡澘" />
+      <EvidenceDrawer slideIndex={current} open={evidence} onClose={() => setEvidence(false)} />
+      <HelpOverlay open={help} onClose={() => setHelp(false)} />
+    </div>
+  )
+}
+

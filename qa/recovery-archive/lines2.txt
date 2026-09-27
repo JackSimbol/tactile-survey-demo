@@ -1,0 +1,157 @@
+﻿83     { n: '01', tag: 'INTERFACE', title: '接触鏄鍔ㄧ殑鎺ュ彛', body: '动作銆佹搷浣滀笌鍗忎綔鐨勭粨鏋滐紝鏈€缁堢敱接触浜х敓鐨勫姏瀛﹀悗鏋滃喅瀹氥€' },
+84     { n: '02', tag: 'ACTIVE SENSING', title: '触觉由动作产生', body: '鎸夊帇銆佹粦鍔ㄤ笌閲嶆柊接触鏃㈡槸琛屽姩，屼篃鏄富鍔ㄨ幏鍙栬瘉鎹殑鏂瑰紡銆' },
+85     { n: '03', tag: 'BODY MODEL', title: '触觉定义身体边界', body: '浣撹〃触觉涓庢湰浣撴劅瑙夊叡鍚屽尯鍒嗗璞°€佽嚜韬笌接触鑰﹀悎銆' },
+92           <p className="anchor-lede">视觉鎿呴暱接触鍓嶇殑瀹氫綅涓庤鍒掞紱触觉鐩存帴观测接触鐣岄潰姝e湪鍙戠敓鐨勭墿鐞嗕氦鎹€</p>
+93           <div className="principle-heading"><span>FIRST PRINCIPLES / 01—03</span><small>鐐瑰嚮鍛介，屾煡鐪嬪畠濡備綍鏀瑰彉鎰熺煡鈥旇鍔ㄩ棴鐜</small></div>
+103           <div className="anchor-proof"><span className="proof-dot" />涓嶅彲鏇夸唬鎬т笉鍦ㄤ簬鈥滀俊鎭洿澶氣€濓紝鑰屽湪浜庝俊鎭洿鐩存帴銆佹洿鐙壒銆佹洿閲嶈銆</div>
+117             <small>{active === 0 ? '动作鏄惁成功，岀敱接触浜х敓鐨勫姏銆佹粦绉讳笌褰㈠彉鍐冲畾銆' : active === 1 ? '鐩稿悓瀵硅薄浼氬洜閫熷害銆佽浇鑽蜂笌接触鍘嗗彶浜х敓涓嶅悓触觉鍝嶅簲銆' : '鍙湁鍚屾椂鐭ラ亾接触鍙戠敓鍦ㄥ摢閲屻€佽韩浣撳浣曡繍鍔紝鎵嶈兘瑙i噴触觉銆?'}</small>
+119           <div className="stage-bottomline"><span>接触鐣岄潰</span><i /> <span>娉曞悜鍔?路 鍒囧悜鍔?路 寰粦绉?路 褰㈠彉</span><label><span>杞借嵎</span><input aria-label="接触杞借嵎" type="range" min="15" max="95" value={load} onChange={(e) => setLoad(Number(e.target.value))}/><output>{loa
+131     object: { n: '01', label: 'OBJECT', title: '瀵硅薄鍙粰鍑轰竴鍗婃潯浠', body: '鏉愭枡銆佸嚑浣曘€佹俯搴︿笌椤哄簲鎬у弬涓庡搷搴旓紝浣嗕笉鑳借劚绂绘帴瑙︽柟寮忚鐙珛璇诲嚭銆', consequence: '鐩镐技褰㈠彉，屽彲鑳芥潵鑷笉鍚岀殑鍔涒€斿垰搴︾粍鍚' },
+132     action: { n: '02', label: 'ACTION', title: '动作鍐冲畾观测', body: '鎸夊帇銆佹粦鍔ㄣ€佹粴鍔ㄤ笌閲嶆柊接触，屼細涓诲姩鏀瑰彉杞借嵎銆侀€熷害鍜屾縺鍔遍甯︺€', consequence: '鍚屼竴鏉愭枡，屼笉鍚屽姩浣?鈫?涓嶅悓触觉鍝嶅簲' },
+133     body: { n: '03', label: 'BODY', title: '观测渚濋檮身体', body: '接触浣嶇疆蹇呴』涓庡叧鑺備綅濮裤€佽繍鍔ㄩ摼鍜屾湰浣撹浇鑽峰叡鍚岃В閲娿€', consequence: '鑴辩身体鍧愭爣 鈫?淇″彿澶卞幓浣滅敤浣嶇疆' },
+134     history: { n: '04', label: 'HISTORY', title: '鐘舵€佷緷璧栧巻鍙', body: '鍒濊Е銆佹寔缁彈鍔涖€佸井婊戠Щ涓庡啿鍑诲垎甯冨湪涓嶅悓鏃堕棿灏哄害銆', consequence: '鍗曞抚鎴栦綆棰?token 鈫?涓㈠け接触婕斿寲' },
+135     sensor: { n: '05', label: 'EMBODIMENT', title: '鏁版嵁渚濊禆杞戒綋', body: '鏉愭枡銆佺粨鏋勩€侀儴缃蹭綅缃笌浼犳劅鏈虹悊鍏卞悓濉戦€犺Е瑙夋暟鎹€', consequence: '璺ㄨ澶囩洿接触縼绉?鈫?物理鍚箟鍙兘鏀瑰彉' },
+142           <p className="unique-lede">视觉鏇存帴杩戝澶栭儴鍦烘櫙鐨勮繙璺濋噰鏍凤紱触觉鏁版嵁鍒欏湪<strong>鈥滆韩浣撶湡姝g涓婁笘鐣屸€</strong>鏃舵墠琚敓鎴愩€</p>
+152           <p className="unique-footnote"><i />触觉鏄敱动作浜х敓鐨勬潯浠惰娴嬶紝鑰屼笉鏄笌动作鏃犲叧鐨勫璞″揩鐓с€</p>
+156           <div className="comparison-head"><span>OBSERVATION STRUCTURE</span><strong>鍚屾牱鏄€滄劅鐭モ€濓紝鏁版嵁鏄浣曚骇鐢熺殑，</strong></div>
+158             <div className="modality-label"><span>VISION</span><h3>视觉</h3><p>杩滆窛銆佽繛缁€佸満鏅腑蹇</p></div>
+164             <div className="data-card"><span>甯歌琛ㄧず</span><strong>瑙勫垯鍍忕礌闃靛垪</strong><small>瀵硅薄鍦ㄧ浉鏈哄潗鏍囦腑鐨勫瑙傚揩鐓</small></div>
+168             <div className="modality-label"><span>TOUCH</span><h3>触觉</h3><p>灞€閮ㄣ€侀棿姝囥€佽韩浣撲腑蹇</p></div>
+171               <small>接触 / 褰㈠彉 / 鐑川浼犻€</small>
+173             <div className="data-card"><span>观测缁撴瀯</span><strong>寮傛瀯鏃剁┖淇″彿</strong><small>接触鐘舵€?脳 身体浣嶇疆 脳 探索动作</small></div>
+177             <div><b>缁熶竴鍥惧儚杈撳叆</b><i>浼氭姽骞宠韩浣撴嫇鎵</i></div>
+179             <div><b>璺ㄨ澶囩洿接触縼绉</b><i>浼氭贩娣嗕笉鍚屼紶鎰熺粨鏋</i></div>
+190     { n: '01', label: '鎰熺煡鎶€鏈増鍥', en: 'SENSING LANDSCAPE', title: '鍏堝洖绛旓細触觉濡備綍琚祴閲忥紵', body: '鎸変换鍔¢渶姹傛⒊鐞嗕笉鍚屾劅鐭ヨ寖寮忥紝鐪嬪埌鏉愭枡銆佺粨鏋勪笌缂栫爜鏂瑰紡涔嬮棿鐨勮竟鐣屻€', accent: 'cyan', next: '浼犳劅鍣ㄣ€佷紶鎰熻寖寮忎笌鎬ц兘鎸囨爣' },
+191     { n: '02', label: '鎰熺煡 鈫?琛屽姩', en: 'FROM CONTACT TO ACTION', title: '鍐嶅洖绛旓細淇″彿濡備綍鍙樻垚琛屽姩，', body: '娌跨潃接触銆佽鍑恒€佺粍缁囥€佺悊瑙d笌控制，岃瀵熻Е瑙夊浣曞拰涓嬫父鎶€鏈舰鎴愮郴缁熼棴鐜€', accent: 'coral', next: '绯荤粺閾捐矾涓庣患鍚堝簲鐢ㄥ満鏅' },
+192     { n: '03', label: '鏈潵灞曟湜', en: 'EMBODIED FUTURE', title: '鏈€鍚庡洖绛旓細涓嬩竴浠g郴缁熼暱浠€涔堟牱，', body: '鎶婃劅鐭ャ€佸鐞嗐€佺悊瑙c€佽鍒掋€佹帶鍒剁粺涓€涓哄彲璁$畻銆佸彲浜や簰銆佸彲婕斿寲鐨勫叿韬Е瑙夌缁忕郴缁熴€', accent: 'violet', next: '鍒嗗竷寮忛棴鐜笌鎶€鏈矾绾' },
+201           <p>浠庢劅鐭ャ€佺悊瑙e埌闂幆浜や簰，涗粠鍣ㄤ欢銆佺郴缁熷埌具身鏅鸿兘</p>
+221     mechanics: { n: '01', label: '鏈烘触觉', en: 'MECHANICS', summary: '瀵瑰姏鍜屾帴瑙︾殑鐩存帴鎰熺煡，氭帴瑙︿簨浠躲€侀潰绉€佸舰鎬佷笌鐘舵€', signals: '娉曞悜 / 鍒囧悜 / 鍔涚煩 / 鍘嬪己 / 闈㈢Н', task: '鎶撳彇稳定銆佹帴瑙﹀畾浣嶃€佸姏控制' },
+222     compliance: { n: '02', label: '椤哄簲鎬', en: 'COMPLIANCE', summary: '閫氳繃鍔涒€斾綅绉烩€旀椂闂村叧绯伙紝鎺ㄦ柇瀵硅薄鐨勮蒋纭笌鍙樺舰銆', signals: '鍒氬害 / 寮规€?/ 濉戞€?/ 榛忓脊鎬?/ 闃诲凹', task: '杞墿浣撴搷浣溿€侀鍝佸鐞嗐€佹煍椤烘帴瑙' },
+223     vibration: { n: '03', label: '寰尟鍔ㄤ笌绾圭悊', en: 'VIBRATION & TEXTURE', summary: '婊戝姩浜х敓鐨勯珮棰戝搷搴旀彮绀虹矖绯欏害銆佹潗璐ㄤ笌鍒濆婊戠Щ銆', signals: '棰戣氨 / 绮楃硻搴?/ 绾圭悊 / 鎽╂摝 / 寰粦绉', task: '鏉愯川杈ㄨ瘑銆佹粦绉婚璀︺€佷富鍔ㄦ帰绱' },
+224     thermal: { n: '04', label: '鐑', en: 'THERMAL', summary: '接触涓殑娓╁害涓庣儹浼犻€掔壒鎬э紝鏄墿浣撲笌鐜鐨勭儹瀛︽寚绾广€', signals: '娓╁害 / 娓╁害鍒嗗竷 / 鐑祦 / 鐑 / 鐑墿鏁', task: '鐑睘鎬ц鲸璇嗐€佽嚜鐒朵氦浜掋€佹搷浣滃畨鍏' },
+225     interface: { n: '05', label: '鐣岄潰鐘舵€', en: 'INTERFACE STATE', summary: '娑茶啘銆佹箍娑︺€侀粡闄勫拰姹℃煋鏀瑰彉接触鐣岄潰鐨勭湡瀹炴潯浠躲€', signals: '婀挎鼎 / 娑蹭綋 / 榛忛檮 / 姣涚粏 / 姹℃煋', task: '闃叉粦鎶撳彇銆佹恫浣撴搷浣溿€佺晫闈㈠垽鏂' },
+226     chemical: { n: '06', label: '接触鍖栧', en: 'CONTACT CHEMISTRY', summary: '接触寮忔垨杩戝満鍖栧淇℃伅，屾墿灞曡Е瑙夊鐗╄川鐘舵€佺殑鍒ゆ柇銆', signals: 'pH / 鐩愬害 / 绯栧害 / 鎸ュ彂鐗?/ 鑵愯殌鎬', task: '椋熷搧銆佸疄楠屽銆佸尰鐤椾笌鐜宸℃' },
+227     protection: { n: '07', label: '鐤肩棝涓庢崯浼ら闄', en: 'PROTECTION', summary: '鎶婅繃杞姐€佸啿鍑汇€佽秴娓╁拰澶逛激椋庨櫓鏁村悎鎴愪笉鍙秺杩囩殑杈圭晫銆', signals: '鍐插嚮 / 杩囪浇 / 瓒呮俯 / 纾ㄦ崯 / 澶逛激椋庨櫓', task: '鍙嶅皠淇濇姢銆佷汉鏈哄畨鍏ㄣ€佽澶囪嚜淇' },
+228     proprioception: { n: '08', label: '鏈綋触觉', en: 'PROPRIOCEPTION', summary: '身体鍐呴儴鐨勪綅濮裤€佽繍鍔ㄤ笌鍐呭姏，屼负接触淇″彿璧嬩簣杩愬姩鏉′欢鍜屾湰浣撳潗鏍囥€', signals: '鍏宠妭瑙?/ 閫熷害 / 鎵煩 / 鑵卞紶鍔?/ 鏈浣嶅Э', task: '身体寤烘ā銆佺浉瀵硅繍鍔ㄥ垽鏂€佺簿瀵嗘搷浣' },
+237           <p>触觉鏄櫤鑳戒綋鍦ㄨ韩浣撹〃闈㈡垨身体鍐呴儴，岄€氳繃接触銆佸舰鍙樸€佺儹璐ㄤ紶閫掑強鏈烘鑰﹀悎绛夊緱鍒扮殑銆佸叧浜庤嚜韬?鐜浜や簰鐘舵€佺殑澶氭ā鎬佹劅鐭ャ€傚叾鐩殑涓嶆槸鍗曠函璇嗗埆鈥滄懜鍒颁簡浠€涔堚€濓紝鑰屾槸浼拌，氭帴瑙︽槸鍚﹀彂鐢熴€佸彂鐢熺殑浣嶇疆鍜屽嚑浣曞叧绯汇€佹帴瑙﹂潰鍙戠敓鐨勭墿鐞嗕氦鎹互鍙婁氦浜掑璞$殑鐘舵€佺瓑銆</p>
+238           <div className="content-questions"><span><b>01</b><strong>鍙戠敓浜嗕粈涔堬紵</strong><small>接触 路 鍙楀姏 路 鍙樺舰 路 婊戠Щ</small></span><span><b>02</b><strong>瀵硅薄鏄粈涔堬紵</strong><small>杞‖ 路 鏉愯川 路 娓╁害 路 鐣岄潰</small></span><span><b>03</b><strong>身体鑳藉惁鎵垮彈，</strong><small>鏈綋
+239           <div className="content-takeaway"><i />鍏被鎰熺煡鍏卞悓鍥炵瓟涓€涓棶棰橈細浜や簰姝e湪濡備綍鏀瑰彉銆</div>
+243           <div className="content-taxonomy"><div className="content-core"><span>TOUCH</span><strong>浜や簰鐘舵€</strong><small>身体涓庣幆澧冪殑鍏卞悓缁撴灉</small></div>
+246           <div className="content-detail" aria-live="polite"><div><span>{current.n} / {current.en}</span><h3>{current.label}</h3></div><p>{current.summary}</p><dl><div><dt>鍙娴嬮噺</dt><dd>{current.signals}</dd></div><div><dt>具身鐢ㄩ€</dt><dd>{current.task}</dd></div
+268           <div className="axis axis-x"><strong>缂栫爜鏂瑰紡</strong><div className="axis-range"><span>鐘舵€佺紪鐮</span><i /><span>鍙樺寲 / 浜嬩欢缂栫爜</span></div></div>
+270           <div className="quadrant q-state"><b>鎸佺画璇诲嚭</b><span>闈欐€?/ 鍑嗛潤鎬</span></div>
+271           <div className="quadrant q-event"><b>鍙樺寲瑙﹀彂</b><span>鍔ㄦ€?/ 鐬€</span></div>
+272           <div className="quadrant q-gap"><b>鍘熺悊鎬х┖缂</b><span>鐩存帴鎹㈣兘闅句互鎸佺画淇濇寔闈欐€佺姸鎬</span></div>
+290           <div className="fit-legend"><i />褰撳墠浠诲姟鐨勪紭鍔垮尯鍩?<span>* 缂栫爜鑼冨紡，岄潪鍗曚竴鎹㈣兘鏈虹悊</span></div>
+306           <blockquote>閫夋嫨浼犳劅鍣紝鏈川涓婃槸浠诲姟淇℃伅闇€姹備笌具身閮ㄧ讲鏉′欢鍏卞悓绾︽潫鐨勭郴缁熻璁°€</blockquote>
+318     coverage: { n: '01', title: '瑕嗙洊涓庡垎杈ㄧ巼闅句互鍚屾椂婊¤冻', detail: '楂樺垎杈ㄧ巼銆佸ぇ闈㈢Н瑕嗙洊銆佸杞存祴閲忋€佽€愪箙鎬т笌浣庢垚鏈浉浜掔壍鍒躲€', chain: '鏉愭枡 / 缁撴瀯 / 灏佽', metric: 'SPACE 脳 RESOLUTION' },
+319     latency: { n: '02', title: '绔埌绔欢杩熶粛鏃犳硶鏀拺蹇€熷弽灏', detail: '鏉愭枡鍝嶅簲銆佽鍑恒€佷紶杈撱€佹帹鐞嗕笌鎵ц鍏卞悓鍐冲畾闂幆鏃跺欢銆', chain: '璇诲嚭 / 浼犺緭 / 控制', metric: 'LATENCY 鈫?REFLEX' },
+320     data: { n: '03', title: '鐪熷疄接触鏁版嵁鏄傝吹涓旈毦鏍囨敞', detail: '鍔涖€佹粦绉汇€佹崯浼ゃ€佹潗鏂欏弬鏁扮瓑鐪熷€奸毦浠ュ湪鍚屼竴鏃跺埢鍚屾鑾峰緱銆', chain: '閲囬泦 / 鏍囨敞 / 璇勪环', metric: 'GROUND TRUTH' },
+321     transfer: { n: '04', title: '鏁版嵁缁撴瀯涓庤韩浣撳舰鎬侀珮搴﹁€﹀悎', detail: '璺ㄨ澶囥€佽法鏈哄櫒浜鸿縼绉绘椂，屼紶鎰熷櫒缁撴瀯涓庢帰绱㈠姩浣滀細鏀瑰彉鏁版嵁璇箟銆', chain: '鏈綋 / 浣嶇疆 / 动作', metric: 'TRANSFER 鈮?COPY' },
+322     sim: { n: '05', title: '浠跨湡杩樼己灏戝彲淇$殑物理妗ユ', detail: '视觉閲嶅缓涓庤Е瑙変豢鐪熶箣闂翠粛缂烘潗鏂欏弬鏁般€佹帴瑙︽眰瑙e拰浼犳劅鍣ㄦ暟瀛楀鐢熴€', chain: '閲嶅缓 / 接触 / 浼犳劅鍣', metric: 'SIMULATION GAP' },
+332           <p>视觉宸茬粡鍙互鍋氭帴瑙﹀墠鐨勮涔夎鍒掞紱鐪熸闄愬埗涓嬩竴姝ョ殑，屾槸鍙潬銆佷綆寤惰繜銆佸彲杩佺Щ鐨勭墿鐞嗗弽棣堛€</p>
+333           <div className="capability-ring" aria-label="具身触觉闇€瑕佹敮鎾戠殑浜旂被鑳藉姏">
+335             <div className="capability-node capability-safety"><span>安全鎬</span><small>涓嶄激瀹?路 鍙繚鎶</small></div>
+336             <div className="capability-node capability-stability"><span>稳定鎬</span><small>澶嶇幇 路 鍙娴</small></div>
+337             <div className="capability-node capability-robust"><span>椴佹鎬</span><small>鎵板姩 路 鍙樺寲閫傚簲</small></div>
+338             <div className="capability-node capability-precision"><span>绮惧瘑鎬</span><small>寰皬璇樊 路 鍙帶</small></div>
+339             <div className="capability-node capability-general"><span>娉涚敤鎬</span><small>璺ㄤ换鍔?路 璺ㄦ湰浣</small></div>
+341           <div className="frontier-principle"><i />闂涓嶅湪鏌愰」鎸囨爣，岃€屽湪鏁存潯鈥滄満姊颁氦浜?鈫?鐘舵€佺悊瑙?鈫?闂幆控制鈥濋摼璺皻鏈棴鍚堛€</div>
+346             {chain.map((item, index) => <div className={`chain-node node-${item}`} key={item}><span>0{index + 1}</span><i /><strong>{item === 'mechanics' ? '鏈烘浜や簰' : item === 'encoding' ? '浼犳劅缂栫爜' : item === 'digital' ? '鏁板瓧鍖栦笌缁勭粐' : item === 'state' ? '鐘舵€佺悊瑙
+367   const faultLabels: Record<Fault, string> = { none: '姝e父閾捐矾', saturation: '骞呭€奸ケ鍜', drift: '鍩虹嚎婕傜Щ', sync: '鏃剁┖閿欎綅' }
+368   const faultMeaning: Record<Fault, string> = { none: '涓嶆敞鍏ュけ鏁堬細瑙傚療淇℃伅濡備綍閫愰樁娈佃缁勭粐骞惰繘鍏ョ瓥鐣ャ€', saturation: '寮烘帴触觉秴杩囧墠绔噺绋嬶紝杈撳嚭琚埅椤讹紱鍚庣画闃舵鏃犳硶鎭㈠琚涪澶辩殑宄板€间笌鍔ㄦ€佽寖鍥淬€', drift: '闆剁偣銆佹俯婕傛垨鍔犺浇鍘嗗彶鏀瑰彉浜嗗熀绾匡紱鍚屼竴接触鍙兘琚В閲婃垚涓嶅悓鐨勫姏鎴栨帴瑙︾姸鎬併€', sync: '触觉銆佽瑙夈€佹湰浣撴垨动作娌℃湁瀵归綈鍒板悓涓€物理鏃跺埢，涚
+373           <button className={mode === 'flow' ? 'active' : ''} onClick={() => setMode('flow')}>鍔熻兘閾</button>
+376         <div className="faults"><span>鍏稿瀷澶辨晥娉ㄥ叆</span>{(['none','saturation','drift','sync'] as Fault[]).map(item => <button key={item} className={fault === item ? 'active' : ''} onClick={() => setFault(item)} title={faultMeaning[item]}>{faultLabels[item]}</bu
+397             <p className="stage-risk"><b className="insight-label">鍏抽敭椋庨櫓</b>{pipeline[active].risk}</p>
+403           <div className="deployment-note"><span>姝d氦缁村害</span><p>鍔熻兘闃舵涓嶇瓑浜庣‖浠朵綅缃€傚悓涓€澶勭悊鍙互璺ㄥ眰閮ㄧ讲，屽彇鍐充簬鏃堕檺銆佷笂涓嬫枃銆佸姛鑰楀拰鍙淮鎶ゆ€с€</p></div>
+414           <div className="deployment-principle"><span>閮ㄧ讲鍘熷垯</span><p><b>涓ユ牸鏃堕檺 / 涓嶅彲閫嗗鐞</b>闈犺繎浼犳劅鍣紱<b>璺ㄩ儴浣?/ 璺ㄦā鎬佹帹鐞</b>闈犺繎涓绘満，涗繚鐣欏彈鎺у師濮嬫暟鎹€氳矾鐢ㄤ簬鏍囧畾銆佽瘖鏂拰妯″瀷鏇存柊銆</p></div>
+428     observe: { n:'01', label:'鐩存帴观测', en:'DIRECT OBSERVATION', title:'鎶婂姩浣滀骇鐢熺殑物理鍚庢灉鍙樻垚接触浜嬪疄', question:'鏈哄櫒浜虹湡姝f帴瑙︿簡浠€涔堬紵', tactile:'接触浣嶇疆銆佷綔鐢ㄥ姏銆佹粦绉汇€佸眬閮ㄥ嚑浣', downstream:'鐘舵€佷及璁?路 接触瀹氫綅 路 鍔?/ 浣嶅Э控制', example:'棣栨接触銆佹姄鍙栧缓绔嬪拰灞€閮ㄥ嚑浣曠害鏉' },
+429     complement: { n:'02', label:'琛ュ厖视觉', en:'VISUAL COMPLEMENT', title:'鍦ㄩ伄鎸°€侀€忔槑鍜屾帴瑙﹀悗视觉閫€鍖栨椂琛ヨ冻淇℃伅', question:'视觉鐪嬩笉鍒扮殑接触鐘舵€佸浣曡纭，', tactile:'琚伄鎸″尯鍩熺殑鍘嬪姏銆佸舰鍙樸€佹帴触觉竟鐣屼笌杞借嵎', downstream:'视觉鈥旇Е瑙夎仈鍚堜及璁?路 澶辫触閲嶆姄 路 灞€閮ㄧ籂閿', example:'鎵嬫寚閬尅鐩爣鍚庝粛鍒ゆ柇鏄惁鎶撶ǔ' },
+430     feedback: { n:'03', label:'楂橀鍙嶉', en:'FAST FEEDBACK', title:'娌垮眬閮ㄧ煭閫氳矾淇婊戠Щ銆佺鎾炰笌鍙楀姏璇樊', question:'动作杩樻潵寰楀強淇鍚楋紵', tactile:'楂橀鍙樺寲銆佸啿鍑汇€佸井婊戠Щ銆佽繃杞', downstream:'鎶撳姏璋冭妭 路 纰版挒鍙嶅皠 路 触觉浼烘湇', example:'鐗╀綋瀹屽叏婊戣惤鍓嶅澶уす鎸佸姏' },
+431     explore: { n:'04', label:'涓诲姩探索', en:'ACTIVE TOUCH', title:'鐢ㄤ笅涓€娆℃帴触觉幏鍙栧瑙傛棤娉曟彁渚涚殑物理璇佹嵁', question:'涓嬩竴娆″簲璇ュ湪鍝噷銆佹€庢牱瑙︾，', tactile:'动作鏉′欢涓嬬殑鍔涒€斾綅绉汇€佹懇鎿︺€佺汗鐞嗕笌娓╁害鍝嶅簲', downstream:'淇℃伅澧炵泭瑙勫垝 路 灞炴€ц鐭?路 涓诲姩触觉', example:'鎸夊帇銆佹粦鍔ㄦ垨婊氬姩鍖哄垎鐩镐技澶栬鏉愭枡' },
+434     state: { n:'A', label:'鏄惧紡鐘舵€佹帴鍙', en:'TACTILE 鈫?STATE 鈫?CONTROLLER', title:'鍏堜及璁$姸鎬侊紝鍐嶄氦缁欐帶鍒跺櫒', input:'鍔?/ 接触浣嶇疆 / 婊戠Щ / 灞€閮ㄥ嚑浣', output:'闃绘姉控制 路 鍔涙帶鍒?路 触觉浼烘湇', note:'鍙В閲娿€佹槗璁剧疆安全绾︽潫，涘彲鑳戒涪澶遍毦浠ユ墜宸ュ畾涔夌殑寰急妯″紡銆' },
+435     policy: { n:'B', label:'澶氭ā鎬佺瓥鐣ユ帴鍙', en:'TACTILE + VISION + PROPRIOCEPTION', title:'鍒嗗埆缂栫爜，屽啀鐢辩瓥鐣ヨ仈鍚堢敓鎴愬姩浣', input:'触觉搴忓垪 + 视觉 / 璇█ / 鏈綋鐘舵€', output:'绛栫暐缃戠粶 路 VLA 路 动作娈嬪樊', note:'淇濈暀瀛︿範绌洪棿，涘繀椤诲鐞嗘椂闂村榻愪笌视觉鐗瑰緛鏀厤銆' },
+436     dual: { n:'C', label:'蹇參鍙岄€氳矾鎺ュ彛', en:'FAST REFLEX + SLOW POLICY', title:'灞€閮ㄥ弽灏勪笌楂樺眰鎺ㄧ悊骞惰宸ヤ綔', input:'杈圭紭绔帴瑙?/ 婊戠Щ / 杩囪浇 + 闀挎椂绋嬪巻鍙', output:'绔晶安全淇 + 楂樺眰浠诲姟瑙勫垝', note:'婊¤冻涓ユ牸鏃堕檺鍙堜繚鐣欏鏉傛帹鐞嗭紱闇€瑕佹槑纭帶鍒舵潈闄愬拰鍥為€€鏈哄埗銆' },
+444           <div className="fusion-intro"><span>FROM TOUCH TO EMBODIED TASK</span><h2>触觉鍦ㄧ郴缁熼噷<br/><em>鎵挎媴浠€涔堜綔鐢紵</em></h2><p>鍏堢湅触觉鍦ㄦ劅鐭モ€斿喅绛栤€旇鍔ㄩ棴鐜腑鐨勫姛鑳戒綅缃紝鍐嶇湅瀹冧互浠€涔堟帴鍙h繘鍏ユ帶鍒跺櫒鎴栫瓥鐣ャ€</p></div>
+448           <div className="fusion-principle"><i/>视觉璐熻矗接触鍓嶅厛楠岋紝鏈綋鎰熻鎻愪緵身体鍧愭爣，岃Е瑙夌'璁ゆ帴瑙﹀悗鐨勭墿鐞嗗悗鏋溿€</div>
+454               <div className="fusion-node fusion-vision"><span>PRE-CONTACT</span><strong>视觉 / 璇█</strong><small>鐩爣鍙戠幇 路 鍏ㄥ眬瀹氫綅 路 动作鍒濆鍖</small></div>
+455               <div className="fusion-node fusion-proprio"><span>BODY STATE</span><strong>鏈綋鎰熻</strong><small>鑷韩浣嶅Э 路 杩愬姩 路 身体鍧愭爣</small></div>
+464             <div className="fusion-interface-detail" aria-live="polite"><div><span>{currentInterface.en}</span><h3>{currentInterface.title}</h3></div><p><b>杈撳叆，</b>{currentInterface.input}</p><p><b>杈撳嚭，</b>{currentInterface.output}</p><p><b>鍏抽敭鏉冭 ，</b>{current
+525             <div><i>03</i><p>棰勬祴涓庝富鍔</p></div><b />
+551     title: '鎰熺煡銆佺悊瑙c€佹墽琛屻€佸啀鎰熺煡',
+552     question: '缁撳悎杞‖浠讹紝鎶婃帴瑙︺€佸弽灏勩€佺悊瑙d笌琛屽姩缁勭粐鎴愪竴鏉¢棴鐜€',
+553     route: '浠庤韩浣撴帴鍙e嚭鍙戯紝灞€閮ㄥ弽灏勫仛绮剧粏控制，岄珮闃舵ā鍨嬪舰鎴愰娴嬨€佽鐭ュ拰涓诲姩接触瑙勫垝銆',
+560     question: '褰㈡垚触觉琛ㄥ緛，岄娴嬫帴瑙﹀悗鏋滐紝鐞嗚В浠诲姟，屼富鍔ㄥ喅绛',
+561     route: '璺ㄦ椂闂淬€佽法閮ㄤ綅鍜岃法妯℃€佺粺涓€琛ㄥ緛銆佽Е瑙変笘鐣屾ā鍨嬩笌浠诲姟椹卞姩鐨勪富鍔ㄦ劅鐭ャ€',
+568     question: '绔晶妫€娴嬨€佺渚ц绠椼€佷綆绾у弽灏',
+569     route: '绔晶浜嬩欢妫€娴嬨€佸弽灏勬帶鍒躲€佸畨鍏ㄧ害鏉熶笌鍙獙璇佺殑鏃堕檺銆',
+576     question: '鎿嶄綔鍜屾帰绱㈠姩浣滐紝鍒嗗竷寮忔劅鍙楀櫒銆佽Е瑙夎緭鍑恒€佸眬閮ㄨ绠椾笌鍙淮鎶や綋琛',
+577     route: '鎰熺煡涓庢墽琛屽叡浜悓涓€身体鐣岄潰，屽苟鍦ㄥ舰鍙樸€佺(鎹熷拰澶ч潰绉儴缃蹭笅鎸佺画宸ヤ綔',
+584     question: '鑾峰彇鏈烘銆佺儹銆佸寲瀛︺€佽繎鍦哄拰鏈綋淇℃伅，屽苟閫傚簲澶氱鏅鸿兘浣',
+585     route: '接触浜嬩欢缂栫爜銆佸姩浣滄潯浠跺缓妯′笌闈㈠悜淇℃伅澧炵泭鐨勪富鍔ㄦ帰绱€',
+606         alt="渚ч潰浜轰綋浠ユ墜鎸囪Е纰扮晫闈紝鑴戙€佽剨楂撲笌鎵嬩箣闂寸敱具身触觉閫氳矾杩炴帴"
+705       <button type="button" className="future-hotspot hotspot-brain" aria-label="鏌ョ湅澶ц剳，氱悊瑙c€侀娴嬩笌绛栫暐" aria-pressed={focus === 'brain'} aria-controls="future-detail" onClick={() => activate('brain')}><i/><span>澶ц剳</span></button>
+712         <button type="button" className="future-overview-button" onClick={() => onFocus('overview')} aria-pressed={focus === 'overview'}>鍏ㄦ櫙</button>
+713         <button type="button" className="future-play-button" onClick={onPlay} disabled={playing}><span className="play-icon">{playing ? '鈥⑩€⑩€' : '鈻?'}</span>{playing ? '闂幆婕旂ず涓' : playRun > 0 ? '閲嶆柊鎾斁闂幆' : '鎾斁闂幆'}</button>
+715       <div className="future-flow-legend" aria-label="淇℃伅娴佸浘渚"><span className="sensory">鎰熻涓婅</span><span className="reflex">鑴婇珦鍙嶅皠</span><span className="motor">控制涓嬭</span></div>
+744           <p className="future-anchor-thesis">鏈潵鐨勮Е瑙夌郴缁燂紝涓嶅簲鍙槸鏇寸伒鏁忕殑浼犳劅鍣紝鑰屽簲鍍忕缁忕郴缁熶竴鏍风粍缁囨劅鐭ャ€佸弽灏勩€佺悊瑙d笌琛屽姩銆</p>
+757           <p className="future-anchor-note"><i/>鏈枃鍓嶇灮鏋勬兂 路 鍔熻兘绫绘瘮，屼笉鏄敓鐗╃粨鏋勫鍒</p>
+768     { label:'鏈烘', detail:'娉曞悜 / 鍒囧悜鍔?路 接触鍑犱綍 路 寰粦绉', tone:'coral' },
+782     ['鍗遍櫓鐜', '鐑?/ 鍖栧寮傚父妫€鍑轰笌璇姤'],
+783     ['闀挎湡杩愯', '婕傜Щ 路 纾ㄦ崯 路 閲嶆爣瀹?路 闄嶇骇'],
+788         <div className="future-capability-thesis"><span>RECEPTOR 脳 TACTILE BODY</span><strong>涓嶆槸鎶婂崟涓€閫氶亾鏃犻檺鍔犲瘑，岃€屾槸璁╀换鍔¢渶瑕佺殑物理閲忓彲观测，屽苟璁╄繖浜涜娴嬮暱鏈熷睘浜庤韩浣撱€</strong></div>
+791             <header><div><span>4.2 / RECEPTOR</span><h2>瓒呬汉绫讳换鍔$浉鍏虫劅鐭</h2></div><b>鎵╁ぇ鈥滆兘鎰熺煡浠€涔堚€</b></header>
+793               <div className="modality-core"><span>TASK</span><strong>浠诲姟鎵€闇€<br/>接触鐘舵€</strong><small>鍚屼竴身体鍧愭爣 脳 鍚屼竴鏃堕棿鍩哄噯</small></div>
+797             <div className="route-direction"><span>鎶€鏈矾绾</span><strong>澶氭満鍒跺崗鍚</strong><i>鈫</i><strong>鏃剁┖瀵归綈</strong><i>鈫</i><strong>绛栫暐鍙皟鐢ㄧ姸鎬</strong></div>
+800             <header><div><span>4.3 / TACTILE BODY</span><h2>鍙彉褰㈣Е瑙夎韩浣撲笌娉涘湪閮ㄧ讲</h2></div><b>鎵╁ぇ鈥滆兘閮ㄧ讲鍦ㄥ摢閲屸€</b></header>
+806             <div className="route-direction"><span>鎶€鏈矾绾</span><strong>鍏卞舰闆嗘垚</strong><i>鈫</i><strong>鍑犱綍鑷爣瀹</strong><i>鈫</i><strong>鍏ㄧ敓鍛藉懆鏈熺淮鎶</strong></div>
+821     ['鎺ㄧ悊', '鐘舵€佽瘑鍒笌椋庨櫓鍒ゆ柇'],
+825     { n:'01', title:'浼犳劅鈥旇绠椾竴浣撳寲', body:'鍦ㄤ紶鎰熷櫒闄勮繎瀹屾垚琛ュ伩銆佸彉鍖栨娴嬨€佹帴瑙﹀尯鍩熸彁鍙栧拰鍋ュ悍鐩戞祴銆', tags:'妯℃嫙鍓嶇 路 浜嬩欢璇诲嚭 路 MCU / FPGA / NPU' },
+826     { n:'02', title:'蹇參鍙岄€氳矾', body:'蹇€氳矾澶勭悊鍒濊Е銆佸啿鍑汇€佸井婊戠Щ鍜岃繃杞斤紱鎱㈤€氳矾鏁村悎视觉銆佽瑷€銆佹湰浣撲笌闀挎椂鍘嗗彶銆', tags:'灞€閮ㄥ弽灏?路 楂樺眰绛栫暐 路 鏉冮檺浠茶' },
+827     { n:'03', title:'鍒嗗眰鏁版嵁閫氳矾', body:'甯告€佷笂浼犱綆缁寸姸鎬侊紝绐佸彉缂撳瓨楂橀鐗囨，屽紓甯告椂寮€鏀惧彈鎺у師濮嬬獥鍙c€', tags:'浠诲姟淇濇寔鍘嬬缉 路 鍘熷鏃佽矾 路 鎸夐渶甯﹀' },
+828     { n:'04', title:'安全涓庡彲楠岃瘉鎬', body:'鐢ㄧ‖瀹炴椂鐘舵€佹満銆佹帶鍒跺睆闅滄垨鍔涢檺骞呬繚璇佸簳绾匡紝骞朵繚鐣欒Е鍙戣瘉鎹互渚胯拷婧€', tags:'鏈€鍧忓欢杩?路 鍐椾綑 路 安全闄嶇骇' },
+834           <div className="edge-card-head"><span>WHY EDGE?</span><h2>绔晶澶勭悊鐨勫繀瑕佹€</h2><p>婊戠Щ銆佺鎾炪€佸す浼ゅ拰杩囪浇涓嶄細绛夊緟楂樺眰妯″瀷瀹屾垚鎺ㄧ悊銆傜郴缁熷繀椤讳粠浠诲姟鍏佽鐨勬渶鏅氬搷搴旀椂闂村弽鎺ㄦ暣鏉¢摼璺€</p></div>
+836             <div className="deadline-band"><span>物理澶辨晥绐楀彛</span><strong>浜嬩欢鍙戠敓</strong><i/><b>鏈€鏅氬畨鍏ㄥ搷搴</b></div>
+838             <div className="edge-split"><div><span>浠呬笂浼犱富鏈</span><strong>寤惰繜 + 鎶栧姩閫愭绱Н</strong><small>闃靛垪鎵弿銆侀€氫俊銆佽皟搴﹀拰閫氱敤妯″瀷鍏卞悓鍐冲畾灏鹃儴寤惰繜</small></div><div className="edge-fast"><span>绔晶鎰熺煡 + 绔晶鍙嶅皠</span><strong>鍦ㄥ眬閮ㄩ棴鍚堜弗鏍兼椂闄</strong><small>鍏堝舰鎴愭帴瑙?/ 婊戠Щ / 椋庨櫓鐘
+840           <div className="edge-definition"><div><span>AFFERENT</span><strong>绔晶触觉鎰熺煡</strong><small>鎶婂師濮嬩俊鍙峰彉鎴愭帴瑙︺€佹粦绉诲拰椋庨櫓鐘舵€</small></div><i>鈮</i><div><span>REFLEX</span><strong>绔晶鍙嶅皠控制</strong><small>鍦ㄩ珮绾ц鐭ュ畬鎴愬墠鐩存帴浜х敓鍙楅檺灞€閮ㄥ姩浣</small></div></div>
+845             <div className="edge-roadmap-steps" role="tablist" aria-label="鍥涙鎶€鏈矾绾">
+854             <span>蹇參閫氳矾鐨勬帴鍙e绾</span>
+855             <div><strong>楂樺眰涓嬪彂</strong><p>浠诲姟闃舵 路 棰勬湡接触 路 鍏佽鍔涜寖鍥</p></div><i>鈬</i><div><strong>绔晶鎶ュ憡</strong><p>鐪熷疄接触 路 棰勬祴鍋忓樊 路 涓嶇'瀹氬害 / 椋庨櫓</p></div>
+857           <div className="edge-compression"><span>浠诲姟淇濇寔鐜</span><p>鍘嬬缉鍚庝粛闇€淇濇寔<strong>婊戠Щ鎻愬墠閲忋€佹帶鍒剁ǔ瀹氳搴﹀拰寮傚父鍙瘖鏂€</strong>，涗笉鑳藉彧鎶ュ憡鍘嬬缉姣旀垨閲嶅缓璇樊銆</p></div>
+859         <section className="edge-metrics-strip"><div><span>SYSTEM VALIDATION</span><strong>璇勪环瀹屾暣鎰熺煡鈥旀墽琛岄摼</strong></div><div><strong>灏鹃儴鍝嶅簲</strong><small>鏈€澶х鍒扮寤惰繜 路 鎶栧姩</small></div><div><strong>安全妫€娴</strong><small>婕忔鐜?路 璇Е鍙戞崯澶</small></div><div><strong>鏁呴
+872       title: '鍏堜繚鐣欒Е瑙夌殑身体璇箟，屽啀璋堢粺涓€鎺ュ彛',
+873       lead: '缁熶竴涓嶆槸鎶婃墍鏈夎緭鍏ュ帇鎴愬悓灏哄 token，岃€屾槸璁╀笉鍚岃澶囥€佽韩浣撲笌浠诲姟鍏变韩鍙榻愮殑鍧愭爣，屽悓鏃朵繚鐣欏彲閫嗙殑搴曞眰缁嗚妭銆',
+878       title: '浠庤瘑鍒€滅幇鍦ㄦ帴瑙︿簡浠€涔堚€濓紝鍒伴娴嬧€滃姩浣滀細閫犳垚浠€涔堚€',
+879       lead: '涓栫晫妯″瀷瑕侀娴嬫帴瑙﹀缓绔嬨€佷綅缃浆绉汇€佸姏涓庡舰鍙樻紨鍖栥€佹粦绉汇€佸崱闃讳笌鎹熶激椋庨櫓，屽苟琛ㄨ揪鏈潵鍒嗗竷鑰岄潪鍗曚竴鐚滄祴銆',
+885       lead: '棰勬祴涓嶈兘鏇夸唬鐪熷疄触觉銆傜瓥鐣ラ渶瑕佹瘮杈冮娴嬩笌瀹炴祴，屽湪璇樊鍑虹幇鏃堕€夋嫨灞€閮ㄤ慨姝c€侀噸瑙勫垝鎴栧畨鍏ㄥ仠鏈恒€',
+894           <div className="future-brain-thesis"><span>4.5 / THE BRAIN</span><strong>触觉鍙湁杩涘叆鈥滃彲棰勬祴銆佸彲姣旇緝銆佸彲鍥為€€鈥濈殑妯″瀷，屾墠浼氭垚涓虹瓥鐣ョ殑物理璇█銆</strong></div>
+895           <nav className="future-brain-tabs" aria-label="4.5 鎶€鏈富棰">
+906           <div className="brain-canvas-header"><span>MODEL 鈫?REALITY</span><strong>棰勬祴鈥旀墽琛屸€旇宸€斾慨姝</strong></div>
+908             <div className="brain-loop-node node-state"><span>褰撳墠鐘舵€</span><strong>触觉琛ㄥ緛</strong><small>浣嶇疆 路 接触 路 鍔涘</small></div>
+909             <div className="brain-loop-node node-predict"><span>动作鏉′欢</span><strong>鏈潵触觉</strong><small>澶氬亣璁?+ 涓嶇'瀹氭€</small></div>
+910             <div className="brain-loop-node node-real"><span>鎵ц鏈</span><strong>鐪熷疄触觉</strong><small>婊戠Щ 路 鍐插嚮 路 杩囪浇</small></div>
+911             <div className="brain-loop-node node-error"><span>鍦ㄧ嚎姣旇緝</span><strong>棰勬祴璇樊</strong><small>鍋忓樊 / 椋庨櫓 / 缃俊搴</small></div>
+912             <div className="brain-loop-node node-correct"><span>鍒嗗眰鍝嶅簲</span><strong>动作淇</strong><small>灞€閮ㄤ慨姝?路 閲嶈鍒?路 鍋滄満</small></div>
+915           <div className="brain-layer-strip"><div><span>HIGH LEVEL</span><strong>鐩爣鐞嗚В / 闀跨▼瑙勫垝</strong></div><div><span>MID LEVEL</span><strong>接触鍚庢灉 / 鍊欓€夊姩浣</strong></div><div><span>LOW LEVEL</span><strong>鐪熷疄鍙嶉 / 安全杈圭晫</strong></div></div>
+916           <div className="brain-eval-strip"><span>璇勪环涓嶆鏄?embedding 鐩镐技搴</span><b>璺ㄦ湰浣撹縼绉</b><b>接触物理棰勬祴</b><b>鐪熷疄闂幆鏀剁泭</b></div>
+929       n: '01', label: '鍔ㄦ€佽Е瑙', en: 'DYNAMIC TOUCH', tone: 'cyan',
+930       title: '淇濈暀鈥滄€庝箞鍙戠敓鈥濓紝鑰屼笉鍙槸鈥滃彂鐢熶簡浠€涔堚€',
+931       lead: '鍒濊Е銆佸啿鍑汇€佹帴瑙﹂潰鎵╁紶銆佸壀鍒囩疮绉€佸井婊戠Щ鍜屾粴鍔ㄩ兘鍙戠敓鍦ㄦ椂闂村簭鍒椾腑，涢潤鎬佸帇鍔涘浘鏃犳硶鍗曠嫭璇存槑鍚庣画浼氭€庢牱銆',
+942       title: '姣忎竴娆℃搷浣滈兘鍚屾椂鏀瑰彉涓栫晫鍜屼笅涓€娆″彲瑙佺殑璇佹嵁',
+943       lead: '鍔ㄦ€佽Е瑙夋彁渚涙墽琛屼腑鐨勫彉鍖栵紝涓诲姩触觉鏀瑰彉接触鏉′欢，涗簩鑰呭叡鍚屾妸触觉浠庤瘑鍒ā鍧楀彉鎴愭寔缁洿鏂扮殑控制闂幆銆',
+944       points: ['鎶撳姏璋冩暣銆佹彃鍏ヤ腑鐨勫井鎽嗗姩銆佹粴鍔ㄤ笌鎿︽嫮鍚屾椂瀹屾垚鎿嶄綔鍜屽睘鎬ц鲸璇', '绛栫暐鐩爣鍚屾椂鍖呭惈浠诲姟杩涘睍銆佷俊鎭敹鐩娿€佹帴瑙﹀畨鍏ㄤ笌探索浠d环', '鍒嗗紑鎶ュ憡鎰熺煡銆佹帶鍒跺拰浠诲姟涓夊眰鏀剁泭，岄伩鍏嶅彧鐢ㄥ垎绫诲噯纭巼璇勪环闂幆'],
+952           <div className="future-dynamic-thesis"><span>4.6 / DYNAMIC + ACTIVE</span><strong>触觉涓嶆槸动作涔嬪悗鐨勮鏁帮紝鑰屾槸动作杩囩▼涓寔缁彉鍖栥€佸苟鑳藉弽杩囨潵鍐冲畾涓嬩竴姝ュ姩浣滅殑璇佹嵁銆</strong></div>
+953           <nav className="future-dynamic-tabs" aria-label="4.6 鎶€鏈富棰">
+961           <p className="future-dynamic-note"><i/>浠h〃璺嚎，欸elSlim / Tac2Pose / Evetac / NeuTouch 鈫?涓诲姩璐濆彾鏂帰绱?/ 触觉浼烘湇 鈫?Tactile Dexterity / UniTacVLA</p>
+963         <section className="future-dynamic-canvas" aria-label="鍔ㄦ€佽Е瑙変笌涓诲姩触觉闂幆">
+964           <div className="dynamic-canvas-header"><span>CONTACT AS A TIME SERIES</span><strong>动作鏀瑰彉接触，屾帴瑙︽洿鏂板姩浣</strong></div>
+967             <div className="dynamic-signal signal-low"><span>浣庨鐘舵€</span><div><i/><i/><i/><i/><i/><i/><i/></div><small>鎸佺画鍘嬪姏 路 褰㈠彉 路 濮挎€</small></div>
+969             <div className="dynamic-state"><span>鍏变韩接触鐘舵€</span><strong>浣嶇疆 脳 閫熷害 脳 杞借嵎</strong><small>涓嶇'瀹氭€?/ 缃俊搴</small></div>
+973           <div className="dynamic-eval"><div><span>鎰熺煡灞</span><strong>鍙樺寲妫€鍑烘彁鍓嶉噺</strong><small>浜嬩欢婕忔 路 鏃堕棿瀵归綈</small></div><div><span>控制灞</span><strong>接触鏈熶慨姝</strong><small>婊戠Щ鎶戝埗 路 稳定瑁曞害</small></div><div><span>浠诲姟灞</span><strong>淇℃伅鏀剁泭 / 浠d环</strong><smal
+985     <aside className={`evidence-drawer ${open ? 'open' : ''}`} aria-hidden={!open} aria-label="璇佹嵁涓庢潵婧">
+987         <div><span>EVIDENCE / SOURCE</span><h2>璇佹嵁涓庢潵婧</h2></div>
+996         <p className="drawer-foot">姝e紡鐗堟湰灏嗕粠宸插畾绋跨殑 <code>ref.bib</code> 鐢熸垚瀹屾暣涔︾洰淇℃伅，涘綋鍓嶅師鍨嬩互閿悕渚夸簬鏍稿銆</p>
+1008       <div className="help-card"><div className="drawer-head"><div><span>PRESENTATION CONTROL</span><h2>婕旂ず蹇嵎閿</h2></div><button className="icon-button" onClick={onClose}><Icon name="close" /></button></div><div className="shortcut-grid">{shortcuts.map(([key, 
+1084         <div className="brand-mark" aria-label="闈㈠悜具身浜や簰鐨勮Е瑙夋劅鐭">
+1088         <div className="header-center"><span>缁煎悎鑰冭瘯璁烘枃姹囨姤</span><i /> <span>鍔ㄦ€佹紨绀?路 {String(slides.length).padStart(2, '0')} SCENES</span></div>
+1090           <button onClick={() => setEvidence(true)} title="璇佹嵁涓庢潵婧愶紙E，"><Icon name="evidence"/><span>渚濇嵁</span></button>

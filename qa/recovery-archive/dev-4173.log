@@ -1,0 +1,1045 @@
+
+> tactile-presentation-prototype@0.1.0 dev
+> vite --host 127.0.0.1 --port 4173
+
+
+  [32m[1mVITE[22m v6.1.0[39m  [2mready in [0m[1m605[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m4173[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m02:20:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m10:48:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m10:49:13[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m10:49:13[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Unexpected token (42:36)
+
+[0m [90m 40 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m{[32m`contact-visual ${tactile ? 'has-touch' : 'vision-only'}`[31m}[33m>[31m
+ [90m 41 |[31m         [33m<[31m[33mimg[31m className[33m=[31m[32m"contact-hero-image"[31m src[33m=[31m[32m"./assets/pixverse_image_425925499782304_1790093887417.png"[31m alt[33m=[31m[32m"鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />[31m
+[31m[1m>[22m[31m[90m 42 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"contact-wash"[31m [33m/[31m[33m>[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 43 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-left"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m鎺у埗閾捐矾[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{tactile [33m?[31m [32m'闂幆'[31m [33m:[31m [32m'寮€鐜?}</strong></div>[31m
+ [90m 44 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-right"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[33mNORMAL[31m [33mLOAD[31m[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{load[33m.[31mtoString()[33m.[31mpadStart([35m2[31m[33m,[31m [32m'0'[31m)}[33m<[31m[33msmall[31m[33m>[31m[33m%[31m[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 45 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"observation-panel vision-panel"[31m aria[33m-[31mlabel[33m=[31m[32m"瑙嗚瑙傛祴绐?>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:42:36
+[33m  40 |        <div className={`contact-visual ${tactile ? 'has-touch' : 'vision-only'}`}>
+  41 |          <img className="contact-hero-image" src="./assets/pixverse_image_425925499782304_1790093887417.png" alt="鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />
+  42 |          <div className="contact-wash" />
+     |                                      ^
+  43 |        <div className="visual-readout top-left"><span>鎺у埗閾捐矾</span><strong>{tactile ? '闂幆' : '寮€鐜?}</strong></div>
+  44 |        <div className="visual-readout top-right"><span>NORMAL LOAD</span><strong>{load.toString().padStart(2, '0')}<small>%</small></strong></div>[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.unexpected (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6642:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4587:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4594:23)
+      at TypeScriptParserMixin.jsxParseAttribute (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4670:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4685:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10066:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4680:17)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4704:33)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12781:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13350:61)
+[2m10:49:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m10:52:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m10:52:41[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Unexpected token (42:36)
+
+[0m [90m 40 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m{[32m`contact-visual ${tactile ? 'has-touch' : 'vision-only'}`[31m}[33m>[31m
+ [90m 41 |[31m         [33m<[31m[33mimg[31m className[33m=[31m[32m"contact-hero-image"[31m src[33m=[31m[32m"./assets/pixverse_image_425925499782304_1790093887417.png"[31m alt[33m=[31m[32m"鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />[31m
+[31m[1m>[22m[31m[90m 42 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"contact-wash"[31m [33m/[31m[33m>[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 43 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-left"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m鎺у埗閾捐矾[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{tactile [33m?[31m [32m'闂幆'[31m [33m:[31m [32m'寮€鐜?}</strong></div>[31m
+ [90m 44 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-right"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[33mNORMAL[31m [33mLOAD[31m[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{load[33m.[31mtoString()[33m.[31mpadStart([35m2[31m[33m,[31m [32m'0'[31m)}[33m<[31m[33msmall[31m[33m>[31m[33m%[31m[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 45 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"observation-panel vision-panel"[31m aria[33m-[31mlabel[33m=[31m[32m"瑙嗚瑙傛祴绐?>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:42:36
+[33m  40 |        <div className={`contact-visual ${tactile ? 'has-touch' : 'vision-only'}`}>
+  41 |          <img className="contact-hero-image" src="./assets/pixverse_image_425925499782304_1790093887417.png" alt="鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />
+  42 |          <div className="contact-wash" />
+     |                                      ^
+  43 |        <div className="visual-readout top-left"><span>鎺у埗閾捐矾</span><strong>{tactile ? '闂幆' : '寮€鐜?}</strong></div>
+  44 |        <div className="visual-readout top-right"><span>NORMAL LOAD</span><strong>{load.toString().padStart(2, '0')}<small>%</small></strong></div>[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.unexpected (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6642:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4587:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4594:23)
+      at TypeScriptParserMixin.jsxParseAttribute (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4670:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4685:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10066:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4680:17)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4704:33)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12781:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13350:61)
+[2m10:55:21[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m10:55:21[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Unterminated string constant. (43:93)
+
+[0m [90m 41 |[31m         [33m<[31m[33mimg[31m className[33m=[31m[32m"contact-hero-image"[31m src[33m=[31m[32m"./assets/pixverse_image_425925499782304_1790093887417.png"[31m alt[33m=[31m[32m"触觉手套接触物体"[31m [33m/[31m[33m>[31m
+ [90m 42 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"contact-wash"[31m [33m/[31m[33m>[31m
+[31m[1m>[22m[31m[90m 43 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-left"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m鎺у埗閾捐矾[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{tactile [33m?[31m [32m'闂幆'[31m [33m:[31m [32m'寮€鐜?}</strong></div>[31m
+ [90m    |[31m                                                                                              [31m[1m^[22m[31m
+ [90m 44 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-right"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[33mNORMAL[31m [33mLOAD[31m[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{load[33m.[31mtoString()[33m.[31mpadStart([35m2[31m[33m,[31m [32m'0'[31m)}[33m<[31m[33msmall[31m[33m>[31m[33m%[31m[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 45 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"observation-panel vision-panel"[31m aria[33m-[31mlabel[33m=[31m[32m"瑙嗚瑙傛祴绐?>[31m
+ [90m 46 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"observation-head"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[35m01[31m [33m/[31m [33mVISUAL[31m [33mOBSERVATION[31m[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mb[31m[33m>[31m[33mCAMERA[31m[33m<[31m[33m/[31m[33mb[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:43:93
+[33m  41 |          <img className="contact-hero-image" src="./assets/pixverse_image_425925499782304_1790093887417.png" alt="触觉手套接触物体" />
+  42 |          <div className="contact-wash" />
+  43 |        <div className="visual-readout top-left"><span>鎺у埗閾捐矾</span><strong>{tactile ? '闂幆' : '寮€鐜?}</strong></div>
+     |                                                                                               ^
+  44 |        <div className="visual-readout top-right"><span>NORMAL LOAD</span><strong>{load.toString().padStart(2, '0')}<small>%</small></strong></div>
+  45 |        <div className="observation-panel vision-panel" aria-label="瑙嗚瑙傛祴绐?>[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at Object.unterminated (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:5687:20)
+      at readStringContents (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:5429:16)
+      at TypeScriptParserMixin.readString (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6521:9)
+      at TypeScriptParserMixin.getTokenFromCode (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6281:14)
+      at TypeScriptParserMixin.getTokenFromCode (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4815:11)
+      at TypeScriptParserMixin.getTokenFromCode (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10010:11)
+      at TypeScriptParserMixin.nextToken (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:5805:10)
+      at TypeScriptParserMixin.next (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:5715:10)
+      at TypeScriptParserMixin.eat (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:5719:12)
+      at TypeScriptParserMixin.expect (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6921:15)
+      at TypeScriptParserMixin.parseConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10918:12)
+      at TypeScriptParserMixin.parseConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9626:18)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10911:17)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4650:31)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4729:36)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+[2m10:58:44[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m10:58:44[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Unexpected token (49:10)
+
+[0m [90m 47 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"camera-view"[31m[33m>[31m
+ [90m 48 |[31m           [33m<[31m[33mdiv[31m className[33m=[31m[32m"camera-frame"[31m[33m>[31m[33m<[31m[33mspan[31m className[33m=[31m[32m"camera-crosshair"[31m[33m>[31m锛[33m<[31m[90m//span><span className="occlusion-mask" /><span className="occlusion-mark">?</span><small>CONTACT SURFACE<br/>NOT OBSERVABLE</small></div>[31m
+[31m[1m>[22m[31m[90m 49 |[31m           [33m<[31m[33mdiv[31m className[33m=[31m[32m"camera-lens-line"[31m[33m>[31m[33m<[31m[33mi[31m [35m/>瑙嗙嚎琚寚鑵规埅鏂</[31m[33m/[31mdiv[33m>[31m
+ [90m    |[31m           [31m[1m^[22m[31m
+ [90m 50 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 51 |[31m       [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 52 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"observation-panel tactile-panel"[31m aria[33m-[31mlabel[33m=[31m[32m"瑙﹁瑙傛祴绐"[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:49:10
+[33m  47 |          <div className="camera-view">
+  48 |            <div className="camera-frame"><span className="camera-crosshair">锛<//span><span className="occlusion-mask" /><span className="occlusion-mark">?</span><small>CONTACT SURFACE<br/>NOT OBSERVABLE</small></div>
+  49 |            <div className="camera-lens-line"><i />瑙嗙嚎琚寚鑵规埅鏂<//div>
+     |                                                            ^
+  50 |          </div>
+  51 |        </div>[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.unexpected (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6642:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4587:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4594:23)
+      at TypeScriptParserMixin.jsxParseElementName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4603:21)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4679:22)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4704:33)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+[2m10:59:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m10:59:41[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Unexpected token (42:36)
+
+[0m [90m 40 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m{[32m`contact-visual ${tactile ? 'has-touch' : 'vision-only'}`[31m}[33m>[31m
+ [90m 41 |[31m         [33m<[31m[33mimg[31m className[33m=[31m[32m"contact-hero-image"[31m src[33m=[31m[32m"./assets/pixverse_image_425925499782304_1790093887417.png"[31m alt[33m=[31m[32m"鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />[31m
+[31m[1m>[22m[31m[90m 42 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"contact-wash"[31m [33m/[31m[33m>[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 43 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-left"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m鎺у埗閾捐矾[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{tactile [33m?[31m [32m'闂幆'[31m [33m:[31m [32m'寮€鐜?'[31m}[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 44 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-right"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[33mNORMAL[31m [33mLOAD[31m[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{load[33m.[31mtoString()[33m.[31mpadStart([35m2[31m[33m,[31m [32m'0'[31m)}[33m<[31m[33msmall[31m[33m>[31m[33m%[31m[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 45 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"observation-panel vision-panel"[31m aria[33m-[31mlabel[33m=[31m[32m"瑙嗚瑙傛祴绐"[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:42:36
+[33m  41 |          <img className="contact-hero-image" src="./assets/pixverse_image_425925499782304_1790093887417.png" alt="鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />
+  42 |          <div className="contact-wash" />
+  43 |        <div className="visual-readout top-left"><span>鎺у埗閾捐矾</span><strong>{tactile ? '闂幆' : '寮€鐜?'}</strong></div>
+     |                                     ^
+  44 |        <div className="visual-readout top-right"><span>NORMAL LOAD</span><strong>{load.toString().padStart(2, '0')}<small>%</small></strong></div>
+  45 |        <div className="observation-panel vision-panel" aria-label="瑙嗚瑙傛祴绐">[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.unexpected (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6642:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4587:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4594:23)
+      at TypeScriptParserMixin.jsxParseAttribute (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4670:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4685:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10066:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4680:17)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4704:33)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12781:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13350:61)
+[2m10:59:53[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m10:59:53[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Unexpected token (42:36)
+
+[0m [90m 40 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m{[32m`contact-visual ${tactile ? 'has-touch' : 'vision-only'}`[31m}[33m>[31m
+ [90m 41 |[31m         [33m<[31m[33mimg[31m className[33m=[31m[32m"contact-hero-image"[31m src[33m=[31m[32m"./assets/pixverse_image_425925499782304_1790093887417.png"[31m alt[33m=[31m[32m"鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />[31m
+[31m[1m>[22m[31m[90m 42 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"contact-wash"[31m [33m/[31m[33m>[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 43 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-left"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m鎺у埗閾捐矾[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{tactile [33m?[31m [32m'闂幆'[31m [33m:[31m [32m'寮€鐜?'[31m}[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 44 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-right"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[33mNORMAL[31m [33mLOAD[31m[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{load[33m.[31mtoString()[33m.[31mpadStart([35m2[31m[33m,[31m [32m'0'[31m)}[33m<[31m[33msmall[31m[33m>[31m[33m%[31m[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 45 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"observation-panel vision-panel"[31m aria[33m-[31mlabel[33m=[31m[32m"瑙嗚瑙傛祴绐"[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:42:36
+[33m  41 |          <img className="contact-hero-image" src="./assets/pixverse_image_425925499782304_1790093887417.png" alt="鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />
+  42 |          <div className="contact-wash" />
+  43 |        <div className="visual-readout top-left"><span>鎺у埗閾捐矾</span><strong>{tactile ? '闂幆' : '寮€鐜?'}</strong></div>
+     |                                     ^
+  44 |        <div className="visual-readout top-right"><span>NORMAL LOAD</span><strong>{load.toString().padStart(2, '0')}<small>%</small></strong></div>
+  45 |        <div className="observation-panel vision-panel" aria-label="瑙嗚瑙傛祴绐">[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.unexpected (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6642:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4587:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4594:23)
+      at TypeScriptParserMixin.jsxParseAttribute (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4670:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4685:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10066:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4680:17)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4704:33)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12781:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13350:61)
+[2m11:00:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:00:40[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Unexpected token (42:36)
+
+[0m [90m 40 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m{[32m`contact-visual ${tactile ? 'has-touch' : 'vision-only'}`[31m}[33m>[31m
+ [90m 41 |[31m         [33m<[31m[33mimg[31m className[33m=[31m[32m"contact-hero-image"[31m src[33m=[31m[32m"./assets/pixverse_image_425925499782304_1790093887417.png"[31m alt[33m=[31m[32m"鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />[31m
+[31m[1m>[22m[31m[90m 42 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"contact-wash"[31m [33m/[31m[33m>[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 43 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-left"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m鎺у埗閾捐矾[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{tactile [33m?[31m [32m'闂幆'[31m [33m:[31m [32m'寮€鐜?'[31m}[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 44 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-right"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[33mNORMAL[31m [33mLOAD[31m[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{load[33m.[31mtoString()[33m.[31mpadStart([35m2[31m[33m,[31m [32m'0'[31m)}[33m<[31m[33msmall[31m[33m>[31m[33m%[31m[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 45 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"observation-panel vision-panel"[31m aria[33m-[31mlabel[33m=[31m[32m"瑙嗚瑙傛祴绐"[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:42:36
+[33m  41 |          <img className="contact-hero-image" src="./assets/pixverse_image_425925499782304_1790093887417.png" alt="鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />
+  42 |          <div className="contact-wash" />
+  43 |        <div className="visual-readout top-left"><span>鎺у埗閾捐矾</span><strong>{tactile ? '闂幆' : '寮€鐜?'}</strong></div>
+     |                                     ^
+  44 |        <div className="visual-readout top-right"><span>NORMAL LOAD</span><strong>{load.toString().padStart(2, '0')}<small>%</small></strong></div>
+  45 |        <div className="observation-panel vision-panel" aria-label="瑙嗚瑙傛祴绐">[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.unexpected (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6642:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4587:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4594:23)
+      at TypeScriptParserMixin.jsxParseAttribute (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4670:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4685:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10066:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4680:17)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4704:33)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12781:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13350:61)
+[2m11:02:10[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:02:10[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Unexpected token (42:36)
+
+[0m [90m 40 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m{[32m`contact-visual ${tactile ? 'has-touch' : 'vision-only'}`[31m}[33m>[31m
+ [90m 41 |[31m         [33m<[31m[33mimg[31m className[33m=[31m[32m"contact-hero-image"[31m src[33m=[31m[32m"./assets/pixverse_image_425925499782304_1790093887417.png"[31m alt[33m=[31m[32m"鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />[31m
+[31m[1m>[22m[31m[90m 42 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"contact-wash"[31m [33m/[31m[33m>[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 43 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-left"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m鎺у埗閾捐矾[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{tactile [33m?[31m [32m'闂幆'[31m [33m:[31m [32m'寮€鐜?'[31m}[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 44 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-right"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[33mNORMAL[31m [33mLOAD[31m[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{load[33m.[31mtoString()[33m.[31mpadStart([35m2[31m[33m,[31m [32m'0'[31m)}[33m<[31m[33msmall[31m[33m>[31m[33m%[31m[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 45 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"observation-panel vision-panel"[31m aria[33m-[31mlabel[33m=[31m[32m"瑙嗚瑙傛祴绐"[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:42:36
+[33m  41 |          <img className="contact-hero-image" src="./assets/pixverse_image_425925499782304_1790093887417.png" alt="鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />
+  42 |          <div className="contact-wash" />
+  43 |        <div className="visual-readout top-left"><span>鎺у埗閾捐矾</span><strong>{tactile ? '闂幆' : '寮€鐜?'}</strong></div>
+     |                                     ^
+  44 |        <div className="visual-readout top-right"><span>NORMAL LOAD</span><strong>{load.toString().padStart(2, '0')}<small>%</small></strong></div>
+  45 |        <div className="observation-panel vision-panel" aria-label="瑙嗚瑙傛祴绐">[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.unexpected (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6642:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4587:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4594:23)
+      at TypeScriptParserMixin.jsxParseAttribute (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4670:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4685:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10066:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4680:17)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4704:33)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12781:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13350:61)
+[2m11:06:28[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Unexpected token (42:36)
+
+[0m [90m 40 |[39m       [33m<[39m[33mdiv[39m className[33m=[39m{[32m`contact-visual ${tactile ? 'has-touch' : 'vision-only'}`[39m}[33m>[39m
+ [90m 41 |[39m         [33m<[39m[33mimg[39m className[33m=[39m[32m"contact-hero-image"[39m src[33m=[39m[32m"./assets/pixverse_image_425925499782304_1790093887417.png"[39m alt[33m=[39m[32m"鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />[39m
+[31m[1m>[22m[39m[90m 42 |[39m         [33m<[39m[33mdiv[39m className[33m=[39m[32m"contact-wash"[39m [33m/[39m[33m>[39m
+ [90m    |[39m                                     [31m[1m^[22m[39m
+ [90m 43 |[39m       [33m<[39m[33mdiv[39m className[33m=[39m[32m"visual-readout top-left"[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m鎺у埗閾捐矾[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33mstrong[39m[33m>[39m{tactile [33m?[39m [32m'闂幆'[39m [33m:[39m [32m'寮€鐜?'[39m}[33m<[39m[33m/[39m[33mstrong[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m 44 |[39m       [33m<[39m[33mdiv[39m className[33m=[39m[32m"visual-readout top-right"[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m[33mNORMAL[39m [33mLOAD[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33mstrong[39m[33m>[39m{load[33m.[39mtoString()[33m.[39mpadStart([35m2[39m[33m,[39m [32m'0'[39m)}[33m<[39m[33msmall[39m[33m>[39m[33m%[39m[33m<[39m[33m/[39m[33msmall[39m[33m>[39m[33m<[39m[33m/[39m[33mstrong[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m 45 |[39m       [33m<[39m[33mdiv[39m className[33m=[39m[32m"observation-panel vision-panel"[39m aria[33m-[39mlabel[33m=[39m[32m"瑙嗚瑙傛祴绐"[39m[33m>[39m[0m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:42:36
+[33m  41 |          <img className="contact-hero-image" src="./assets/pixverse_image_425925499782304_1790093887417.png" alt="鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />
+  42 |          <div className="contact-wash" />
+  43 |        <div className="visual-readout top-left"><span>鎺у埗閾捐矾</span><strong>{tactile ? '闂幆' : '寮€鐜?'}</strong></div>
+     |                                     ^
+  44 |        <div className="visual-readout top-right"><span>NORMAL LOAD</span><strong>{load.toString().padStart(2, '0')}<small>%</small></strong></div>
+  45 |        <div className="observation-panel vision-panel" aria-label="瑙嗚瑙傛祴绐">[39m
+[2m11:07:55[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Unexpected token (42:36)
+
+[0m [90m 40 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m{[32m`contact-visual ${tactile ? 'has-touch' : 'vision-only'}`[31m}[33m>[31m
+ [90m 41 |[31m         [33m<[31m[33mimg[31m className[33m=[31m[32m"contact-hero-image"[31m src[33m=[31m[32m"./assets/pixverse_image_425925499782304_1790093887417.png"[31m alt[33m=[31m[32m"鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />[31m
+[31m[1m>[22m[31m[90m 42 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"contact-wash"[31m [33m/[31m[33m>[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 43 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-left"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m鎺у埗閾捐矾[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{tactile [33m?[31m [32m'闂幆'[31m [33m:[31m [32m'寮€鐜?'[31m}[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 44 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"visual-readout top-right"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[33mNORMAL[31m [33mLOAD[31m[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{load[33m.[31mtoString()[33m.[31mpadStart([35m2[31m[33m,[31m [32m'0'[31m)}[33m<[31m[33msmall[31m[33m>[31m[33m%[31m[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 45 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"observation-panel vision-panel"[31m aria[33m-[31mlabel[33m=[31m[32m"瑙嗚瑙傛祴绐"[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:42:36
+[33m  41 |          <img className="contact-hero-image" src="./assets/pixverse_image_425925499782304_1790093887417.png" alt="鐏拌壊瑙﹁鎵嬪鎸夊帇闄剁摲鐗╀綋鐨勬帴瑙﹀満鏅? />
+  42 |          <div className="contact-wash" />
+  43 |        <div className="visual-readout top-left"><span>鎺у埗閾捐矾</span><strong>{tactile ? '闂幆' : '寮€鐜?'}</strong></div>
+     |                                     ^
+  44 |        <div className="visual-readout top-right"><span>NORMAL LOAD</span><strong>{load.toString().padStart(2, '0')}<small>%</small></strong></div>
+  45 |        <div className="observation-panel vision-panel" aria-label="瑙嗚瑙傛祴绐">[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.unexpected (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6642:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4587:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4594:23)
+      at TypeScriptParserMixin.jsxParseAttribute (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4670:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4685:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10066:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4680:17)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4704:33)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12781:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13350:61)
+[2m11:16:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:16:12[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Unterminated string constant. (83:62)
+
+[0m [90m 81 |[31m   [36mconst[31m [speed[33m,[31m setSpeed] [33m=[31m useState([35m44[31m)
+ [90m 82 |[31m   [36mconst[31m theses [33m=[31m [
+[31m[1m>[22m[31m[90m 83 |[31m     { n[33m:[31m [32m'01'[31m[33m,[31m tag[33m:[31m [32m'INTERFACE'[31m[33m,[31m title[33m:[31m [32m'鎺ヨЕ鏄鍔ㄧ殑鎺ュ彛'[31m[33m,[31m body[33m:[31m [32m'鍔ㄤ綔銆佹搷浣滀笌鍗忎綔鐨勭粨鏋滐紝鏈€缁堢敱鎺ヨЕ浜х敓鐨勫姏瀛﹀悗鏋滃喅瀹氥€? },[31m
+ [90m    |[31m                                                               [31m[1m^[22m[31m
+ [90m 84 |[31m     { n[33m:[31m [32m'02'[31m[33m,[31m tag[33m:[31m [32m'ACTIVE SENSING'[31m[33m,[31m title[33m:[31m [32m'瑙﹁鐢卞姩浣滀骇鐢?, body: '[31m鎸夊帇銆佹粦鍔ㄤ笌閲嶆柊鎺ヨЕ鏃㈡槸琛屽姩锛屼篃鏄富鍔ㄨ幏鍙栬瘉鎹殑鏂瑰紡銆[33m?[31m }[33m,[31m
+ [90m 85 |[31m     { n[33m:[31m [32m'03'[31m[33m,[31m tag[33m:[31m [32m'BODY MODEL'[31m[33m,[31m title[33m:[31m [32m'瑙﹁瀹氫箟韬綋杈圭晫'[31m[33m,[31m body[33m:[31m [32m'浣撹〃瑙﹁涓庢湰浣撴劅瑙夊叡鍚屽尯鍒嗗璞°€佽嚜韬笌鎺ヨЕ鑰﹀悎銆? },[31m
+ [90m 86 |[31m   ][0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:83:62
+[33m  82 |    const theses = [
+  83 |      { n: '01', tag: 'INTERFACE', title: '鎺ヨЕ鏄鍔ㄧ殑鎺ュ彛', body: '鍔ㄤ綔銆佹搷浣滀笌鍗忎綔鐨勭粨鏋滐紝鏈€缁堢敱鎺ヨЕ浜х敓鐨勫姏瀛﹀悗鏋滃喅瀹氥€? },
+  84 |      { n: '02', tag: 'ACTIVE SENSING', title: '瑙﹁鐢卞姩浣滀骇鐢?, body: '鎸夊帇銆佹粦鍔ㄤ笌閲嶆柊鎺ヨЕ鏃㈡槸琛屽姩锛屼篃鏄富鍔ㄨ幏鍙栬瘉鎹殑鏂瑰紡銆? },
+     |                                    ^
+  85 |      { n: '03', tag: 'BODY MODEL', title: '瑙﹁瀹氫箟韬綋杈圭晫', body: '浣撹〃瑙﹁涓庢湰浣撴劅瑙夊叡鍚屽尯鍒嗗璞°€佽嚜韬笌鎺ヨЕ鑰﹀悎銆? },
+  86 |    ][39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at Object.unterminated (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:5687:20)
+      at readStringContents (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:5429:16)
+      at TypeScriptParserMixin.readString (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6521:9)
+      at TypeScriptParserMixin.getTokenFromCode (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6281:14)
+      at TypeScriptParserMixin.getTokenFromCode (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4815:11)
+      at TypeScriptParserMixin.getTokenFromCode (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10010:11)
+      at TypeScriptParserMixin.nextToken (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:5805:10)
+      at TypeScriptParserMixin.next (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:5715:10)
+      at TypeScriptParserMixin.eat (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:5719:12)
+      at TypeScriptParserMixin.parseObjectProperty (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11983:14)
+      at TypeScriptParserMixin.parseObjPropValue (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12012:100)
+      at TypeScriptParserMixin.parseObjPropValue (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9767:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11949:17)
+      at TypeScriptParserMixin.parseObjectLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11866:21)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11370:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseExprListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12209:18)
+      at TypeScriptParserMixin.parseExprList (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12184:22)
+      at TypeScriptParserMixin.parseArrayLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12091:26)
+      at TypeScriptParserMixin.parseArrayLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9216:24)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11366:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseVar (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13418:91)
+[2m11:19:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:19:52[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Expected corresponding JSX closing tag for <em>. (91:85)
+
+[0m [90m 89 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m{[32m`value-layout value-anchor-layout principle-${active}`[31m}[33m>[31m
+ [90m 90 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"value-copy value-anchor-copy"[31m[33m>[31m
+[31m[1m>[22m[31m[90m 91 |[31m           [33m<[31m[33mdiv[31m className[33m=[31m[32m"anchor-claim"[31m[33m>[31m鍏疯韩鏅鸿兘涓嶈兘鍙湅瑙佷笘鐣岋紝[33m<[31m[33mem[31m[33m>[31m杩樺繀椤绘劅鍙楀埌琛屽姩鐨勫悗鏋溿€[33m?[31m[33m/[31mem[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m    |[31m                                                                                      [31m[1m^[22m[31m
+ [90m 92 |[31m           [33m<[31m[33mp[31m className[33m=[31m[32m"anchor-lede"[31m[33m>[31m瑙嗚鎿呴暱鎺ヨЕ鍓嶇殑瀹氫綅涓庤鍒掞紱瑙﹁鐩存帴瑙傛祴鎺ヨЕ鐣岄潰姝ｅ湪鍙戠敓鐨勭墿鐞嗕氦鎹€[33m<[31m[33m/[31m[33mp[31m[33m>[31m
+ [90m 93 |[31m           [33m<[31m[33mdiv[31m className[33m=[31m[32m"principle-heading"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[33mFIRST[31m [33mPRINCIPLES[31m [33m/[31m [35m01[31m鈥[33m?[31m[35m3[31m[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33msmall[31m[33m>[31m鐐瑰嚮鍛介锛屾煡鐪嬪畠濡備綍鏀瑰彉鎰熺煡鈥旇鍔ㄩ棴鐜[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 94 |[31m           [33m<[31m[33mdiv[31m className[33m=[31m[32m"thesis-list"[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:91:85
+[33m  90 |          <div className="value-copy value-anchor-copy">
+  91 |            <div className="anchor-claim">鍏疯韩鏅鸿兘涓嶈兘鍙湅瑙佷笘鐣岋紝<em>杩樺繀椤绘劅鍙楀埌琛屽姩鐨勫悗鏋溿€?/em></div>
+  92 |            <p className="anchor-lede">瑙嗚鎿呴暱鎺ヨЕ鍓嶇殑瀹氫綅涓庤鍒掞紱瑙﹁鐩存帴瑙傛祴鎺ヨЕ鐣岄潰姝ｅ湪鍙戠敓鐨勭墿鐞嗕氦鎹€</p>
+     |                                                                                    ^
+  93 |            <div className="principle-heading"><span>FIRST PRINCIPLES / 01鈥?3</span><small>鐐瑰嚮鍛介锛屾煡鐪嬪畠濡備綍鏀瑰彉鎰熺煡鈥旇鍔ㄩ棴鐜</small></div>
+  94 |            <div className="thesis-list">[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4745:16)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12781:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13350:61)
+      at TypeScriptParserMixin.parseBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13343:10)
+      at TypeScriptParserMixin.parseBlock (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13331:10)
+      at TypeScriptParserMixin.parseFunctionBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12134:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12120:10)
+[2m11:21:57[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Expected corresponding JSX closing tag for <em>. (91:85)
+
+[0m [90m 89 |[39m       [33m<[39m[33mdiv[39m className[33m=[39m{[32m`value-layout value-anchor-layout principle-${active}`[39m}[33m>[39m
+ [90m 90 |[39m         [33m<[39m[33mdiv[39m className[33m=[39m[32m"value-copy value-anchor-copy"[39m[33m>[39m
+[31m[1m>[22m[39m[90m 91 |[39m           [33m<[39m[33mdiv[39m className[33m=[39m[32m"anchor-claim"[39m[33m>[39m鍏疯韩鏅鸿兘涓嶈兘鍙湅瑙佷笘鐣岋紝[33m<[39m[33mem[39m[33m>[39m杩樺繀椤绘劅鍙楀埌琛屽姩鐨勫悗鏋溿€[33m?[39m[33m/[39mem[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m    |[39m                                                                                      [31m[1m^[22m[39m
+ [90m 92 |[39m           [33m<[39m[33mp[39m className[33m=[39m[32m"anchor-lede"[39m[33m>[39m瑙嗚鎿呴暱鎺ヨЕ鍓嶇殑瀹氫綅涓庤鍒掞紱瑙﹁鐩存帴瑙傛祴鎺ヨЕ鐣岄潰姝ｅ湪鍙戠敓鐨勭墿鐞嗕氦鎹€[33m<[39m[33m/[39m[33mp[39m[33m>[39m
+ [90m 93 |[39m           [33m<[39m[33mdiv[39m className[33m=[39m[32m"principle-heading"[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m[33mFIRST[39m [33mPRINCIPLES[39m [33m/[39m [35m01[39m鈥[33m?[39m[35m3[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33msmall[39m[33m>[39m鐐瑰嚮鍛介锛屾煡鐪嬪畠濡備綍鏀瑰彉鎰熺煡鈥旇鍔ㄩ棴鐜[33m<[39m[33m/[39m[33msmall[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m 94 |[39m           [33m<[39m[33mdiv[39m className[33m=[39m[32m"thesis-list"[39m[33m>[39m[0m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:91:85
+[33m  90 |          <div className="value-copy value-anchor-copy">
+  91 |            <div className="anchor-claim">鍏疯韩鏅鸿兘涓嶈兘鍙湅瑙佷笘鐣岋紝<em>杩樺繀椤绘劅鍙楀埌琛屽姩鐨勫悗鏋溿€?/em></div>
+  92 |            <p className="anchor-lede">瑙嗚鎿呴暱鎺ヨЕ鍓嶇殑瀹氫綅涓庤鍒掞紱瑙﹁鐩存帴瑙傛祴鎺ヨЕ鐣岄潰姝ｅ湪鍙戠敓鐨勭墿鐞嗕氦鎹€</p>
+     |                                                                                    ^
+  93 |            <div className="principle-heading"><span>FIRST PRINCIPLES / 01鈥?3</span><small>鐐瑰嚮鍛介锛屾煡鐪嬪畠濡備綍鏀瑰彉鎰熺煡鈥旇鍔ㄩ棴鐜</small></div>
+  94 |            <div className="thesis-list">[39m
+[2m11:21:57[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Expected corresponding JSX closing tag for <em>. (91:85)
+
+[0m [90m 89 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m{[32m`value-layout value-anchor-layout principle-${active}`[31m}[33m>[31m
+ [90m 90 |[31m         [33m<[31m[33mdiv[31m className[33m=[31m[32m"value-copy value-anchor-copy"[31m[33m>[31m
+[31m[1m>[22m[31m[90m 91 |[31m           [33m<[31m[33mdiv[31m className[33m=[31m[32m"anchor-claim"[31m[33m>[31m鍏疯韩鏅鸿兘涓嶈兘鍙湅瑙佷笘鐣岋紝[33m<[31m[33mem[31m[33m>[31m杩樺繀椤绘劅鍙楀埌琛屽姩鐨勫悗鏋溿€[33m?[31m[33m/[31mem[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m    |[31m                                                                                      [31m[1m^[22m[31m
+ [90m 92 |[31m           [33m<[31m[33mp[31m className[33m=[31m[32m"anchor-lede"[31m[33m>[31m瑙嗚鎿呴暱鎺ヨЕ鍓嶇殑瀹氫綅涓庤鍒掞紱瑙﹁鐩存帴瑙傛祴鎺ヨЕ鐣岄潰姝ｅ湪鍙戠敓鐨勭墿鐞嗕氦鎹€[33m<[31m[33m/[31m[33mp[31m[33m>[31m
+ [90m 93 |[31m           [33m<[31m[33mdiv[31m className[33m=[31m[32m"principle-heading"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[33mFIRST[31m [33mPRINCIPLES[31m [33m/[31m [35m01[31m鈥[33m?[31m[35m3[31m[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33msmall[31m[33m>[31m鐐瑰嚮鍛介锛屾煡鐪嬪畠濡備綍鏀瑰彉鎰熺煡鈥旇鍔ㄩ棴鐜[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 94 |[31m           [33m<[31m[33mdiv[31m className[33m=[31m[32m"thesis-list"[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:91:85
+[33m  90 |          <div className="value-copy value-anchor-copy">
+  91 |            <div className="anchor-claim">鍏疯韩鏅鸿兘涓嶈兘鍙湅瑙佷笘鐣岋紝<em>杩樺繀椤绘劅鍙楀埌琛屽姩鐨勫悗鏋溿€?/em></div>
+  92 |            <p className="anchor-lede">瑙嗚鎿呴暱鎺ヨЕ鍓嶇殑瀹氫綅涓庤鍒掞紱瑙﹁鐩存帴瑙傛祴鎺ヨЕ鐣岄潰姝ｅ湪鍙戠敓鐨勭墿鐞嗕氦鎹€</p>
+     |                                                                                    ^
+  93 |            <div className="principle-heading"><span>FIRST PRINCIPLES / 01鈥?3</span><small>鐐瑰嚮鍛介锛屾煡鐪嬪畠濡備綍鏀瑰彉鎰熺煡鈥旇鍔ㄩ棴鐜</small></div>
+  94 |            <div className="thesis-list">[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4745:16)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12781:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13350:61)
+      at TypeScriptParserMixin.parseBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13343:10)
+      at TypeScriptParserMixin.parseBlock (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13331:10)
+      at TypeScriptParserMixin.parseFunctionBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12134:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12120:10)
+[2m11:23:10[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:23:10[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Expected corresponding JSX closing tag for <em>. (487:118)
+
+[0m [90m 485 |[39m     [33m<[39m[33mSlideFrame[39m metaIndex[33m=[39m{[35m9[39m}[33m>[39m
+ [90m 486 |[39m       [33m<[39m[33mdiv[39m className[33m=[39m[32m"challenge-layout"[39m[33m>[39m
+[31m[1m>[22m[39m[90m 487 |[39m         [33m<[39m[33msection[39m className[33m=[39m[32m"challenge-copy"[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m[33mFIVE[39m [33mSYSTEM[39m [33mBREAKPOINTS[39m[33m<[39m[35m/span><h2>瑙﹁涓轰粈涔?br/[39m[33m>[39m[33m<[39m[33mem[39m[33m>[39m浠嶇劧闅句互鍙潬琛屽姩锛[33m?[39m[33m/[39mem[33m>[39m[33m<[39m[33m/[39m[33mh2[39m[33m>[39m[33m<[39m[33mp[39m[33m>[39m闂涓嶅湪鏌愪竴涓寚鏍囷紝鑰屽湪纭欢銆佹暟鎹€佹ā鍨嬪拰浠诲姟璇勪环灏氭湭褰㈡垚绋冲畾闂幆銆[33m<[39m[33m/[39m[33mp[39m[33m>[39m[33m<[39m[33mdiv[39m className[33m=[39m[32m"challenge-list"[39m[33m>[39m{([33mObject[39m[33m.[39mkeys(items) [36mas[39m [33mChallengeKey[39m[])[33m.[39mmap(key [33m=>[39m [33m<[39m[33mbutton[39m key[33m=[39m{key} className[33m=[39m{active [33m===[39m key [33m?[39m [32m'active'[39m [33m:[39m [32m''[39m} onClick[33m=[39m{() [33m=>[39m setActive(key)} aria[33m-[39mpressed[33m=[39m{active [33m===[39m key}[33m>[39m[33m<[39m[33mspan[39m[33m>[39m{items[key][33m.[39mn}[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33mstrong[39m[33m>[39m{items[key][33m.[39mlabel}[33m<[39m[33m/[39m[33mstrong[39m[33m>[39m[33m<[39m[33msmall[39m[33m>[39m{items[key][33m.[39men}[33m<[39m[33m/[39m[33msmall[39m[33m>[39m[33m<[39m[33mi[39m[33m>[39m鈫[33m<[39m[33m/[39m[33mi[39m[33m>[39m[33m<[39m[33m/[39m[33mbutton[39m[33m>[39m)}[33m<[39m[35m/div><div className="challenge-note"><i/[39m[33m>[39m鐐瑰嚮鏂偣锛屾煡鐪嬪け鏁堣〃鐜般€佹牴鍥犱笌搴旀姤鍛婃寚鏍囥€[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[33m<[39m[33m/[39m[33msection[39m[33m>[39m
+ [90m     |[39m                                                                                                                       [31m[1m^[22m[39m
+ [90m 488 |[39m         [33m<[39m[33msection[39m className[33m=[39m[32m"challenge-system"[39m aria[33m-[39mlabel[33m=[39m[32m"鍏疯韩瑙﹁绯荤粺鏂偣鍥"[39m[33m>[39m[33m<[39m[33mdiv[39m className[33m=[39m[32m"challenge-chain"[39m[33m>[39m[33m<[39m[33mdiv[39m className[33m=[39m[32m"chain-end"[39m[33m>[39m鎺ヨЕ[33m<[39m[33mbr[39m[33m/[39m[33m>[39m[33m<[39m[33msmall[39m[33m>[39m鐪熷疄涓栫晫[33m<[39m[33m/[39m[33msmall[39m[33m>[39m[33m<[39m[35m/div><div className="chain-line">{['鎰熷彈鍣','浼犺緭','鏍囧畾','琛ㄥ緛','绛栫暐'].map((label,index) => <div key={label} className={`chain-link ${index <= Number(current.n)-1 ? 'lit' : ''}`}><i/[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m{label}[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m)}[33m<[39m[35m/div><div className="chain-end">琛屽姩<br/[39m[33m>[39m[33m<[39m[33msmall[39m[33m>[39m鐗╃悊鍚庢灉[33m<[39m[33m/[39m[33msmall[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[33m<[39m[33mdiv[39m className[33m=[39m[32m"challenge-panel"[39m[33m>[39m[33m<[39m[33mdiv[39m className[33m=[39m[32m"challenge-panel-head"[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m{current[33m.[39mn} [33m/[39m {current[33m.[39men}[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33mb[39m[33m>[39m{current[33m.[39mlabel}[33m<[39m[33m/[39m[33mb[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[33m<[39m[33mh3[39m[33m>[39m{current[33m.[39mtitle}[33m<[39m[33m/[39m[33mh3[39m[33m>[39m[33m<[39m[33mdiv[39m className[33m=[39m[32m"challenge-facts"[39m[33m>[39m[33m<[39m[33mdiv[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m澶辨晥琛ㄧ幇[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33mp[39m[33m>[39m{current[33m.[39msymptom}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[33m<[39m[33mdiv[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m鏍瑰洜[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33mp[39m[33m>[39m{current[33m.[39mcause}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[33m<[39m[33mdiv[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m搴旀姤鍛婃寚鏍[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33mp[39m[33m>[39m{current[33m.[39mmetrics}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[33m<[39m[33mdiv[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m鐮旂┒鏂瑰悜[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33mp[39m[33m>[39m{current[33m.[39mfix}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[33m<[39m[33m/[39m[33msection[39m[33m>[39m
+ [90m 489 |[39m       [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m 490 |[39m     [33m<[39m[33m/[39m[33mSlideFrame[39m[33m>[39m[0m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:487:118
+[33m  485|      <SlideFrame metaIndex={9}>
+  486|        <div className="challenge-layout">
+  487|          <section className="challenge-copy"><span>FIVE SYSTEM BREAKPOINTS</span><h2>瑙﹁涓轰粈涔?br/><em>浠嶇劧闅句互鍙潬琛屽姩锛?/em></h2><p>闂涓嶅湪鏌愪竴涓寚鏍囷紝鑰屽湪纭欢銆佹暟鎹€佹ā鍨嬪拰浠诲姟璇勪环灏氭湭褰㈡垚绋冲畾闂幆銆</p><div className="challenge-list">{(Object.keys(items) as ChallengeKey[]).map(key => <button key={key} className={active === key ? 'active' : ''} onClick={() => setActive(key)} aria-pressed={active === key}><span>{items[key].n}</span><strong>{items[key].label}</strong><small>{items[key].en}</small><i>鈫</i></button>)}</div><div className="challenge-note"><i/>鐐瑰嚮鏂偣锛屾煡鐪嬪け鏁堣〃鐜般€佹牴鍥犱笌搴旀姤鍛婃寚鏍囥€</div></section>
+     |                                                                                                                        ^
+  488|          <section className="challenge-system" aria-label="鍏疯韩瑙﹁绯荤粺鏂偣鍥"><div className="challenge-chain"><div className="chain-end">鎺ヨЕ<br/><small>鐪熷疄涓栫晫</small></div><div className="chain-line">{['鎰熷彈鍣','浼犺緭','鏍囧畾','琛ㄥ緛','绛栫暐'].map((label,index) => <div key={label} className={`chain-link ${index <= Number(current.n)-1 ? 'lit' : ''}`}><i/><span>{label}</span></div>)}</div><div className="chain-end">琛屽姩<br/><small>鐗╃悊鍚庢灉</small></div></div><div className="challenge-panel"><div className="challenge-panel-head"><span>{current.n} / {current.en}</span><b>{current.label}</b></div><h3>{current.title}</h3><div className="challenge-facts"><div><span>澶辨晥琛ㄧ幇</span><p>{current.symptom}</p></div><div><span>鏍瑰洜</span><p>{current.cause}</p></div><div><span>搴旀姤鍛婃寚鏍</span><p>{current.metrics}</p></div><div><span>鐮旂┒鏂瑰悜</span><p>{current.fix}</p></div></div></div></section>
+  489|        </div>[39m
+[2m11:23:10[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Expected corresponding JSX closing tag for <em>. (487:118)
+
+[0m [90m 485 |[31m     [33m<[31m[33mSlideFrame[31m metaIndex[33m=[31m{[35m9[31m}[33m>[31m
+ [90m 486 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"challenge-layout"[31m[33m>[31m
+[31m[1m>[22m[31m[90m 487 |[31m         [33m<[31m[33msection[31m className[33m=[31m[32m"challenge-copy"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m[33mFIVE[31m [33mSYSTEM[31m [33mBREAKPOINTS[31m[33m<[31m[35m/span><h2>瑙﹁涓轰粈涔?br/[31m[33m>[31m[33m<[31m[33mem[31m[33m>[31m浠嶇劧闅句互鍙潬琛屽姩锛[33m?[31m[33m/[31mem[33m>[31m[33m<[31m[33m/[31m[33mh2[31m[33m>[31m[33m<[31m[33mp[31m[33m>[31m闂涓嶅湪鏌愪竴涓寚鏍囷紝鑰屽湪纭欢銆佹暟鎹€佹ā鍨嬪拰浠诲姟璇勪环灏氭湭褰㈡垚绋冲畾闂幆銆[33m<[31m[33m/[31m[33mp[31m[33m>[31m[33m<[31m[33mdiv[31m className[33m=[31m[32m"challenge-list"[31m[33m>[31m{([33mObject[31m[33m.[31mkeys(items) [36mas[31m [33mChallengeKey[31m[])[33m.[31mmap(key [33m=>[31m [33m<[31m[33mbutton[31m key[33m=[31m{key} className[33m=[31m{active [33m===[31m key [33m?[31m [32m'active'[31m [33m:[31m [32m''[31m} onClick[33m=[31m{() [33m=>[31m setActive(key)} aria[33m-[31mpressed[33m=[31m{active [33m===[31m key}[33m>[31m[33m<[31m[33mspan[31m[33m>[31m{items[key][33m.[31mn}[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{items[key][33m.[31mlabel}[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33msmall[31m[33m>[31m{items[key][33m.[31men}[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33mi[31m[33m>[31m鈫[33m<[31m[33m/[31m[33mi[31m[33m>[31m[33m<[31m[33m/[31m[33mbutton[31m[33m>[31m)}[33m<[31m[35m/div><div className="challenge-note"><i/[31m[33m>[31m鐐瑰嚮鏂偣锛屾煡鐪嬪け鏁堣〃鐜般€佹牴鍥犱笌搴旀姤鍛婃寚鏍囥€[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m[33m<[31m[33m/[31m[33msection[31m[33m>[31m
+ [90m     |[31m                                                                                                                       [31m[1m^[22m[31m
+ [90m 488 |[31m         [33m<[31m[33msection[31m className[33m=[31m[32m"challenge-system"[31m aria[33m-[31mlabel[33m=[31m[32m"鍏疯韩瑙﹁绯荤粺鏂偣鍥"[31m[33m>[31m[33m<[31m[33mdiv[31m className[33m=[31m[32m"challenge-chain"[31m[33m>[31m[33m<[31m[33mdiv[31m className[33m=[31m[32m"chain-end"[31m[33m>[31m鎺ヨЕ[33m<[31m[33mbr[31m[33m/[31m[33m>[31m[33m<[31m[33msmall[31m[33m>[31m鐪熷疄涓栫晫[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[35m/div><div className="chain-line">{['鎰熷彈鍣','浼犺緭','鏍囧畾','琛ㄥ緛','绛栫暐'].map((label,index) => <div key={label} className={`chain-link ${index <= Number(current.n)-1 ? 'lit' : ''}`}><i/[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m{label}[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m)}[33m<[31m[35m/div><div className="chain-end">琛屽姩<br/[31m[33m>[31m[33m<[31m[33msmall[31m[33m>[31m鐗╃悊鍚庢灉[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m[33m<[31m[33mdiv[31m className[33m=[31m[32m"challenge-panel"[31m[33m>[31m[33m<[31m[33mdiv[31m className[33m=[31m[32m"challenge-panel-head"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m{current[33m.[31mn} [33m/[31m {current[33m.[31men}[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mb[31m[33m>[31m{current[33m.[31mlabel}[33m<[31m[33m/[31m[33mb[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m[33m<[31m[33mh3[31m[33m>[31m{current[33m.[31mtitle}[33m<[31m[33m/[31m[33mh3[31m[33m>[31m[33m<[31m[33mdiv[31m className[33m=[31m[32m"challenge-facts"[31m[33m>[31m[33m<[31m[33mdiv[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m澶辨晥琛ㄧ幇[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mp[31m[33m>[31m{current[33m.[31msymptom}[33m<[31m[33m/[31m[33mp[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m[33m<[31m[33mdiv[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m鏍瑰洜[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mp[31m[33m>[31m{current[33m.[31mcause}[33m<[31m[33m/[31m[33mp[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m[33m<[31m[33mdiv[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m搴旀姤鍛婃寚鏍[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mp[31m[33m>[31m{current[33m.[31mmetrics}[33m<[31m[33m/[31m[33mp[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m[33m<[31m[33mdiv[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m鐮旂┒鏂瑰悜[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mp[31m[33m>[31m{current[33m.[31mfix}[33m<[31m[33m/[31m[33mp[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m[33m<[31m[33m/[31m[33msection[31m[33m>[31m
+ [90m 489 |[31m       [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 490 |[31m     [33m<[31m[33m/[31m[33mSlideFrame[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:487:118
+[33m  485|      <SlideFrame metaIndex={9}>
+  486|        <div className="challenge-layout">
+  487|          <section className="challenge-copy"><span>FIVE SYSTEM BREAKPOINTS</span><h2>瑙﹁涓轰粈涔?br/><em>浠嶇劧闅句互鍙潬琛屽姩锛?/em></h2><p>闂涓嶅湪鏌愪竴涓寚鏍囷紝鑰屽湪纭欢銆佹暟鎹€佹ā鍨嬪拰浠诲姟璇勪环灏氭湭褰㈡垚绋冲畾闂幆銆</p><div className="challenge-list">{(Object.keys(items) as ChallengeKey[]).map(key => <button key={key} className={active === key ? 'active' : ''} onClick={() => setActive(key)} aria-pressed={active === key}><span>{items[key].n}</span><strong>{items[key].label}</strong><small>{items[key].en}</small><i>鈫</i></button>)}</div><div className="challenge-note"><i/>鐐瑰嚮鏂偣锛屾煡鐪嬪け鏁堣〃鐜般€佹牴鍥犱笌搴旀姤鍛婃寚鏍囥€</div></section>
+     |                                                                                                                        ^
+  488|          <section className="challenge-system" aria-label="鍏疯韩瑙﹁绯荤粺鏂偣鍥"><div className="challenge-chain"><div className="chain-end">鎺ヨЕ<br/><small>鐪熷疄涓栫晫</small></div><div className="chain-line">{['鎰熷彈鍣','浼犺緭','鏍囧畾','琛ㄥ緛','绛栫暐'].map((label,index) => <div key={label} className={`chain-link ${index <= Number(current.n)-1 ? 'lit' : ''}`}><i/><span>{label}</span></div>)}</div><div className="chain-end">琛屽姩<br/><small>鐗╃悊鍚庢灉</small></div></div><div className="challenge-panel"><div className="challenge-panel-head"><span>{current.n} / {current.en}</span><b>{current.label}</b></div><h3>{current.title}</h3><div className="challenge-facts"><div><span>澶辨晥琛ㄧ幇</span><p>{current.symptom}</p></div><div><span>鏍瑰洜</span><p>{current.cause}</p></div><div><span>搴旀姤鍛婃寚鏍</span><p>{current.metrics}</p></div><div><span>鐮旂┒鏂瑰悜</span><p>{current.fix}</p></div></div></div></section>
+  489|        </div>[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4745:16)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12781:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13350:61)
+      at TypeScriptParserMixin.parseBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13343:10)
+      at TypeScriptParserMixin.parseBlock (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13331:10)
+      at TypeScriptParserMixin.parseFunctionBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12134:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12120:10)
+[2m11:26:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:26:22[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Expected corresponding JSX closing tag for <p>. (869:112)
+
+[0m [90m 867 |[39m               {sensingModalities[33m.[39mmap((item[33m,[39mindex) [33m=>[39m [33m<[39m[33mdiv[39m key[33m=[39m{item[33m.[39mlabel} className[33m=[39m{[32m`modality-node modality-${index} tone-${item.tone}`[39m}[33m>[39m[33m<[39m[33mi[39m[33m/[39m[33m>[39m[33m<[39m[33mstrong[39m[33m>[39m{item[33m.[39mlabel}[33m<[39m[33m/[39m[33mstrong[39m[33m>[39m[33m<[39m[33msmall[39m[33m>[39m{item[33m.[39mdetail}[33m<[39m[33m/[39m[33msmall[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m)}
+ [90m 868 |[39m             [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 869 |[39m             [33m<[39m[33mdiv[39m className[33m=[39m[32m"route-evidence"[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m浠ｈ〃璺緞[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33mp[39m[33m>[39m[33m<[39m[33mb[39m[33m>[39m鏄熼蓟榧逛豢鐢熼樀鍒[33m<[39m[33m/[39m[33mb[39m[33m>[39m锛氬舰璨屻€佸垰搴︿笌姘斿懗鍗忓悓锛[33m?[39mb[33m>[39m[33mSuperTac[39m[33m<[39m[33m/[39m[33mb[39m[33m>[39m锛氱害 [35m1[39m mm 鐨偆鍐呴泦鎴愬鍏夎氨銆佹懇鎿︾數涓庢儻鎬т俊鎭紱[33m<[39m[33mb[39m[33m>[39m澶氭ā鎬佺儹鏁忚Е瑙[33m<[39m[33m/[39m[33mb[39m[33m>[39m锛氳仈鍚堝帇鍔涖€佹俯搴︺€佺汗鐞嗗拰婊戠Щ銆[33m<[39m[33m/[39m[33mp[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m     |[39m                                                                                                                 [31m[1m^[22m[39m
+ [90m 870 |[39m             [33m<[39m[33mdiv[39m className[33m=[39m[32m"route-direction"[39m[33m>[39m[33m<[39m[33mspan[39m[33m>[39m鎶€鏈矾绾[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[33m<[39m[33mstrong[39m[33m>[39m澶氭満鍒跺崗鍚[33m<[39m[33m/[39m[33mstrong[39m[33m>[39m[33m<[39m[33mi[39m[33m>[39m鈫[33m<[39m[33m/[39m[33mi[39m[33m>[39m[33m<[39m[33mstrong[39m[33m>[39m鏃剁┖瀵归綈[33m<[39m[33m/[39m[33mstrong[39m[33m>[39m[33m<[39m[33mi[39m[33m>[39m鈫[33m<[39m[33m/[39m[33mi[39m[33m>[39m[33m<[39m[33mstrong[39m[33m>[39m绛栫暐鍙皟鐢ㄧ姸鎬[33m<[39m[33m/[39m[33mstrong[39m[33m>[39m[33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m 871 |[39m           [33m<[39m[33m/[39m[33msection[39m[33m>[39m
+ [90m 872 |[39m           [33m<[39m[33msection[39m className[33m=[39m[32m"future-route-card route-body"[39m[33m>[39m[0m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:869:112
+[33m  867|                {sensingModalities.map((item,index) => <div key={item.label} className={`modality-node modality-${index} tone-${item.tone}`}><i/><strong>{item.label}</strong><small>{item.detail}</small></div>)}
+  868|              </div>
+  869|              <div className="route-evidence"><span>浠ｈ〃璺緞</span><p><b>鏄熼蓟榧逛豢鐢熼樀鍒</b>锛氬舰璨屻€佸垰搴︿笌姘斿懗鍗忓悓锛?b>SuperTac</b>锛氱害 1 mm 鐨偆鍐呴泦鎴愬鍏夎氨銆佹懇鎿︾數涓庢儻鎬т俊鎭紱<b>澶氭ā鎬佺儹鏁忚Е瑙</b>锛氳仈鍚堝帇鍔涖€佹俯搴︺€佺汗鐞嗗拰婊戠Щ銆</p></div>
+     |                                                                                                                  ^
+  870|              <div className="route-direction"><span>鎶€鏈矾绾</span><strong>澶氭満鍒跺崗鍚</strong><i>鈫</i><strong>鏃剁┖瀵归綈</strong><i>鈫</i><strong>绛栫暐鍙皟鐢ㄧ姸鎬</strong></div>
+  871|            </section>[39m
+[2m11:26:22[22m [31m[1m[vite][22m[39m [31mInternal server error: D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\src\App.tsx: Expected corresponding JSX closing tag for <p>. (869:112)
+
+[0m [90m 867 |[31m               {sensingModalities[33m.[31mmap((item[33m,[31mindex) [33m=>[31m [33m<[31m[33mdiv[31m key[33m=[31m{item[33m.[31mlabel} className[33m=[31m{[32m`modality-node modality-${index} tone-${item.tone}`[31m}[33m>[31m[33m<[31m[33mi[31m[33m/[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m{item[33m.[31mlabel}[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33msmall[31m[33m>[31m{item[33m.[31mdetail}[33m<[31m[33m/[31m[33msmall[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m)}
+ [90m 868 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 869 |[31m             [33m<[31m[33mdiv[31m className[33m=[31m[32m"route-evidence"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m浠ｈ〃璺緞[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mp[31m[33m>[31m[33m<[31m[33mb[31m[33m>[31m鏄熼蓟榧逛豢鐢熼樀鍒[33m<[31m[33m/[31m[33mb[31m[33m>[31m锛氬舰璨屻€佸垰搴︿笌姘斿懗鍗忓悓锛[33m?[31mb[33m>[31m[33mSuperTac[31m[33m<[31m[33m/[31m[33mb[31m[33m>[31m锛氱害 [35m1[31m mm 鐨偆鍐呴泦鎴愬鍏夎氨銆佹懇鎿︾數涓庢儻鎬т俊鎭紱[33m<[31m[33mb[31m[33m>[31m澶氭ā鎬佺儹鏁忚Е瑙[33m<[31m[33m/[31m[33mb[31m[33m>[31m锛氳仈鍚堝帇鍔涖€佹俯搴︺€佺汗鐞嗗拰婊戠Щ銆[33m<[31m[33m/[31m[33mp[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m                                                                                                                 [31m[1m^[22m[31m
+ [90m 870 |[31m             [33m<[31m[33mdiv[31m className[33m=[31m[32m"route-direction"[31m[33m>[31m[33m<[31m[33mspan[31m[33m>[31m鎶€鏈矾绾[33m<[31m[33m/[31m[33mspan[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m澶氭満鍒跺崗鍚[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33mi[31m[33m>[31m鈫[33m<[31m[33m/[31m[33mi[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m鏃剁┖瀵归綈[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33mi[31m[33m>[31m鈫[33m<[31m[33m/[31m[33mi[31m[33m>[31m[33m<[31m[33mstrong[31m[33m>[31m绛栫暐鍙皟鐢ㄧ姸鎬[33m<[31m[33m/[31m[33mstrong[31m[33m>[31m[33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 871 |[31m           [33m<[31m[33m/[31m[33msection[31m[33m>[31m
+ [90m 872 |[31m           [33m<[31m[33msection[31m className[33m=[31m[32m"future-route-card route-body"[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mD:/其他/研究生事务/综合考试/综合考试论文or博士论文模板/tactile-presentation-prototype/src/App.tsx[39m:869:112
+[33m  867|                {sensingModalities.map((item,index) => <div key={item.label} className={`modality-node modality-${index} tone-${item.tone}`}><i/><strong>{item.label}</strong><small>{item.detail}</small></div>)}
+  868|              </div>
+  869|              <div className="route-evidence"><span>浠ｈ〃璺緞</span><p><b>鏄熼蓟榧逛豢鐢熼樀鍒</b>锛氬舰璨屻€佸垰搴︿笌姘斿懗鍗忓悓锛?b>SuperTac</b>锛氱害 1 mm 鐨偆鍐呴泦鎴愬鍏夎氨銆佹懇鎿︾數涓庢儻鎬т俊鎭紱<b>澶氭ā鎬佺儹鏁忚Е瑙</b>锛氳仈鍚堝帇鍔涖€佹俯搴︺€佺汗鐞嗗拰婊戠Щ銆</p></div>
+     |                                                                                                                  ^
+  870|              <div className="route-direction"><span>鎶€鏈矾绾</span><strong>澶氭満鍒跺崗鍚</strong><i>鈫</i><strong>鏃剁┖瀵归綈</strong><i>鈫</i><strong>绛栫暐鍙皟鐢ㄧ姸鎬</strong></div>
+  871|            </section>[39m
+      at constructor (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:369:19)
+      at TypeScriptParserMixin.raise (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6622:19)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4745:16)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElementAt (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4716:32)
+      at TypeScriptParserMixin.jsxParseElement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4767:17)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4777:19)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:39
+      at TypeScriptParserMixin.tryParse (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:6930:20)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9798:18)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12460:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10826:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12527:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11706:28)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11362:23)
+      at TypeScriptParserMixin.parseExprAtom (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:4782:20)
+      at TypeScriptParserMixin.parseExprSubscripts (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11107:23)
+      at TypeScriptParserMixin.parseUpdate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11092:21)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:11072:23)
+      at TypeScriptParserMixin.parseMaybeUnary (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9860:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10925:61)
+      at TypeScriptParserMixin.parseExprOps (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10930:23)
+      at TypeScriptParserMixin.parseMaybeConditional (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10907:23)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10857:21)
+      at TypeScriptParserMixin.parseMaybeAssign (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9809:20)
+      at TypeScriptParserMixin.parseExpressionBase (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10810:23)
+      at D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:39
+      at TypeScriptParserMixin.allowInAnd (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12455:16)
+      at TypeScriptParserMixin.parseExpression (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:10806:17)
+      at TypeScriptParserMixin.parseReturnStatement (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13176:28)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12832:21)
+      at TypeScriptParserMixin.parseStatementContent (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:9531:18)
+      at TypeScriptParserMixin.parseStatementLike (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12801:17)
+      at TypeScriptParserMixin.parseStatementListItem (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12781:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13350:61)
+      at TypeScriptParserMixin.parseBlockBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13343:10)
+      at TypeScriptParserMixin.parseBlock (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:13331:10)
+      at TypeScriptParserMixin.parseFunctionBody (D:\其他\研究生事务\综合考试\综合考试论文or博士论文模板\tactile-presentation-prototype\node_modules\@babel\parser\lib\index.js:12134:24)
+[2m11:33:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:37:03[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:51:56[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:53:29[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:55:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:57:00[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m11:58:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:02:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:04:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:06:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:07:02[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:08:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:09:03[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:18:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:52:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
