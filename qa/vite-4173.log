@@ -1694,3 +1694,4 @@
       at async viteTransformMiddleware (file:///D:/%E5%85%B6%E4%BB%96/%E7%A0%94%E7%A9%B6%E7%94%9F%E4%BA%8B%E5%8A%A1/%E7%BB%BC%E5%90%88%E8%80%83%E8%AF%95/%E7%BB%BC%E5%90%88%E8%80%83%E8%AF%95%E8%AE%BA%E6%96%87or%E5%8D%9A%E5%A3%AB%E8%AE%BA%E6%96%87%E6%A8%A1%E6%9D%BF/tactile-presentation-prototype/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:42761:24)
 [2m16:46:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
 [2m16:48:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/bib_entries.json[22m
+[2m11:57:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
