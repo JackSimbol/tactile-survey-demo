@@ -1,0 +1,155 @@
+﻿
+  src\App.tsx:314:}
+  src\App.tsx:315:
+> src\App.tsx:316:function SensorMapSlide() {
+  src\App.tsx:317:  const [task, setTask] = useState('static')
+  src\App.tsx:318:  const [selected, setSelected] = useState('visual')
+  src\App.tsx:319:  const [expanded, setExpanded] = useState<string | null>(null)
+  src\App.tsx:320:  const selectedSensor = sensors.find((sensor) => sensor.id === selected) ?? sensors[0]
+  src\App.tsx:321:  const taskMeta = tasks.find((item) => item.id === task) ?? tasks[0]
+  src\App.tsx:322:  return (
+  src\App.tsx:323:    <SlideFrame metaIndex={4}>
+  src\App.tsx:324:      <div className="map-toolbar">
+  src\App.tsx:325:        <span>以感知需求筛选：</span>
+  src\App.tsx:326:        {tasks.map((item) => <button key={item.id} className={task === item.id ? 'active' : ''} onCli
+ck={() => setTask(item.id)}>{item.label}</button>)}
+  src\App.tsx:327:        <p><strong>{taskMeta.label}</strong> 关注 {taskMeta.hint}</p>
+  src\App.tsx:328:      </div>
+  src\App.tsx:329:      <div className="sensor-layout">
+  src\App.tsx:330:        <div className="sensor-matrix">
+  src\App.tsx:331:          <div className="axis axis-x"><strong>编码方式</strong><div className="axis-range"><span>状态编码</s
+pan><i /><span>变化 / 事件编码</span></div></div>
+  src\App.tsx:332:          <div className="axis axis-y"><strong>换能方式</strong><div className="axis-range-y"><span>形变中介<
+/span><i /><span>直接能量转换</span></div></div>
+  src\App.tsx:333:          <div className="quadrant q-state"><b>持续读出</b><span>静态 / 准静态</span></div>
+  src\App.tsx:334:          <div className="quadrant q-event"><b>变化触发</b><span>动态 / 瞬态</span></div>
+  src\App.tsx:335:          <div className="quadrant q-gap"><b>原理性空缺</b><span>直接换能难以持续保持静态状态</span></div>
+  src\App.tsx:336:          <div className="matrix-grid"><i/><i/><i/><i/><i/><i/><i/><i/></div>
+  src\App.tsx:337:          {sensors.map((sensor) => {
+  src\App.tsx:338:            const fits = sensor.tasks.includes(task)
+  src\App.tsx:339:            return (
+  src\App.tsx:340:              <button
+  src\App.tsx:341:                key={sensor.id}
+  src\App.tsx:342:                className={`sensor-node tone-${sensor.tone} ${fits ? 'fits' : 'muted'} ${selected ===
+ sensor.id ? 'selected' : ''}`}
+  src\App.tsx:343:                style={{ left: `${sensor.x}%`, top: `${sensor.y}%` }}
+  src\App.tsx:344:                onClick={() => setSelected(sensor.id)}
+  src\App.tsx:345:                aria-pressed={selected === sensor.id}
+  src\App.tsx:346:              >
+  src\App.tsx:347:                <i />
+  src\App.tsx:348:                <span>{sensor.name}</span>
+  src\App.tsx:349:                <small>{sensor.en}</small>
+  src\App.tsx:350:              </button>
+  src\App.tsx:351:            )
+  src\App.tsx:352:          })}
+  src\App.tsx:353:          <div className="fit-legend"><i />当前任务的优势区域 <span>* 编码范式，非单一换能机理</span></div>
+  src\App.tsx:354:        </div>
+  src\App.tsx:355:        <aside className={`sensor-detail tone-${selectedSensor.tone}`}>
+  src\App.tsx:356:          <div className="detail-index">{String(sensors.findIndex(s => s.id === selectedSensor.id) + 
+1).padStart(2, '0')} / 07</div>
+  src\App.tsx:357:          <p className="micro-label">SELECTED SENSING PARADIGM · CLICK NODE TO SWITCH</p>
+  src\App.tsx:358:          <h2>{selectedSensor.name}</h2>
+  src\App.tsx:359:          <p className="english-name">{selectedSensor.en}</p>
+  src\App.tsx:360:          <button className="principle-toggle" type="button" onClick={() => setExpanded(expanded === 
+selectedSensor.id ? null : selectedSensor.id)} aria-expanded={expanded === selectedSensor.id}><span>{expanded === selec
+tedSensor.id ? '收起工作原理' : '展开工作原理'}</span><b>{expanded === selectedSensor.id ? '−' : '+'}</b></button>
+  src\App.tsx:361:          {expanded === selectedSensor.id && <div className="principle-card"><div className="principl
+e-visual"><i className={`principle-icon principle-${selectedSensor.id}`} /><span>{selectedSensor.signal}</span></div><p
+>{selectedSensor.principle}</p></div>}
+  src\App.tsx:362:          <div className="detail-block good"><span>擅长</span><p>{selectedSensor.strengths}</p></div>
+  src\App.tsx:363:          <div className="detail-block trade"><span>代价</span><p>{selectedSensor.tradeoff}</p></div>
+  src\App.tsx:364:          <div className="detail-metrics"><span>具身性能轴</span><p>{selectedSensor.metrics}</p><small>{se
+lectedSensor.capability}</small></div>
+  src\App.tsx:365:          <div className="task-fit">
+  src\App.tsx:366:            <span>任务匹配</span>
+  src\App.tsx:367:            {tasks.map(item => <i key={item.id} className={selectedSensor.tasks.includes(item.id) ? '
+on' : ''} title={item.label}>{item.label.slice(0,2)}</i>)}
+  src\App.tsx:368:          </div>
+  src\App.tsx:369:          <blockquote>选择传感器，本质上是任务信息需求与具身部署条件共同约束的系统设计。</blockquote>
+  src\App.tsx:370:        </aside>
+  src\App.tsx:371:      </div>
+  src\App.tsx:372:    </SlideFrame>
+  src\App.tsx:373:  )
+  src\App.tsx:374:}
+  src\App.tsx:375:
+  src\App.tsx:376:type FrontierGap = 'coverage' | 'latency' | 'data' | 'transfer' | 'sim'
+  src\App.tsx:377:
+  src\App.tsx:378:/* Former 04-缺口 slide retained below only as legacy source; it is not in
+  src\App.tsx:379:   the metadata or renderer sequence.
+  src\App.tsx:380:  const [gap, setGap] = useState<FrontierGap>('coverage')
+  src\App.tsx:381:  const gaps: Record<FrontierGap, { n: string; title: string; detail: string; chain: string; metric: 
+string }> = {
+  src\App.tsx:382:    coverage: { n: '01', title: '覆盖与分辨率难以同时满足', detail: '高分辨率、大面积覆盖、多轴测量、耐久性与低成本相互牵制。', chain: '材料 / 
+结构 / 封装', metric: 'SPACE × RESOLUTION' },
+  src\App.tsx:383:    latency: { n: '02', title: '端到端延迟仍无法支撑快速反射', detail: '材料响应、读出、传输、推理与执行共同决定闭环时延。', chain: '读出 / 传输
+ / 控制', metric: 'LATENCY → REFLEX' },
+  src\App.tsx:384:    data: { n: '03', title: '真实接触数据昂贵且难标注', detail: '力、滑移、损伤、材料参数等真值难以在同一时刻同步获得。', chain: '采集 / 标注 / 
+评价', metric: 'GROUND TRUTH' },
+  src\App.tsx:385:    transfer: { n: '04', title: '数据结构与身体形态高度耦合', detail: '跨设备、跨机器人迁移时，传感器结构与探索动作会改变数据语义。', chain: '本体
+ / 位置 / 动作', metric: 'TRANSFER ≠ COPY' },
+  src\App.tsx:386:    sim: { n: '05', title: '仿真还缺少可信的物理桥梁', detail: '视觉重建与触觉仿真之间仍缺材料参数、接触求解和传感器数字孪生。', chain: '重建 / 接触
+ / 传感器', metric: 'SIMULATION GAP' },
+  src\App.tsx:387:  }
+  src\App.tsx:388:  const current = gaps[gap]
+  src\App.tsx:389:  const chain: Array<{ key: FrontierGap; label: string; en: string }> = [
+  src\App.tsx:390:    { key: 'coverage', label: '覆盖 / 分辨率', en: 'COVERAGE' },
+  src\App.tsx:391:    { key: 'latency', label: '端到端时延', en: 'LATENCY' },
+  src\App.tsx:392:    { key: 'data', label: '真实数据', en: 'GROUND TRUTH' },
+  src\App.tsx:393:    { key: 'transfer', label: '跨本体迁移', en: 'TRANSFER' },
+  src\App.tsx:394:    { key: 'sim', label: '可信仿真', en: 'SIMULATION' },
+  src\App.tsx:395:  ]
+  src\App.tsx:396:  return (
+  src\App.tsx:397:    <SlideFrame metaIndex={2}>
+  src\App.tsx:398:      <div className="frontier-layout">
+  src\App.tsx:399:        <section className="frontier-demand">
+  src\App.tsx:400:          <div className="demand-label">THE WINDOW IS OPEN</div>
+  src\App.tsx:401:          <h2>具身控制算法正在进入<br/><em>接触丰富的长时程操作。</em></h2>
+  src\App.tsx:402:          <p>视觉已经可以做接触前的语义规划；真正限制下一步的，是可靠、低延迟、可迁移的物理反馈。</p>
+  src\App.tsx:403:          <div className="capability-ring" aria-label="具身触觉需要支撑的五类能力">
+  src\App.tsx:404:            <div className="capability-hero"><img src="./assets/pixverse_image_426064219485064.png" a
+lt="触觉手套食指触碰方块" /></div>
+  src\App.tsx:405:            <div className="capability-node capability-safety"><span>安全性</span><small>不伤害 · 可保护</smal
+l></div>
+  src\App.tsx:406:            <div className="capability-node capability-stability"><span>稳定性</span><small>复现 · 可预测</sm
+all></div>
+  src\App.tsx:407:            <div className="capability-node capability-robust"><span>鲁棒性</span><small>扰动 · 变化适应</smal
+l></div>
+  src\App.tsx:408:            <div className="capability-node capability-precision"><span>精密性</span><small>微小误差 · 可控</s
+mall></div>
+  src\App.tsx:409:            <div className="capability-node capability-general"><span>泛用性</span><small>跨任务 · 跨本体</sma
+ll></div>
+  src\App.tsx:410:          </div>
+  src\App.tsx:411:          <div className="frontier-principle"><i />问题不在某项指标，而在整条“机械交互 → 状态理解 → 闭环控制”链路尚未闭合。</div>
+  src\App.tsx:412:        </section>
+  src\App.tsx:413:        <section className="frontier-system">
+  src\App.tsx:414:          <div className="system-head"><span>SYSTEM COORDINATES</span><strong></strong></div>
+  src\App.tsx:415:          <div className="system-chain" aria-label="触觉处理链路">
+  src\App.tsx:416:            {chain.map((item, index) => <button className={`chain-node node-${item.key} ${gap === ite
+m.key ? 'active' : ''}`} key={item.key} onClick={() => setGap(item.key)} aria-pressed={gap === item.key}><span>0{index 
++ 1}</span><i /><strong>{item.label}</strong><small>{item.en}</small>{index < chain.length - 1 && <b>→</b>}</button>)}
+  src\App.tsx:417:          </div>
+  src\App.tsx:418:          <div className="gap-grid">
+  src\App.tsx:419:            {(Object.keys(gaps) as FrontierGap[]).map(item => <button key={item} className={`gap-card
+ ${gap === item ? 'active' : ''}`} onClick={() => setGap(item)}><span>{gaps[item].n}</span><div><small>{gaps[item].metr
+ic}</small><strong>{gaps[item].title}</strong><p>{gaps[item].detail}</p><em>{gaps[item].chain}</em></div></button>)}
+  src\App.tsx:420:          </div>
+  src\App.tsx:421:          <div className="gap-insight"><span>{current.n} / ACTIVE BOTTLENECK</span><strong>{current.c
+hain}</strong><p>{current.detail}</p><i><b style={{ width: `${Number(current.n) * 18 + 10}%` }} /></i></div>
+  src\App.tsx:422:        </section>
+  src\App.tsx:423:      </div>
+  src\App.tsx:424:    </SlideFrame>
+  src\App.tsx:425:  )
+  src\App.tsx:426:*/
+  src\App.tsx:427:type PipelineMode = 'flow' | 'deployment'
+  src\App.tsx:428:type Fault = 'none' | 'saturation' | 'drift' | 'sync'
+  src\App.tsx:429:
+  src\App.tsx:430:function PipelineSlide() {
+  src\App.tsx:431:  const [mode, setMode] = useState<PipelineMode>('flow')
+  src\App.tsx:432:  const [active, setActive] = useState(0)
+  src\App.tsx:433:  const [fault, setFault] = useState<Fault>('none')
+  src\App.tsx:434:  const faultStage: Record<Fault, number> = { none: -1, saturation: 1, drift: 3, sync: 4 }
+  src\App.tsx:435:  const affectedFrom = faultStage[fault]
+  src\App.tsx:436:  const faultLabels: Record<Fault, string> = { none: '正常链路', saturation: '幅值饱和', drift: '基线漂移', sync:
+ '时空错位' }
+
+

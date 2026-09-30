@@ -1,0 +1,230 @@
+316: function SensorMapSlide() {
+317:   const [task, setTask] = useState('static')
+318:   const [selected, setSelected] = useState('visual')
+319:   const [expanded, setExpanded] = useState<string | null>(null)
+320:   const selectedSensor = sensors.find((sensor) => sensor.id === selected) ?? sensors[0]
+321:   const taskMeta = tasks.find((item) => item.id === task) ?? tasks[0]
+322:   return (
+323:     <SlideFrame metaIndex={4}>
+324:       <div className="map-toolbar">
+325:         <span>以感知需求筛选：</span>
+326:         {tasks.map((item) => <button key={item.id} className={task === item.id ? 'active' : ''} onClick={() => setTask(item.id)}>{item.label}</button>)}
+327:         <p><strong>{taskMeta.label}</strong> 关注 {taskMeta.hint}</p>
+328:       </div>
+329:       <div className="sensor-layout">
+330:         <div className="sensor-matrix">
+331:           <div className="axis axis-x"><strong>编码方式</strong><div className="axis-range"><span>状态编码</span><i /><span>变化 / 事件编码</span></div></div>
+332:           <div className="axis axis-y"><strong>换能方式</strong><div className="axis-range-y"><span>形变中介</span><i /><span>直接能量转换</span></div></div>
+333:           <div className="quadrant q-state"><b>持续读出</b><span>静态 / 准静态</span></div>
+334:           <div className="quadrant q-event"><b>变化触发</b><span>动态 / 瞬态</span></div>
+335:           <div className="quadrant q-gap"><b>原理性空缺</b><span>直接换能难以持续保持静态状态</span></div>
+336:           <div className="matrix-grid"><i/><i/><i/><i/><i/><i/><i/><i/></div>
+337:           {sensors.map((sensor) => {
+338:             const fits = sensor.tasks.includes(task)
+339:             return (
+340:               <button
+341:                 key={sensor.id}
+342:                 className={`sensor-node tone-${sensor.tone} ${fits ? 'fits' : 'muted'} ${selected === sensor.id ? 'selected' : ''}`}
+343:                 style={{ left: `${sensor.x}%`, top: `${sensor.y}%` }}
+344:                 onClick={() => setSelected(sensor.id)}
+345:                 aria-pressed={selected === sensor.id}
+346:               >
+347:                 <i />
+348:                 <span>{sensor.name}</span>
+349:                 <small>{sensor.en}</small>
+350:               </button>
+351:             )
+352:           })}
+353:           <div className="fit-legend"><i />当前任务的优势区域 <span>* 编码范式，非单一换能机理</span></div>
+354:         </div>
+355:         <aside className={`sensor-detail tone-${selectedSensor.tone}`}>
+356:           <div className="detail-index">{String(sensors.findIndex(s => s.id === selectedSensor.id) + 1).padStart(2, '0')} / 07</div>
+357:           <p className="micro-label">SELECTED SENSING PARADIGM · CLICK NODE TO SWITCH</p>
+358:           <h2>{selectedSensor.name}</h2>
+359:           <p className="english-name">{selectedSensor.en}</p>
+360:           <button className="principle-toggle" type="button" onClick={() => setExpanded(expanded === selectedSensor.id ? null : selectedSensor.id)} aria-expanded={expanded === selectedSensor.id}><span>{expanded === selectedSensor.id ? '收起工作原理' : '展开工作原理'}</span><b>{expanded === selectedSensor.id ? '−' : '+'}</b></button>
+361:           {expanded === selectedSensor.id && <div className="principle-card"><div className="principle-visual"><i className={`principle-icon principle-${selectedSensor.id}`} /><span>{selectedSensor.signal}</span></div><p>{selectedSensor.principle}</p></div>}
+362:           <div className="detail-block good"><span>擅长</span><p>{selectedSensor.strengths}</p></div>
+363:           <div className="detail-block trade"><span>代价</span><p>{selectedSensor.tradeoff}</p></div>
+364:           <div className="detail-metrics"><span>具身性能轴</span><p>{selectedSensor.metrics}</p><small>{selectedSensor.capability}</small></div>
+365:           <div className="task-fit">
+366:             <span>任务匹配</span>
+367:             {tasks.map(item => <i key={item.id} className={selectedSensor.tasks.includes(item.id) ? 'on' : ''} title={item.label}>{item.label.slice(0,2)}</i>)}
+368:           </div>
+369:           <blockquote>选择传感器，本质上是任务信息需求与具身部署条件共同约束的系统设计。</blockquote>
+370:         </aside>
+371:       </div>
+372:     </SlideFrame>
+373:   )
+374: }
+375: 
+376: type FrontierGap = 'coverage' | 'latency' | 'data' | 'transfer' | 'sim'
+377: 
+378: /* Former 04-缺口 slide retained below only as legacy source; it is not in
+379:    the metadata or renderer sequence.
+380:   const [gap, setGap] = useState<FrontierGap>('coverage')
+381:   const gaps: Record<FrontierGap, { n: string; title: string; detail: string; chain: string; metric: string }> = {
+382:     coverage: { n: '01', title: '覆盖与分辨率难以同时满足', detail: '高分辨率、大面积覆盖、多轴测量、耐久性与低成本相互牵制。', chain: '材料 / 结构 / 封装', metric: 'SPACE × RESOLUTION' },
+383:     latency: { n: '02', title: '端到端延迟仍无法支撑快速反射', detail: '材料响应、读出、传输、推理与执行共同决定闭环时延。', chain: '读出 / 传输 / 控制', metric: 'LATENCY → REFLEX' },
+384:     data: { n: '03', title: '真实接触数据昂贵且难标注', detail: '力、滑移、损伤、材料参数等真值难以在同一时刻同步获得。', chain: '采集 / 标注 / 评价', metric: 'GROUND TRUTH' },
+385:     transfer: { n: '04', title: '数据结构与身体形态高度耦合', detail: '跨设备、跨机器人迁移时，传感器结构与探索动作会改变数据语义。', chain: '本体 / 位置 / 动作', metric: 'TRANSFER ≠ COPY' },
+386:     sim: { n: '05', title: '仿真还缺少可信的物理桥梁', detail: '视觉重建与触觉仿真之间仍缺材料参数、接触求解和传感器数字孪生。', chain: '重建 / 接触 / 传感器', metric: 'SIMULATION GAP' },
+387:   }
+388:   const current = gaps[gap]
+389:   const chain: Array<{ key: FrontierGap; label: string; en: string }> = [
+390:     { key: 'coverage', label: '覆盖 / 分辨率', en: 'COVERAGE' },
+391:     { key: 'latency', label: '端到端时延', en: 'LATENCY' },
+392:     { key: 'data', label: '真实数据', en: 'GROUND TRUTH' },
+393:     { key: 'transfer', label: '跨本体迁移', en: 'TRANSFER' },
+394:     { key: 'sim', label: '可信仿真', en: 'SIMULATION' },
+395:   ]
+396:   return (
+397:     <SlideFrame metaIndex={2}>
+398:       <div className="frontier-layout">
+399:         <section className="frontier-demand">
+400:           <div className="demand-label">THE WINDOW IS OPEN</div>
+401:           <h2>具身控制算法正在进入<br/><em>接触丰富的长时程操作。</em></h2>
+402:           <p>视觉已经可以做接触前的语义规划；真正限制下一步的，是可靠、低延迟、可迁移的物理反馈。</p>
+403:           <div className="capability-ring" aria-label="具身触觉需要支撑的五类能力">
+404:             <div className="capability-hero"><img src="./assets/pixverse_image_426064219485064.png" alt="触觉手套食指触碰方块" /></div>
+405:             <div className="capability-node capability-safety"><span>安全性</span><small>不伤害 · 可保护</small></div>
+406:             <div className="capability-node capability-stability"><span>稳定性</span><small>复现 · 可预测</small></div>
+407:             <div className="capability-node capability-robust"><span>鲁棒性</span><small>扰动 · 变化适应</small></div>
+408:             <div className="capability-node capability-precision"><span>精密性</span><small>微小误差 · 可控</small></div>
+409:             <div className="capability-node capability-general"><span>泛用性</span><small>跨任务 · 跨本体</small></div>
+410:           </div>
+411:           <div className="frontier-principle"><i />问题不在某项指标，而在整条“机械交互 → 状态理解 → 闭环控制”链路尚未闭合。</div>
+412:         </section>
+413:         <section className="frontier-system">
+414:           <div className="system-head"><span>SYSTEM COORDINATES</span><strong></strong></div>
+415:           <div className="system-chain" aria-label="触觉处理链路">
+416:             {chain.map((item, index) => <button className={`chain-node node-${item.key} ${gap === item.key ? 'active' : ''}`} key={item.key} onClick={() => setGap(item.key)} aria-pressed={gap === item.key}><span>0{index + 1}</span><i /><strong>{item.label}</strong><small>{item.en}</small>{index < chain.length - 1 && <b>→</b>}</button>)}
+417:           </div>
+418:           <div className="gap-grid">
+419:             {(Object.keys(gaps) as FrontierGap[]).map(item => <button key={item} className={`gap-card ${gap === item ? 'active' : ''}`} onClick={() => setGap(item)}><span>{gaps[item].n}</span><div><small>{gaps[item].metric}</small><strong>{gaps[item].title}</strong><p>{gaps[item].detail}</p><em>{gaps[item].chain}</em></div></button>)}
+420:           </div>
+421:           <div className="gap-insight"><span>{current.n} / ACTIVE BOTTLENECK</span><strong>{current.chain}</strong><p>{current.detail}</p><i><b style={{ width: `${Number(current.n) * 18 + 10}%` }} /></i></div>
+422:         </section>
+423:       </div>
+424:     </SlideFrame>
+425:   )
+426: */
+427: type PipelineMode = 'flow' | 'deployment'
+428: type Fault = 'none' | 'saturation' | 'drift' | 'sync'
+429: 
+430: function PipelineSlide() {
+431:   const [mode, setMode] = useState<PipelineMode>('flow')
+432:   const [active, setActive] = useState(0)
+433:   const [fault, setFault] = useState<Fault>('none')
+434:   const faultStage: Record<Fault, number> = { none: -1, saturation: 1, drift: 3, sync: 4 }
+435:   const affectedFrom = faultStage[fault]
+436:   const faultLabels: Record<Fault, string> = { none: '正常链路', saturation: '幅值饱和', drift: '基线漂移', sync: '时空错位' }
+437:   const faultMeaning: Record<Fault, string> = { none: '不注入失效：观察信息如何逐阶段被组织并进入策略。', saturation: '强接触超过前端量程，输出被截顶；后续阶段无法恢复被丢失的峰值与动态范围。', drift: '零点、温漂或加载历史改变了基线；同一接触可能被解释成不同的力或接触状态。', sync: '触觉、视觉、本体或动作没有对齐到同一物理时刻；状态估计会把因果关系错配。' }
+438:   return (
+439:     <SlideFrame metaIndex={5}>
+440:       <div className="pipeline-toolbar">
+441:         <div className="segmented">
+442:           <button className={mode === 'flow' ? 'active' : ''} onClick={() => setMode('flow')}>功能链</button>
+443:           <button className={mode === 'deployment' ? 'active' : ''} onClick={() => setMode('deployment')}>部署层</button>
+444:         </div>
+445:         <div className="faults"><span>典型失效注入</span>{(['none','saturation','drift','sync'] as Fault[]).map(item => <button key={item} className={fault === item ? 'active' : ''} onClick={() => setFault(item)} title={faultMeaning[item]}>{faultLabels[item]}</button>)}</div>
+446:       </div>
+447:       {mode === 'flow' ? (
+448:         <div className={`pipeline-flow fault-${fault}`}>
+449:           <div className="flow-line"><i className="flow-pulse p1"/><i className="flow-pulse p2"/><i className="flow-pulse p3"/></div>
+450:           {pipeline.map((stage, index) => (
+451:             <button
+452:               key={stage.n}
+453:               className={`pipeline-stage ${active === index ? 'active' : ''} ${affectedFrom >= 0 && index >= affectedFrom ? 'affected' : ''} ${index === affectedFrom ? 'fault-origin' : ''}`}
+454:               onClick={() => setActive(index)}
+455:             >
+456:               <span className="stage-number">{stage.n}</span>
+457:               <i className="stage-node" />
+458:               <strong>{stage.title}</strong>
+459:               <small>{stage.short}</small>
+460:               {index === affectedFrom && <em>{fault === 'saturation' ? 'SATURATED' : fault === 'drift' ? 'DRIFTING' : 'MISALIGNED'}</em>}
+461:             </button>
+462:           ))}
+463:           <aside className="stage-insight">
+464:             <div><span>STAGE {pipeline[active].n}</span><strong>{pipeline[active].title}</strong></div>
+465:             <p><b className="insight-label">阶段功能</b>{pipeline[active].function}</p>
+466:             <p className="stage-risk"><b className="insight-label">关键风险</b>{pipeline[active].risk}</p>
+467:             <small>{fault === 'none' ? '点击任意阶段查看功能与风险；点击右上角失效注入查看错误传播轨迹' : faultMeaning[fault]}</small>
+468:           </aside>
+469:         </div>
+470:       ) : (
+471:         <div className="deployment-view">
+472:           <div className="deployment-note"><span>正交维度</span><p>功能阶段不等于硬件位置。同一处理可以跨层部署，取决于时限、上下文、功耗和可维护性。</p></div>
+473:           <div className="zone-table">
+474:             {Object.entries(zoneNames).map(([key, zone]) => (
+475:               <div className={`zone-row zone-${key}`} key={key}>
+476:                 <div className="zone-label"><strong>{zone.name}</strong><small>{zone.desc}</small></div>
+477:                 <div className="zone-track">
+478:                   {pipeline.map((stage, index) => <button key={stage.n} className={stage.zone.includes(key) ? 'present' : ''} onClick={() => setActive(index)} title={stage.title}><span>{stage.n}</span><small>{stage.title}</small></button>)}
+479:                 </div>
+480:               </div>
+481:             ))}
+482:           </div>
+483:           <div className="deployment-principle"><span>部署原则</span><p><b>严格时限 / 不可逆处理</b>靠近传感器；<b>跨部位 / 跨模态推理</b>靠近主机；保留受控原始数据通路用于标定、诊断和模型更新。</p></div>
+484:         </div>
+485:       )}
+486:     </SlideFrame>
+487:   )
+488: }
+489: 
+490: type FusionRole = 'observe' | 'complement' | 'feedback' | 'explore'
+491: type FusionInterface = 'state' | 'policy' | 'dual'
+492: 
+493: function FusionSlide() {
+494:   const [role, setRole] = useState<FusionRole>('observe')
+495:   const [iface, setIface] = useState<FusionInterface>('state')
+496:   const roles: Record<FusionRole, { n:string; label:string; en:string; title:string; question:string; tactile:string; downstream:string; example:string }> = {
+497:     observe: { n:'01', label:'直接观测', en:'DIRECT OBSERVATION', title:'把动作产生的物理后果变成接触事实', question:'机器人真正接触了什么？', tactile:'接触位置、作用力、滑移、局部几何', downstream:'状态估计 · 接触定位 · 力 / 位姿控制', example:'首次接触、抓取建立和局部几何约束' },
+498:     complement: { n:'02', label:'补充视觉', en:'VISUAL COMPLEMENT', title:'在遮挡、透明和接触后视觉退化时补足信息', question:'视觉看不到的接触状态如何被确认？', tactile:'被遮挡区域的压力、形变、接触边界与载荷', downstream:'视觉—触觉联合估计 · 失败重抓 · 局部纠错', example:'手指遮挡目标后仍判断是否抓稳' },
+499:     feedback: { n:'03', label:'高频反馈', en:'FAST FEEDBACK', title:'沿局部短通路修正滑移、碰撞与受力误差', question:'动作还来得及修正吗？', tactile:'高频变化、冲击、微滑移、过载', downstream:'抓力调节 · 碰撞反射 · 触觉伺服', example:'物体完全滑落前增大夹持力' },
+500:     explore: { n:'04', label:'主动探索', en:'ACTIVE TOUCH', title:'用下一次接触获取外观无法提供的物理证据', question:'下一次应该在哪里、怎样触碰？', tactile:'动作条件下的力—位移、摩擦、纹理与温度响应', downstream:'信息增益规划 · 属性认知 · 主动触觉', example:'按压、滑动或滚动区分相似外观材料' },
+501:   }
+502:   const interfaces: Record<FusionInterface, { n:string; label:string; en:string; title:string; input:string; output:string; note:string }> = {
+503:     state: { n:'A', label:'显式状态接口', en:'TACTILE → STATE → CONTROLLER', title:'先估计状态，再交给控制器', input:'力 / 接触位置 / 滑移 / 局部几何', output:'阻抗控制 · 力控制 · 触觉伺服', note:'可解释、易设置安全约束；可能丢失难以手工定义的微弱模式。' },
+504:     policy: { n:'B', label:'多模态策略接口', en:'TACTILE + VISION + PROPRIOCEPTION', title:'分别编码，再由策略联合生成动作', input:'触觉序列 + 视觉 / 语言 / 本体状态', output:'策略网络 · VLA · 动作残差', note:'保留学习空间；必须处理时间对齐与视觉特征支配。' },
+505:     dual: { n:'C', label:'快慢双通路接口', en:'FAST REFLEX + SLOW POLICY', title:'局部反射与高层推理并行工作', input:'边缘端接触 / 滑移 / 过载 + 长时程历史', output:'端侧安全修正 + 高层任务规划', note:'满足严格时限又保留复杂推理；需要明确控制权限和回退机制。' },
+506:   }
+507:   const current = roles[role]
+508:   const currentInterface = interfaces[iface]
+509:   return (
+510:     <SlideFrame metaIndex={6}>
+511:       <div className="fusion-layout fusion-rebuilt">
+512:         <section className="fusion-interfaces">
+513:           <div className="fusion-intro"><span>FROM TOUCH TO EMBODIED TASK</span><h2>触觉在具身系统里<br/><em>承担什么作用？</em></h2><p>先看触觉在感知—决策—行动闭环中的功能位置，再看它以什么接口进入控制器或策略。</p></div>
+514:           <div className="fusion-role-tabs" role="tablist" aria-label="触觉功能位置">
+515:             {(Object.keys(roles) as FusionRole[]).map(key => <button key={key} className={role === key ? 'active' : ''} onClick={() => setRole(key)} aria-selected={role === key}><span>{roles[key].n}</span><strong>{roles[key].label}</strong><small>{roles[key].en}</small></button>)}
+516:           </div>
+517:           <div className="fusion-principle"><i/>视觉负责接触前先验，本体感觉提供身体坐标，触觉确认接触后的物理后果。</div>
+518:         </section>
+519:         <section className="fusion-system fusion-rebuilt-system" aria-label="触觉功能与接口框架">
+520:           <div className="fusion-role-card">
+521:             <div className="fusion-role-header"><span>{current.n} / {current.en}</span><strong>{current.question}</strong></div>
+522:             <div className="fusion-canvas fusion-role-canvas">
+523:               <div className="fusion-node fusion-vision"><span>PRE-CONTACT</span><strong>视觉 / 语言</strong><small>目标发现 · 全局定位 · 动作初始化</small></div>
+524:               <div className="fusion-node fusion-proprio"><span>BODY STATE</span><strong>本体感觉</strong><small>自身位姿 · 运动 · 身体坐标</small></div>
+525:               <div className="fusion-node fusion-touch"><span>CONTACT</span><strong>触觉</strong><small>{current.tactile}</small></div>
+526:               <div className="fusion-node fusion-consumer"><span>DOWNSTREAM</span><strong>{current.downstream}</strong><small>{current.example}</small></div>
+527:               <svg className="fusion-arrows" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M16 24C27 24 33 39 42 48M16 76C27 76 33 61 42 52M58 50H84"/><path className="fusion-return" d="M92 66C76 96 24 96 8 76"/></svg>
+528:             </div>
+529:           </div>
+530:           <div className="fusion-interface-card">
+531:             <div className="fusion-interface-heading"><span>第二层 / INTERFACE</span><strong>触觉如何被控制器或策略消费？</strong></div>
+532:             <div className="fusion-interface-tabs" role="tablist" aria-label="触觉系统接口">{(Object.keys(interfaces) as FusionInterface[]).map(key => <button key={key} className={iface === key ? 'active' : ''} onClick={() => setIface(key)} aria-selected={iface === key}><b>{interfaces[key].n}</b><span>{interfaces[key].label}</span><small>{interfaces[key].en}</small></button>)}</div>
+533:             <div className="fusion-interface-detail" aria-live="polite"><div><span>{currentInterface.en}</span><h3>{currentInterface.title}</h3></div><p><b>输入：</b>{currentInterface.input}</p><p><b>输出：</b>{currentInterface.output}</p><p><b>关键权衡：</b>{currentInterface.note}</p></div>
+534:           </div>
+535:         </section>
+536:       </div>
+537:     </SlideFrame>
+538:   )
+539: }
+540: 
+541: type ChallengeKey = 'coverage' | 'latency' | 'reliability' | 'transfer' | 'evaluation'
+542: 
+543: function ChallengeSlide() {
+544:   const [active, setActive] = useState<ChallengeKey>('coverage')
+545:   const items: Record<ChallengeKey, { n:string; label:string; en:string; title:string; symptom:string; cause:string; metrics:string; fix:string }> = {
